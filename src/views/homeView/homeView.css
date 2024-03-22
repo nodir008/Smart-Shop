@@ -1,0 +1,68 @@
+.home__view {
+    margin: 30px 0;
+}
+
+.home__view-title {
+    font-size: 30px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 20px;
+    row-gap: 30px;
+    margin-top: 20px;
+}
+
+.cards__none {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding-bottom: 15px;
+}
+
+.cards__none img {
+    width: 150px;
+}
+
+.cards__none-title {
+    font-size: 24px;
+}
+
+.cards__none-text {
+    font-size: 14px;
+}
+
+.btn {
+    height: 30px;
+    width: 30px;
+    border: none;
+    margin-inline: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.1s;
+    border-radius: 5px;
+}
+
+
+.btn-active {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.btn:hover {
+    background-color: #d8d8d8;
+
+}
+
+.btn-active:hover {
+    background-color: rgb(54, 54, 54);
+}
+
+.home__view-div-top {
+    display: flex;
+    justify-content: space-between;
+}
+

@@ -1,0 +1,7 @@
+export { default as carusel1 } from "@/assets/images/carusel1.jpg"
+export { default as carusel2 } from "@/assets/images/carusel2.jpg"
+export { default as carusel3 } from "@/assets/images/carusel3.png"
+export { default as carusel4 } from "@/assets/images/carusel4.png"
+export { default as carusel5 } from "@/assets/images/carusel5.webp"
+export { default as carusel6 } from "@/assets/images/carusel6.jpg"
+export { default as carusel7 } from "@/assets/images/carusel7.png"
