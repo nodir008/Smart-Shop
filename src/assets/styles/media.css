@@ -148,6 +148,12 @@
   .home__view {
     margin: 10px 0 !important;
   }
+
+  .card:hover {
+    border:none !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
 }
 
 @media (max-width: 540px) {
@@ -184,6 +190,10 @@
     width: 30px !important;
     padding: 3px !important;
   }
+
+  .header__img {
+    height: 200px;
+  }
 }
 
 
@@ -214,4 +224,7 @@
     font-size: 10px !important;
   }
 
+  .header__img {
+    height: 180px;
+  }
 }

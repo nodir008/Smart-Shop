@@ -59,21 +59,7 @@ productsStore.getProducts();
           <Card v-for="item in productsStore.products" :key="item.id" :card="item" />
         </div>
 
-        <div class="hidden-home__view-pagination" >
-          <!-- <vue-awesome-paginate
-          class="home__view-pagination"
-              :total-items="+productsStore.total"
-              v-model="currentPage"
-              :items-per-page="20"
-              :max-pages-shown="5"
-              paginate-buttons-class="btn"
-              active-page-class="btn-active"
-              back-button-class="back-btn"
-              next-button-class="next-btn"
-              :on-click="onClickHandler"
-            /> -->
-            <button @click="newClick">Показать еще...</button>
-        </div>
+            <button @click="newClick" class="hidden-home__view-pagination" > {{ $t("hidden-home__view-pagination") }}</button>
        
         
 

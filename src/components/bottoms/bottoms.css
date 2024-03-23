@@ -6,6 +6,7 @@
   right: 0;
   background: #fff;
   padding: 3px 0;
+  z-index: 2;
 }
 
 .bottoms__icon {
