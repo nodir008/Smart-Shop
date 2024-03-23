@@ -141,6 +141,11 @@
     "bottoms__link-4": " Saralangan ",
     "bottoms__link-5": " Kabinet ",
     "hidden-home__view-pagination": " Yana koʻrsatish... ",
+    "cards__none-title": " Biz siz qidirayotgan narsani topa olmadik ",
+    "cards__none-text": " Mahsulot nomida xatolik yoki bizda hali bunday mahsulot boʻlmasligi mumkin ",
+    "fixed__theme-title": " Mahsulotga buyurtma berildi ",
+    "fixed__theme-title-2": " Mahsulot savatga qoshildi ",
+    "fixed__theme-drawer": " Savatga otish ",
 
     "nav__pages-basket2": " Savat "
 }

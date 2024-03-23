@@ -348,3 +348,13 @@
     transform: translateY(0px);
     opacity: 1;
 }
+
+.drawer__card-theme-description-title {
+    display: none;
+    font-size: 18px;
+    color: #000;
+}
+
+.drawer__card-card-none {
+    display: none;
+}

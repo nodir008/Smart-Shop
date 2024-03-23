@@ -373,7 +373,7 @@ const addToOrder = (productId) => {
     />
     <div class="fixed__theme">
       <div class="fixed__theme-top">
-        <h3 class="fixed__theme-title">Mahsulotga buyurtma berildi</h3>
+        <h3 class="fixed__theme-title"> {{ $t("fixed__theme-title") }} </h3>
         <!-- <p class="fixed__theme-x" @click="showToast = false">X</p> -->
       </div>
 

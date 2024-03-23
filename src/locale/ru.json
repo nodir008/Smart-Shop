@@ -142,6 +142,11 @@
     "bottoms__link-4": " Избранное ",
     "bottoms__link-5": " Кабинет ",
     "hidden-home__view-pagination": " Показать еще... ",
+    "cards__none-title": " Мы не нашли то, что вы искали ",
+    "cards__none-text": " Возможно, в названии товара ошибка или у нас пока нет такого товара ",
+    "fixed__theme-title": " Товар был заказан ",
+    "fixed__theme-title-2": " Товар добавлен в корзину ",
+    "fixed__theme-drawer": " Перейти в корзину ",
 
     "nav__pages-basket2": "Корзина"
 }

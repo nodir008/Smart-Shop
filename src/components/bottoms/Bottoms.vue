@@ -25,7 +25,7 @@ const katalog = ref(false)
             <RouterLink @click="katalog = false" class="bottoms__link" to="/favourite">
               <HeartIcon class="bottoms__icon" /> {{ $t("bottoms__link-4") }}
             </RouterLink>
-            <RouterLink  to="/drawer" class="bottoms__link" @click="openDrawer = true">
+            <RouterLink @click="katalog = false"  to="/drawer" class="bottoms__link" >
               <BasketIcon class="bottoms__icon" /> {{ $t("bottoms__link-3") }}
             </RouterLink>
             <RouterLink @click="katalog = false" class="bottoms__link" to="/login">

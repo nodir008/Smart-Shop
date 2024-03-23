@@ -28,11 +28,10 @@ productsStore.getProducts();
       <div v-if="!productsStore.products || productsStore.products.length === 0" class="cards__none">
         <img src="@/assets/images/input-none.png" alt="" />
         <h2 class="cards__none-title">
-          Biz siz qidirayotgan narsani topa olmadik
+          {{ $t('cards__none-title') }}
         </h2>
         <p class="cards__none-text">
-          Mahsulot nomida xatolik yoki bizda hali bunday mahsulot boʻlmasligi
-          mumkin
+          {{ $t('cards__none-text') }}
         </p>
       </div>
       <div class="home__view-div" v-else>

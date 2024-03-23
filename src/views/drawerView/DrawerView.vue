@@ -158,6 +158,101 @@ const addToOrder = () => {
                     >
                       {{ item.description }}
                     </RouterLink>
+                    <RouterLink
+                      class="drawer__card-theme-description-title"
+                      :to="'/product/' + item.id"
+                    >
+                      {{ item.title }}
+                    </RouterLink>
+                    <button
+                      class="drawer__card-theme-delete"
+                      @click="basketStore.removeDrawerProduct(item.id)"
+                    >
+                      <DeleteIcon />{{ $t("drawer__card-theme-delete") }}
+                    </button>
+                  </div>
+                  <div class="drawer__card-count">
+                    <div class="drawer__card-count-theme">
+                      <p class="drawer__card-count-theme-vendor">
+                        {{ $t("drawer__card-count-theme-vendor-b") }} <span>{{ item.brand }}</span>
+                      </p>
+                      <p class="drawer__card-count-theme-vendor">
+                        {{ $t("drawer__card-count-theme-vendor-c") }}
+                        <RouterLink
+                          class="drawer__card-count-theme-vendor-rout"
+                          :to="'/category/' + item.category"
+                        >
+                          {{ item.category }}</RouterLink
+                        >
+                      </p>
+                    </div>
+                    <div class="drawer__card-count-count-div">
+                      <div class="drawer__card-count-count">
+                        <button
+                          class="drawer__card-count-count-btn"
+                          @click="basketStore.decrementQuantity(item.id)"
+                        >
+                          <MinusIcon
+                            class="drawer__card-count-count-btn-minus"
+                            :class="{ active: item.quantity === 1 }"
+                          />
+                        </button>
+                        <input
+                          class="drawer__card-count-count-inp"
+                          type="number"
+                          v-model="item.quantity"
+                          @input="updateQuantity(item)"
+                        />
+
+                        <button
+                          class="drawer__card-count-count-btn"
+                          @click="basketStore.incrementQuantity(item.id)"
+                        >
+                          <PlusIcon class="drawer__card-count-count-btn-plus" />
+                        </button>
+                      </div>
+                      <p
+                        class="drawer__card-count-count-div-text"
+                        :class="{ active: item.quantity >= 2 }"
+                      >
+                        {{
+                          (
+                            item.price -
+                            (item.price * item.discountPercentage) / 100
+                          ).toFixed(0)
+                        }}
+                        $/ 1{{ $t("drawer__card-count-count-div-text") }} 
+                      </p>
+                    </div>
+
+                    <div class="drawer__card-count-price">
+                      <p class="drawer__card-count-price1">
+                        {{ calculateItemPrice(item) }} $
+                      </p>
+                      <p class="drawer__card-count-price2">
+                        {{ calculateTotalItemPrice(item) }} $
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="drawer__card-card-none">
+                <img class="drawer__card-img" :src="item.thumbnail" alt="" />
+                <div class="drawer__card-div">
+                  <div class="drawer__card-theme">
+                    <RouterLink
+                      class="drawer__card-theme-description"
+                      :to="'/product/' + item.id"
+                    >
+                      {{ item.description }}
+                    </RouterLink>
+                    <RouterLink
+                      class="drawer__card-theme-description-title"
+                      :to="'/product/' + item.id"
+                    >
+                      {{ item.title }}
+                    </RouterLink>
                     <button
                       class="drawer__card-theme-delete"
                       @click="basketStore.removeDrawerProduct(item.id)"

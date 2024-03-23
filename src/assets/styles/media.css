@@ -14,6 +14,14 @@
   .nav__category-bg {
     width: 70% !important;
   }
+  
+  .drawer {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .drawer__price {
+    grid-column: 3 span;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -132,7 +140,20 @@
   }
 
   .favourite__card img {
-    width: 180px !important;
+    width: 140px !important;
+    height: 100% !important;
+  }
+
+  .favourite__card {
+    min-height: 150px !important;
+  }
+
+  .drawer__card-theme-description-title {
+    display: block !important ;
+  }
+
+  .drawer__card-theme-description {
+    display: none !important; 
   }
 }
 
@@ -186,6 +207,14 @@
     border:none !important;
     transform: none !important;
     box-shadow: none !important;
+  }
+
+  .drawer__card-card {
+    display: none !important;
+  }
+
+  .drawer__card-card-none {
+    display: block !important;
   }
 }
 

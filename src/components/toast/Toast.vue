@@ -16,7 +16,7 @@ const basketStore = useBasketStore();
         <img class="fixed__img" :src="productSingleStore.product?.thumbnail" alt="" />
         <div class="fixed__theme">
             <div class="fixed__theme-top">
-                <h3 class="fixed__theme-title">Mahsulot savatga qoshildi</h3>
+                <h3 class="fixed__theme-title"> {{ $t("fixed__theme-title") }} </h3>
                 <p class="fixed__theme-x" @click="basketStore.changeActive(false)">X</p>
             </div>
 
@@ -28,7 +28,7 @@ const basketStore = useBasketStore();
                   {{ productSingleStore.product?.description }}
                   <span>x {{ productQuantity }} </span>
               </p>
-              <RouterLink to="/drawer" class="fixed__theme-drawer">Savatga otish</RouterLink>
+              <RouterLink to="/drawer" class="fixed__theme-drawer"> {{ $t("fixed__theme-drawer") }} </RouterLink>
           </div>
           
         </div>
