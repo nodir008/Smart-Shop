@@ -215,7 +215,7 @@ const addToOrder = () => {
                             (item.price * item.discountPercentage) / 100
                           ).toFixed(0)
                         }}
-                        $/ {{ $t("drawer__card-count-count-div-text") }} 
+                        $/ 1{{ $t("drawer__card-count-count-div-text") }} 
                       </p>
                     </div>
 

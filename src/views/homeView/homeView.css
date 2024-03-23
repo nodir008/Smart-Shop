@@ -66,3 +66,20 @@
     justify-content: space-between;
 }
 
+.hidden-home__view-pagination {
+    display: flex ;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    background-color: rgb(185, 185, 185);
+    border-radius: 0.6em;
+}
+.hidden-home__view-pagination button {
+    text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    transition: text-shadow 0.3s ease ;
+}
+
+.hidden-home__view-pagination:hover button {
+    text-shadow: 5px 7px 5px rgba(0, 0, 0, 0.8);
+}

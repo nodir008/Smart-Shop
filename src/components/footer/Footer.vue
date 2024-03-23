@@ -23,7 +23,7 @@ import googlePlayIcon from "@/assets/icons/GooglePlayIcon.vue";
           <li class="footer__link">{{ $t('footer__link-6') }}</li>
         </ul>
         <div class="footer__apps">
-          <h3 class="footer__link-title">{{ $t('footer__link-title-4') }}</h3>
+          <h3 class="footer__link-title footer__link-title-none">{{ $t('footer__link-title-4') }}</h3>
           <div class="footer__app">
             <p class="footer__app-link"><appleIcon /> AppStore</p>
             <p class="footer__app-link"><googlePlayIcon /> Google Play</p>

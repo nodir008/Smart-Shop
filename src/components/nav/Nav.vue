@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, watch, onMounted, onBeforeUnmount } from "vue";
+import { ref, reactive, watch, onMounted, onBeforeUnmount, defineProps, defineEmits   } from "vue";
 import { useProductsStore } from "@/stores/productsStore";
 import { useProductsCategories } from "@/stores/productsCategories";
 import { useCategoryStore } from "@/stores/categorySingleStore";
@@ -29,8 +29,17 @@ const languageUz = ref(false);
 const toggleShow = () => {
   show.value = !show.value;
 };
+const props = defineProps({
+  loading: Boolean // propName nomli propertini String tipida qabul qilamiz
+})
+
+const emit  = defineEmits(['loading']);
+
+
 
 const test = (lang) => {
+  emit('loading', true); 
+
   console.log(lang);
   console.log(i18n.global.locale);
   if (lang == "UZ") {

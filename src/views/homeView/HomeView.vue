@@ -6,11 +6,18 @@ import Toast from '@/components/toast/Toast.vue'
 
 const productsStore = useProductsStore();
 const currentPage = ref(1);
+const limit = ref(20);
 
 const onClickHandler = (page) => {
   console.log(page);
-  productsStore.getProducts(page * 20 - 20);
+  productsStore.getProducts(page * 20 - 20 );
 };
+
+const newClick = () => {
+  // Increment the limit value by 20
+  limit.value += 20;
+  productsStore.getProducts(0, '', limit.value); // Pass the updated limit to getProducts
+}
 
 productsStore.getProducts();
 
@@ -32,6 +39,7 @@ productsStore.getProducts();
         <div class="home__view-div-top">
           <h1 class="home__view-title">{{ $t('home__view-title') }}</h1>
           <vue-awesome-paginate
+          class="home__view-pagination-none"
             :total-items="+productsStore.total"
             v-model="currentPage"
             :items-per-page="20"
@@ -43,9 +51,34 @@ productsStore.getProducts();
             :on-click="onClickHandler"
           />
         </div>
+
+
+
+
         <div class="cards">
           <Card v-for="item in productsStore.products" :key="item.id" :card="item" />
         </div>
+
+        <div class="hidden-home__view-pagination" >
+          <!-- <vue-awesome-paginate
+          class="home__view-pagination"
+              :total-items="+productsStore.total"
+              v-model="currentPage"
+              :items-per-page="20"
+              :max-pages-shown="5"
+              paginate-buttons-class="btn"
+              active-page-class="btn-active"
+              back-button-class="back-btn"
+              next-button-class="next-btn"
+              :on-click="onClickHandler"
+            /> -->
+            <button @click="newClick">Показать еще...</button>
+        </div>
+       
+        
+
+
+
       </div>
     </div>
     

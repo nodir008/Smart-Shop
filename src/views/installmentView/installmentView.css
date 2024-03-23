@@ -86,6 +86,15 @@
 .installment__card-subtitle {
     margin-top: 16px;
     margin-bottom: 50px;
+    color: #1f1f26;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 700;
+}
+
+.installment__card-li {
+    color: #1f1f26;
+    font-size: 17px;
 }
 
 .installment__card-ul {

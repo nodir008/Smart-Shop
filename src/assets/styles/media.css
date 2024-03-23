@@ -20,9 +20,9 @@
   .nav__pages-span {
     display: none !important;
   }
-  
+
   .nav__pages-favourites {
-    padding:0 5px !important;
+    padding: 0 5px !important;
   }
 
   .nav__pages-favourites:hover {
@@ -30,7 +30,7 @@
   }
 
   .nav__pages-user {
-    padding:0 5px !important;
+    padding: 0 5px !important;
   }
 
   .nav__pages-user:hover {
@@ -38,25 +38,25 @@
   }
 
   .nav__pages-basket {
-    padding:0 5px !important;
+    padding: 0 5px !important;
   }
 
   .nav__pages-basket:hover {
     background: none !important;
   }
 
-    .fav-count {
-      display: none !important;
-    }
+  .fav-count {
+    display: none !important;
+  }
 
-    .basket-count {
-      display: none !important;
-    }
+  .basket-count {
+    display: none !important;
+  }
 
-  .header__img {
+  /* .header__img {
     height: 300px;
     object-fit: contain;
-  }
+  } */
 
   .swiper-pagination {
     display: none !important;
@@ -83,7 +83,7 @@
   .nav__none {
     display: inline !important;
   }
-  
+
   /* .nav__titles-title {
     font-size: 24px !important;
   }
@@ -97,22 +97,97 @@
     width: 130px;
   } */
 
-  .header__img {
+  /* .header__img {
     height: 230px;
-  }
+  } */
 
   .bottoms {
     display: inline !important;
   }
 
-  .bottoms .container {
-    display: flex;
-    justify-content: space-between;
-  }
+.footer__bottom {
+  display: none;
+}
+.footer__top {
+  margin-bottom: 60px;
+}
 }
 
 @media (max-width: 635px) {
   .cards {
     grid-template-columns: repeat(2, 1fr) !important;
   }
+
+  .footer__app {
+    display: none !important;
+  }
+
+  .footer__link-title-none {
+    display: none !important;
+  }
+
+  .home__view-title {
+    font-size: 24px !important;
+  }
+
+  .home__view-pagination-none {
+    display: none !important;
+  }
+
+  .hidden-home__view-pagination {
+    display: flex !important;
+  }
+
+  .home__view {
+    margin: 10px 0 !important;
+  }
 }
+
+@media (max-width: 540px) {
+
+  .home__view-title {
+    font-size: 22px !important;
+  }
+
+  .card {
+    min-height: 340px !important;
+    gap: 3px !important;
+  }
+
+  .card__theme {
+    justify-content: start !important;
+    gap: 2px !important;
+    min-height: 0 !important;
+  }
+  
+  .card__theme-title {
+    font-size: 16px !important;
+  }
+
+  .card__theme-price {
+    font-size: 12px !important;
+  }
+
+  .card__theme-newprice {
+    font-size: 14px !important;
+  }
+
+  .card__icons-btnb-basketicon {
+    height: 30px !important;
+    width: 30px !important;
+    padding: 3px !important;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .card {
+    min-height: 270px !important;
+  }
+
+  .card img {
+    height: 140px !important;
+  }
+}
+

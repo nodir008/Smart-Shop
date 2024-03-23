@@ -316,16 +316,15 @@ const addToOrder = (productId) => {
   >
     <div class="product__nation" @click.stop="">
       <DeleteXIcon class="product__nation-x" @click="show = false" />
-      <h1 class="product__nation-title">Smart Shop Nasiya muddatli to’lovi</h1>
+      <h1 class="product__nation-title"> {{ $t("product__nation-title") }}</h1>
       <p class="product__nation-text">
-        So‘rovnomani to‘ldiring — keyin siz xaridlarni muddatli to‘lovga
-        olishingiz mumkin bo‘ladi
+        {{ $t("product__nation-text") }}
       </p>
       <div class="product__nation-pasport">
         <div class="product__nation-pasport1">
           <img src="@/assets/images/step-1.svg" alt="" />
           <h3 class="product__nation-pasport-title">
-            Pasport ma‘lumotlarini yoki karta identifikatorini qo‘shing
+             {{ $t("product__nation-pasport-title") }}
           </h3>
         </div>
         <div class="product__nation-separator"></div>
@@ -333,11 +332,10 @@ const addToOrder = (productId) => {
           <img src="@/assets/images/step-2.svg" alt="" />
           <div class="product__nation-pasport1-div">
             <h3 class="product__nation-pasport-title">
-              Shaxsingizni tasdiqlang
+               {{ $t("product__nation-pasport-title-2") }}
             </h3>
             <p class="product__nation-pasport-text">
-              Shunday qilib, siz to‘lovni amalga oshirayotganingizni aniq bilib
-              olamiz
+               {{ $t("product__nation-pasport-text") }}
             </p>
           </div>
         </div>
@@ -345,26 +343,23 @@ const addToOrder = (productId) => {
         <div class="product__nation-pasport1">
           <img src="@/assets/images/step-3.svg" alt="" />
           <h3 class="product__nation-pasport-title">
-            Birinchi to‘lovsiz Uzum Nasiyadan muddatli to’lovga sotib oling
+            {{ $t("product__nation-pasport-title-3") }}
           </h3>
         </div>
       </div>
       <ul class="product__nation-ul">
         <li class="product__nation-ul-li">
-          <CheckIcon class="product__nation-ul-li-icon" /> Boshlang‘ich
-          to‘lovsiz
+          <CheckIcon class="product__nation-ul-li-icon" /> {{ $t("product__nation-ul-li-1") }}
         </li>
         <li class="product__nation-ul-li">
-          <CheckIcon class="product__nation-ul-li-icon" />12 oygacha muddatli
-          to‘lov
+          <CheckIcon class="product__nation-ul-li-icon" /> {{ $t("product__nation-ul-li-2") }}
         </li>
         <li class="product__nation-ul-li">
-          <CheckIcon class="product__nation-ul-li-icon" />25 000 000 so‘mgacha
-          limit
+          <CheckIcon class="product__nation-ul-li-icon" /> {{ $t("product__nation-ul-li-3") }}
         </li>
       </ul>
       <RouterLink to="/installment" class="product__nation-btn"
-        >Batafsil shartlar</RouterLink
+        >{{ $t("product__nation-btn") }}</RouterLink
       >
     </div>
   </div>

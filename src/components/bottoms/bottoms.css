@@ -4,6 +4,31 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60px;
   background: #fff;
+  padding: 3px 0;
+}
+
+.bottoms__icon {
+  width: 30px ;
+  height: 30px;
+  fill: #8b8e99;
+}
+
+.bottoms__icon.active {
+  fill: #7000ff;
+}
+
+.bottoms__link {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  color: #8b8e99;
+  font-size: 14px;
+}
+
+.bottoms .container {
+  display: flex;
+  justify-content: space-between;
 }
