@@ -33,5 +33,5 @@ const katalog = ref(false)
             </RouterLink>
         </div>
     </div>
-    <Katalog v-show="katalog"/>
+    <Katalog v-show="katalog" @closeKatalog="katalog = false" />
 </template>
