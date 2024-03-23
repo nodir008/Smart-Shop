@@ -1,4 +1,3 @@
-
 .drawer-title {
     font-size: 24px;
     margin-top: 40px;
@@ -6,30 +5,30 @@
 }
 
 .drawer {
-display: grid;
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
 
 .drawer__products {
-grid-column: 3 span;
+    grid-column: 3 span;
     border: 1px solid rgb(54, 54, 64, 0.2);
     border-radius: 5px;
 }
 
 .drawer__price {
-border: 1px solid rgb(54, 54, 64, 0.08);
+    border: 1px solid rgb(54, 54, 64, 0.08);
     border-radius: 10px;
     padding: 15px;
     height: 230px;
 }
 
 .drawer__products {
-padding: 15px;
+    padding: 15px;
 }
 
 .drawer__products-span {
-width: 100%;
+    width: 100%;
     height: 1px;
     display: block;
     background: rgb(54, 54, 64, 0.08);
@@ -37,79 +36,79 @@ width: 100%;
 }
 
 .drawer__products-top {
-display: flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .drawer__products-top-title {
-font-size: 15px;
+    font-size: 15px;
 }
 
 .drawer__products-top-div {
-display: flex;
+    display: flex;
     gap: 10px;
     align-items: center;
 }
 
 .drawer__products-top-div-text {
-font-size: 13px;
+    font-size: 13px;
     color: #8b8e99;
 }
 
 .drawer__products-top-div-title {
-color: #7000ff;
+    color: #7000ff;
     border: 1px solid #7000ff;
     padding: 2px 6px;
     font-size: 12px;
 }
 
 .drawer__card-img {
-width: 120px;
+    width: 120px;
     height: 120px;
     object-fit: cover;
 }
 
 .drawer__card-card {
-display: flex;
+    display: flex;
     gap: 30px;
 }
 
 .drawer__card-theme {
-display: flex;
+    display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 10px;
 }
 
 .drawer__card-div {
-display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
 }
 
 .drawer__card-count {
-display: flex;
+    display: flex;
     justify-content: space-between;
 }
 
 .drawer__card-count-count {
-border: 1px solid rgb(54, 54, 64, 0.2);
+    border: 1px solid rgb(54, 54, 64, 0.2);
     border-radius: 5px;
     display: flex;
-    padding: 5px 10px ;
+    padding: 5px 10px;
     height: 35px;
     align-items: center;
 }
 
 .drawer__card-theme-description {
-font-size: 18px;
+    font-size: 18px;
     color: #000;
 }
 
 .drawer__card-theme-delete {
-display: flex;
+    display: flex;
     align-items: center;
     gap: 5px;
     font-size: 14px;
@@ -122,44 +121,45 @@ display: flex;
 }
 
 .drawer__card-theme-delete path {
-fill:#595b66;
+    fill: #595b66;
     transition: 0.2s;
 }
 
 .drawer__card-theme-delete:hover {
-color: #000;
+    color: #000;
 }
 
 .drawer__card-theme-delete:hover path {
-fill: red;
+    fill: red;
 }
 
 .drawer__card-count-theme {
-display: flex;
+    display: flex;
     flex-direction: column;
     gap: 5px;
-    width: 200px;
+    max-width: 300px;
+    width: 100%;
 }
 
 .drawer__card-count-theme-vendor {
-color: #8b8e99;
+    color: #8b8e99;
 }
 
-.drawer__card-count-theme-vendor span{
-color: #000;
+.drawer__card-count-theme-vendor span {
+    color: #000;
     cursor: pointer;
     text-transform: capitalize;
 }
 
-.drawer__card-count-theme-vendor-rout{
-color: #000;
+.drawer__card-count-theme-vendor-rout {
+    color: #000;
     cursor: pointer;
     text-transform: capitalize;
 }
 
 
 .drawer__card-count-count-inp {
-width: 30px;
+    width: 30px;
     font-size: 16px;
     text-align: center;
 }
@@ -177,7 +177,7 @@ width: 30px;
     padding: 3px;
     height: 30px;
     fill: #000;
-}   
+}
 
 .drawer__card-count-count-btn-minus {
     width: 30px;
@@ -192,7 +192,7 @@ width: 30px;
 }
 
 .drawer__card-count-price {
-display: flex;
+    display: flex;
     flex-direction: column;
     align-items: end;
     gap: 5px;
@@ -200,12 +200,12 @@ display: flex;
 }
 
 .drawer__card-count-price1 {
-font-size: 20px;
+    font-size: 20px;
     font-weight: 700;
 }
 
 .drawer__card-count-price2 {
-font-size: 14px;
+    font-size: 14px;
     color: #8b8e99;
     text-decoration: line-through;
 }
@@ -215,13 +215,13 @@ font-size: 14px;
 
 
 .drawer__price-title {
-font-size: 16px;
+    font-size: 16px;
     color: #1f2026;
     margin-bottom: 18px;
 }
 
 .drawer__price-products {
-display: flex;
+    display: flex;
     justify-content: space-between;
     color: #1f2026;
     font-size: 14px;
@@ -229,7 +229,7 @@ display: flex;
 }
 
 .drawer__price-text {
-color: #7000ff;
+    color: #7000ff;
     border: 1px solid #7000ff;
     font-size: 12px;
     border-radius: 2px;
@@ -240,34 +240,34 @@ color: #7000ff;
 }
 
 .drawer__price-price {
-display: flex;
+    display: flex;
     justify-content: space-between;
 }
 
 .drawer__price-price-title {
-color: #1f2026;
+    color: #1f2026;
     font-size: 14px;
 }
 
 .drawer__price-price-sum {
-display: flex;
+    display: flex;
     flex-direction: column;
     align-items: end;
 }
 
 .drawer__price-price-sum1 {
-font-size: 20px;
+    font-size: 20px;
     color: #000;
 }
 
 .drawer__price-price-sum2 {
-font-size: 12px;
+    font-size: 12px;
     color: #009c38;
 }
 
 .drawer__price-btn {
-width: 100%;
-    padding:12px 0;
+    width: 100%;
+    padding: 12px 0;
     text-align: center;
     background: #7000ff;
     color: #fff;
@@ -279,11 +279,11 @@ width: 100%;
 }
 
 .drawer__price-btn:hover {
-opacity: 0.9;
+    opacity: 0.9;
 }
 
 .drawer-span {
-color: #8b8e99;
+    color: #8b8e99;
 }
 
 .no__product {
@@ -298,6 +298,7 @@ color: #8b8e99;
     font-size: 36px;
     font-weight: 700;
 }
+
 .no__product {
     display: flex;
     flex-direction: column;
@@ -305,7 +306,7 @@ color: #8b8e99;
     gap: 15px;
 }
 
-.no__product-link{
+.no__product-link {
     padding: 15px 20px;
     background: #7000ff;
     border-radius: 10px;
@@ -322,25 +323,27 @@ color: #8b8e99;
 .order__no__product-text2 {
     font-size: 24px;
 }
+
 .drawer-div {
-min-height: 56dvh;
+    min-height: 56dvh;
 }
 
 .drawer__card-count-count-div {
-display: flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 3px;
 }
 
 .drawer__card-count-count-div-text {
-font-size: 14px;
+    font-size: 14px;
     color: rgba(54, 54, 64, 0.603);
     opacity: 0;
     transition: 0.4s;
     transform: translateY(-10px);
 }
+
 .drawer__card-count-count-div-text.active {
-transform: translateY(0px);
+    transform: translateY(0px);
     opacity: 1;
 }

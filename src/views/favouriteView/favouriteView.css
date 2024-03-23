@@ -38,6 +38,12 @@
   object-fit: cover;
 }
 
+.favourite__cards-title {
+  font-size: 28px;
+  border-bottom: 1px solid rgb(54 54 64 / 20%);
+  padding-bottom: 2px;
+}
+
 .favourite__card img:hover {
   transform: scale(1.05);
 }

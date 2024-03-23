@@ -47,7 +47,7 @@ const toggleBasket = (favouritesId) => {
         <RouterLink to="/" class="no__product-link">{{ $t('no__product-link') }}</RouterLink>  
       </div>
       <div class="favourite-div">
-        <h1 class="favourite__cards-title" v-if="favouriteStore.favourites.length > 0">Saralangan</h1>
+        <h1 class="favourite__cards-title" v-if="favouriteStore.favourites.length > 0">{{ $t('favourite__cards-title') }}</h1>
         <div class="favourite__cards">
             <div class="favourite__card" v-for="item in favouriteStore.favourites"
           :key="item.id">

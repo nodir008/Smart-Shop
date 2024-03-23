@@ -192,10 +192,10 @@ const addToOrder = (productId) => {
           <div class="product__theme-rating-text">
             <p class="product__theme-rating-rating">
               <StarIcon />{{ productSingleStore.product?.rating }} (
-              <span class="product__theme-rating-rating-s"> ball </span> )
+              <span class="product__theme-rating-rating-s"> {{ $t("product__theme-rating-rating-s") }} </span> )
             </p>
             <p class="product__theme-rating-stock">
-              {{ productSingleStore.product?.stock }} ta buyurtma
+              {{ productSingleStore.product?.stock }} {{ $t("product__theme-rating-stock") }}
             </p>
           </div>
           <!-- @click="toggleFavorite" :class="{ active: isFavourite }" -->
@@ -215,8 +215,8 @@ const addToOrder = (productId) => {
             />
             {{
               favouriteStore.activeStates[productSingleStore.product?.id]
-                ? "Istaklarda"
-                : "Istaklarga"
+                ?  $t("product__theme-rating-favourite-headericon-2") 
+                : $t("product__theme-rating-favourite-headericon-1")
             }}
           </button>
         </div>
@@ -224,20 +224,19 @@ const addToOrder = (productId) => {
           {{ productSingleStore.product?.title }}
         </h2>
         <div class="product__theme-product">
-          <p class="product__theme-product-title">Yetkazib berish:</p>
+          <p class="product__theme-product-title">{{ $t("product__theme-product-title") }}</p>
           <p class="product__theme-product-text">
-            1 kunda bepul. Mahsulot buyurtirilgan kunning ertasiga mahsulotni
-            rasmiy topshirish punktlarimizga yetkazamiz.
+            {{ $t("product__theme-product-text") }}
           </p>
         </div>
         <span class="product-span"></span>
         <div class="product__theme-theme">
-          <h4 class="product__theme-theme-title">Mahsulot haqida qisqacha:</h4>
+          <h4 class="product__theme-theme-title">{{ $t("product__theme-theme-title") }}</h4>
           <p class="product__theme-theme-text">
             {{ productSingleStore.product?.description }}
           </p>
         </div>
-        <p class="product__theme-count-count">Miqdor:</p>
+        <p class="product__theme-count-count">{{ $t("product__theme-count-count") }}</p>
         <div class="product__theme-count">
           <div class="product__theme-count-number">
             <button
@@ -263,42 +262,46 @@ const addToOrder = (productId) => {
               <PlusIcon class="product__theme-count-number-b-icon2" />
             </button>
           </div>
-          <p class="product__theme-count-text">Sotuvda bor</p>
+          <p class="product__theme-count-text">{{ $t("product__theme-count-text") }}</p>
         </div>
-        <p class="product__theme-price-price">Narx:</p>
+        <p class="product__theme-price-price">{{ $t("product__theme-price-price") }}</p>
         <div class="product__theme-price">
           <p class="product__theme-price-price1">{{ totalFormattedPrice }} $</p>
           <p class="product__theme-price-price2">
             {{ productSingleStore.product?.price * productQuantity }}$
           </p>
           <p class="product__theme-price-price3">
-            {{ productQuantity }} tasidan -{{ updateTotalPrice() }}$ chegirma
-            bolayabdi
+
+            {{ productQuantity }} {{ $t("product__theme-price-price3-1") }}-{{ updateTotalPrice() }}$ {{ $t("product__theme-price-price3-2") }}
           </p>
-          <p class="product__theme-price-text">Savdo</p>
+          <!-- <p class="product__theme-price-price3">
+            {{ $t("product__theme-price-price3-1") }}  -{{ updateTotalPrice() }}$ {{ $t("product__theme-price-price3-2") }} {{ productQuantity }} {{ $t("product__theme-price-price3-3") }} 
+          </p> -->
+          
+          <p class="product__theme-price-text">{{ $t("product__theme-price-text") }}</p>
         </div>
         <div class="product__theme-term" @click="toggleLoader">
           <div class="product__theme-term-div">
             <p class="product__theme-term-p">
-              Oyiga
+              {{ $t("product__theme-term-p") }}
               {{
                 calculateFormattedPrice(
                   productSingleStore.product?.price * productQuantity
                 )
               }}$
             </p>
-            <span class="product__theme-term-s"> muddatli to'lov</span>
+            <span class="product__theme-term-s">{{ $t("product__theme-term-s") }}</span>
           </div>
           <ArrowIcon class="product__theme-term-icon" v-if="!showLoader" />
           <span class="product__theme-term-loader" v-else></span>
         </div>
         <div class="product__theme-btns">
           <button class="product__theme-btns-btn" @click="addToBasket">
-            Savatga qo'shish
+            {{ $t("product__theme-btns-btn") }}
           </button>
           <button class="product__theme-btns-btn-18" @click="addToOrder(productSingleStore.product.id)">
             <span class="text-container">
-              <span class="text"> Tugmani 1 bosishda xarid qilish</span>
+              <span class="text"> {{ $t("product__theme-btns-btn-18") }}</span>
             </span>
           </button>
         </div>

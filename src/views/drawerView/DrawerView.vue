@@ -63,12 +63,12 @@ function updateCurrentDateTime() {
   const year = now.getFullYear();
   const month = (now.getMonth() + 1).toString().padStart(2, "0");
   const day = (now.getDate() + 1).toString().padStart(2, "0");
-  // const hours = now.getHours().toString().padStart(2, '0');
-  // const minutes = now.getMinutes().toString().padStart(2, '0');
-  // const seconds = now.getSeconds().toString().padStart(2, '0');
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = (now.getMinutes() + 1).toString().padStart(2, '0'); // Add 1 minute
+  const seconds = now.getSeconds().toString().padStart(2, '0');
 
-  // currentDateTime.value = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-  currentDateTime.value = `${day}-${month}-${year}`;
+  currentDateTime.value = ` ${hours}:${minutes}:${seconds}`;
+  setTimeout(updateCurrentDateTime, 1000);
 }
 
 const calculateItemPrice = (item) => {
@@ -124,21 +124,21 @@ const addToOrder = () => {
   <div class="drawer-div">
     <div class="container">
       <h2 class="drawer-title" v-if="basketStore.drawer.length > 0">
-        Savatingiz,
+        {{ $t("drawer-title") }}
         <span class="drawer-span"
-          >{{ basketStore.drawer.length }} mahsulot</span
+          >{{ basketStore.drawer.length }} {{ $t("drawer-span") }}</span
         >
       </h2>
 
       <div class="drawer">
         <div class="drawer__products" v-if="basketStore.drawer.length > 0">
           <div class="drawer__products-top">
-            <p class="drawer__products-top-title">Hamma mahsulotlar</p>
+            <p class="drawer__products-top-title"> {{ $t("drawer__products-top-title") }}</p>
             <div class="drawer__products-top-div">
               <p class="drawer__products-top-div-text">
-                Yetkazib berish sanasi:
+                {{ $t("drawer__products-top-div-text") }}
               </p>
-              <p class="drawer__products-top-div-title">( Ertaga )</p>
+              <p class="drawer__products-top-div-title">{{ $t("drawer__products-top-div-title") }}</p>
             </div>
           </div>
           <div class="drawer__cards">
@@ -162,16 +162,16 @@ const addToOrder = () => {
                       class="drawer__card-theme-delete"
                       @click="basketStore.removeDrawerProduct(item.id)"
                     >
-                      <DeleteIcon />Yo'q qilish
+                      <DeleteIcon />{{ $t("drawer__card-theme-delete") }}
                     </button>
                   </div>
                   <div class="drawer__card-count">
                     <div class="drawer__card-count-theme">
                       <p class="drawer__card-count-theme-vendor">
-                        Brand: <span>{{ item.brand }}</span>
+                        {{ $t("drawer__card-count-theme-vendor-b") }} <span>{{ item.brand }}</span>
                       </p>
                       <p class="drawer__card-count-theme-vendor">
-                        Category:
+                        {{ $t("drawer__card-count-theme-vendor-c") }}
                         <RouterLink
                           class="drawer__card-count-theme-vendor-rout"
                           :to="'/category/' + item.category"
@@ -215,7 +215,7 @@ const addToOrder = () => {
                             (item.price * item.discountPercentage) / 100
                           ).toFixed(0)
                         }}
-                        $/ 1 dona
+                        $/ {{ $t("drawer__card-count-count-div-text") }} 
                       </p>
                     </div>
 
@@ -242,12 +242,12 @@ const addToOrder = () => {
         </div>
         <div class="drawer__price" v-if="basketStore.drawer.length > 0">
           <h3 class="drawer__price-title" v-if="basketStore.drawer.length == 1">
-            Buyurtmangiz
+            {{ $t("drawer__price-title-1") }} 
           </h3>
-          <h3 class="drawer__price-title" v-else>Buyurtmalaringiz</h3>
+          <h3 class="drawer__price-title" v-else>{{ $t("drawer__price-title-2") }} </h3>
           <div class="drawer__price-products">
             <p class="drawer__price-products-text">
-              Mahsulotlar ({{ basketStore.drawer.length }}):
+              {{ $t("drawer__price-products-text") }}({{ basketStore.drawer.length }}):
             </p>
             <p class="drawer__price-products-price">
               {{ calculateTotalPrice() }} $
@@ -255,21 +255,21 @@ const addToOrder = () => {
           </div>
           <!-- <p class="drawer__price-text">Yetkazib berish M03 10 (Ertaga)</p> -->
           <p class="drawer__price-text">
-            Yetkazib berish {{ currentDateTime }}
+             {{ $t("drawer__price-text") }}{{ currentDateTime }}
           </p>
           <div class="drawer__price-price">
-            <p class="drawer__price-price-title">Jami:</p>
+            <p class="drawer__price-price-title">{{ $t("drawer__price-price-title") }}</p>
             <div class="drawer__price-price-sum">
               <p class="drawer__price-price-sum1">
                 {{ calculateNewTotalPrice() }} $
               </p>
               <p class="drawer__price-price-sum2">
-                Tejovingiz: {{ calculateNewTotalPrice2() }} $
+                 {{ $t("drawer__price-price-sum2") }}{{ calculateNewTotalPrice2() }} $
               </p>
             </div>
           </div>
           <button class="drawer__price-btn" @click="addToOrder">
-            Rasmiylashtirishga o'tish
+            {{ $t("drawer__price-btn") }}
           </button>
         </div>
       </div>

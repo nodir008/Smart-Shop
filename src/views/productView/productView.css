@@ -247,7 +247,8 @@
   color: #fff;
   border-radius: 5px;
   height: 24px;
-  width: 50px;
+  /* width: 50px; */
+  padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: center;
