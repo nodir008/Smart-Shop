@@ -30,7 +30,7 @@ onMounted(() => {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100dvh;
+    height: 100vh;
 }
 .loader {
     width: 100px;
