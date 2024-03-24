@@ -86,7 +86,6 @@ const calculateTotalItemPrice = (item) => {
 
 const addToOrder = () => {
     basketStore.addToOrderStore();
-    // Set delivery time
     const now = new Date();
     const deliveryTime = new Date(now.getTime() + 60000); // 10 seconds in milliseconds
 

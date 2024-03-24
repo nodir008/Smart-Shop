@@ -135,6 +135,39 @@ const cardNone = (itemId) => {
                                         </div>
                                     </div>
                                 </div>
+                                <div class="drawer__card-none">
+                                    <div class="drawer__card-none-images">
+                                        <img class="drawer__card-img" :src="item.thumbnail" alt="" />
+                                        <div class="drawer__card-none-theme">
+                                            <RouterLink class="drawer__card-theme-description" :to="'/product/' + item.id">
+                                                {{ item.title }}
+                                            </RouterLink>
+                                            <div class="drawer__card-count-theme">
+                                                <p class="drawer__card-count-theme-vendor">
+                                                    {{ $t("drawer__card-count-theme-vendor-b") }} <span>{{ item.brand }}</span>
+                                                </p>
+                                                <p class="drawer__card-count-theme-vendor">
+                                                    {{ $t("drawer__card-count-theme-vendor-c") }}
+                                                    <RouterLink class="drawer__card-count-theme-vendor-rout" :to="'/category/' + item.category"> {{ item.category }}</RouterLink>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="drawer__card-none-div">
+                                        <div class="drawer__card-none-count-div">
+                                                <p class="drawer__card-count-count-div-txt">
+                                                    {{ item.quantity }} {{ $t("drawer__card-count-count-div-text") }}
+                                                </p>
+                                        </div>
+        
+                                        <div class="drawer__card-none-count">
+                                            <div class="drawer__card-count-price">
+                                                <p class="drawer__card-count-price2">{{ calculateTotalItemPrice(item) }} $</p>
+                                                <p class="drawer__card-count-price1">{{ calculateItemPrice(item) }} $</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

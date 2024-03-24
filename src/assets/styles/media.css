@@ -50,6 +50,19 @@
   .drawer__price-text {
     margin-bottom: 5px !important;
   }
+
+  .order__price {
+    grid-column: 3 span;
+    height: 150px !important;
+  }
+
+  .order__price-text {
+    margin-bottom: 5px !important;
+  }
+
+  .order__price-title {
+    margin-bottom: 5px !important;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -390,7 +403,8 @@
 
   .no__product {
     height: 100% !important;
-    margin-top: 30px;
+    margin: 30px 0;
+    gap: 10px !important;
   }
 
   .favourite {
@@ -466,6 +480,23 @@
     justify-content: space-between;
   }
 
+  .product__nation-2 {
+    min-height: 590px !important;
+  }
+
+  .no__product {
+    height: 100% !important;
+  }
+
+  .orderTime-div {
+    min-height: 100% !important;
+  }
+
+  .drawer__card-time {
+    flex-direction: column !important;
+    align-items: flex-end !important;
+  }
+
 }
 
 @media (max-width: 540px) {
@@ -536,6 +567,13 @@
     gap: 5px !important;
   }
 
+  .order__no__product-title {
+    font-size: 20px !important;
+  }
+
+  .drawer__products-top-div-text {
+    display: none !important;
+  }
 }
 
 

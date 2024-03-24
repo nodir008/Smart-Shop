@@ -401,6 +401,7 @@
 .nav__category-page {
   font-size: 20px;
   padding: 8px 5px;
+  margin-bottom: 3px;
   color: #000;
   cursor: pointer;
   text-transform: capitalize;
