@@ -12,13 +12,15 @@ onMounted(() => {
     }, 1000);
     return loading;
 });
+
 </script>
 <template>
     <div class="loader__div" v-if="loading">
         <div class="loader"></div>
     </div>
     <div class="wrapper" v-else>
-        <Nav :loading="loading" @loading="loading"/>
+        <!-- <Nav @loadingLaungage="loading = true"/> -->
+        <Nav/>
         <RouterView />
         <Footer />
         <Bottoms />

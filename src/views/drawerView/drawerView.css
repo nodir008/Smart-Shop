@@ -106,6 +106,7 @@
 .drawer__card-theme-description {
     font-size: 18px;
     color: #000;
+    text-transform: capitalize;
 }
 
 .drawer__card-theme-delete {

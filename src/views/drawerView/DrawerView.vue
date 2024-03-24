@@ -178,7 +178,7 @@ const addToOrder = () => {
                                     <img class="drawer__card-img" :src="item.thumbnail" alt="" />
                                     <div class="drawer__card-none-theme">
                                         <RouterLink class="drawer__card-theme-description" :to="'/product/' + item.id">
-                                            {{ item.description }}
+                                            {{ item.title }}
                                         </RouterLink>
                                         <div class="drawer__card-count-theme">
                                             <p class="drawer__card-count-theme-vendor">
@@ -211,8 +211,8 @@ const addToOrder = () => {
 
                                     <div class="drawer__card-none-count">
                                         <div class="drawer__card-count-price">
-                                            <p class="drawer__card-count-price1">{{ calculateItemPrice(item) }} $</p>
                                             <p class="drawer__card-count-price2">{{ calculateTotalItemPrice(item) }} $</p>
+                                            <p class="drawer__card-count-price1">{{ calculateItemPrice(item) }} $</p>
                                         </div>
                                         <button class="drawer__card-theme-delete" @click="basketStore.removeDrawerProduct(item.id)"><DeleteIcon />{{ $t("drawer__card-theme-delete") }}</button>
                                     </div>

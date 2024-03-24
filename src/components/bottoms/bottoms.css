@@ -6,7 +6,7 @@
   right: 0;
   background: #fff;
   padding: 3px 0;
-  z-index: 2;
+  z-index: 4;
   border-top: 1px solid rgb(54 54 64 / 25%);
 }
 
@@ -54,6 +54,21 @@
   transition: 0.4s;
   /* opacity: 0; */
   transform: translateY(-100%);
+}
+
+
+.kabinet-transition-enter-active,
+.kabinet-transition-leave-active {
+  /* transition: opacity 0.5s ease; */
+  transform: translateY(0);
+  transition: 0.4s;
+}
+
+.kabinet-transition-enter-from,
+.kabinet-transition-leave-to {
+  transition: 0.4s;
+  /* opacity: 0; */
+  transform: translateY(100%);
 }
 
 .bottoms__icon-span {

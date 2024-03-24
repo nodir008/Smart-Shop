@@ -7,6 +7,7 @@
 @import '@/components/card/card.css';
 @import '@/components/bottoms/bottoms.css';
 @import '@/components/katalog/katalog.css';
+@import '@/components/kabinet/kabinet.css';
 
 @import '@/views/homeView/homeView.css';
 @import '@/views/productView/productView.css';

@@ -6,17 +6,21 @@ import HomeIcon from "@/assets/icons/HomeIcon.vue";
 import Heart2Icon from "@/assets/icons/Heart2Icon.vue";
 import SearchIcon from "@/assets/icons/SearchIcon.vue";
 import Katalog from "../katalog/Katalog.vue";
+import Kabinet from "../kabinet/Kabinet.vue";
 import { ref, onMounted } from "vue";
 import { useBasketStore } from "@/stores/basketStore";
 import { useFavouriteStore } from "@/stores/favouriteStore";
+import { useRoute } from "vue-router";
 
-const basketStore = useBasketStore() 
-const favouriteStore = useFavouriteStore() 
+const route = useRoute();
+console.log(route.fullPath);
+const basketStore = useBasketStore();
+const favouriteStore = useFavouriteStore();
 
 const katalog = ref(false);
-const activeLink = ref(""); // hold the active link
+const kabinet = ref(false);
+const activeLink = ref("");
 
-// Checking localStorage for previously stored active link on page load
 onMounted(() => {
     const storedLink = localStorage.getItem("activeLink");
     if (storedLink) {
@@ -26,38 +30,52 @@ onMounted(() => {
 
 function activateLink(link) {
     activeLink.value = link;
-    localStorage.setItem("activeLink", link); // Save the active link to localStorage
+    localStorage.setItem("activeLink", link);
     if (link === "search") {
-        katalog.value = true; // if link is 'search', set katalog to true
+        katalog.value = true;
+        kabinet.value = false;
+    } else if (link === "login") {
+        kabinet.value = true;
+        katalog.value = false;
     } else {
-        katalog.value = false; // for other links, set katalog to false
+        katalog.value = false;
+        kabinet.value = false;
     }
-    window.scrollTo(0, 0); // Sahifani tepaga qaytarish
+    window.scrollTo(0, 0);
+}
+
+function closeKatalog() {
+    katalog.value = false;
+    kabinet.value = false;
 }
 </script>
 
 <template>
     <div class="bottoms">
         <div class="container">
-            <RouterLink @click="activateLink('home')" :class="{ active: activeLink === 'home' }" class="bottoms__link" to="/">
+            <RouterLink @click="activateLink('')" :class="{ active: route.fullPath === '/' && !katalog && !kabinet}" class="bottoms__link" to="/">
                 <HomeIcon class="bottoms__icon" /> {{ $t("bottoms__link-1") }}
             </RouterLink>
-            <button @click="activateLink('search')" :class="{ active: activeLink === 'search' }" class="bottoms__link"><SearchIcon class="bottoms__icon" /> {{ $t("bottoms__link-2") }}</button>
-            <RouterLink @click="activateLink('favourite')" :class="{ active: activeLink === 'favourite' }" class="bottoms__link" to="/favourite">
-                <HeartIcon v-if="favouriteStore.favourites.length == 0 " class="bottoms__icon" />
-                <Heart2Icon v-else  class="bottoms__icon" />
-                 {{ $t("bottoms__link-4") }}
+            <button @click="activateLink('search')" :class="{ active: katalog }" class="bottoms__link"><SearchIcon class="bottoms__icon" /> {{ $t("bottoms__link-2") }}</button>
+            <RouterLink @click="activateLink('favourite')" :class="{ active: route.fullPath === '/favourite' && !katalog && !kabinet }" class="bottoms__link" to="/favourite">
+                <HeartIcon v-if="favouriteStore.favourites.length == 0" class="bottoms__icon" />
+                <Heart2Icon v-else class="bottoms__icon" />
+                {{ $t("bottoms__link-4") }}
             </RouterLink>
             <RouterLink @click="activateLink('drawer')" :class="{ active: activeLink === 'drawer' }" class="bottoms__link bottoms__link-drawer" to="/drawer">
                 <BasketIcon class="bottoms__icon" /> {{ $t("bottoms__link-3") }}
-                <span class="bottoms__icon-span" v-if="basketStore.drawer.length">{{basketStore.drawer.length}}</span>
+                <span class="bottoms__icon-span" v-if="basketStore.drawer.length">{{ basketStore.drawer.length }}</span>
             </RouterLink>
-            <RouterLink @click="activateLink('login')" :class="{ active: activeLink === 'login' }" class="bottoms__link" to="/login">
+            <button @click="activateLink('login')" :class="{ active: kabinet }" class="bottoms__link"><UserIcon class="bottoms__icon" /> {{ $t("bottoms__link-5") }}</button>
+            <!-- <RouterLink @click="activateLink('login')" :class="{ active: activeLink === 'login' }" class="bottoms__link" to="/login">
                 <UserIcon class="bottoms__icon" /> {{ $t("bottoms__link-5") }}
-            </RouterLink>
+            </RouterLink> -->
         </div>
     </div>
     <Transition name="katalog-transition">
-        <Katalog v-show="katalog" @closeKatalog="katalog = false" />
+        <Katalog v-show="katalog" @closeKatalog="closeKatalog" />
+    </Transition>
+    <Transition name="kabinet-transition">
+        <Kabinet v-show="kabinet" @closeKatalog="closeKatalog"  />
     </Transition>
 </template>

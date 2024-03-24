@@ -42,6 +42,14 @@
   .product__theme {
     width: 45% !important;
   }
+
+  .drawer__price-title {
+    margin-bottom: 5px !important;
+  }
+
+  .drawer__price-text {
+    margin-bottom: 5px !important;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -452,6 +460,11 @@
     margin-top: 10px;
   }
 
+  .drawer__card-count-price {
+    flex-direction: row !important;
+    width: 100% !important;
+    justify-content: space-between;
+  }
 
 }
 
