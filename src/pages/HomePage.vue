@@ -21,11 +21,11 @@ const photos = [carusel1, carusel2, carusel3, carusel4, carusel5, carusel6, caru
                 :modules="[Autoplay, Pagination]"
                 :grabCursor="true"
                 :loop="true"
-                :autoplay="{ delay: 5000 }"
                 :pagination="{
                     clickable: true,
                 }"
-            >
+                >
+                <!-- :autoplay="{ delay: 5000 }" -->
                 <SwiperSlide v-for="(photo, i) in photos" :key="i">
                     <!-- <img class="header__img" :src="`src/assets/images/${photo}`" alt="" /> -->
                     <img class="header__img" :src="photo" alt="" />

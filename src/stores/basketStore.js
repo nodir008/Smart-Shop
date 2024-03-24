@@ -108,7 +108,7 @@ export const useBasketStore = defineStore("basket", {
       this.isBasketActive = bool;
       setTimeout(() => {
         this.isBasketActive = false;
-      }, 1000);
+      }, 2000);
     },
   },
   persist: true,

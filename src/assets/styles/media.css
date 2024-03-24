@@ -159,6 +159,7 @@
 
 @media (max-width: 635px) {
   .cards {
+    margin-top: 5px !important;
     grid-template-columns: repeat(2, 1fr) !important;
   }
 
@@ -216,12 +217,22 @@
   .drawer__card-card-none {
     display: block !important;
   }
+
+  .card__theme-sale {
+    font-size: 12px !important;
+  }
+
+  .card__theme-nation {
+    padding: 1px !important;
+    width: 80px !important;
+  }
+
 }
 
 @media (max-width: 540px) {
 
   .home__view-title {
-    font-size: 22px !important;
+    font-size: 18px !important;
   }
 
   .category-title {
@@ -230,7 +241,7 @@
   }
 
   .card {
-    min-height: 340px !important;
+    min-height: 320px !important;
     gap: 3px !important;
   }
 
@@ -253,7 +264,8 @@
   }
 
   .card__theme-newprice {
-    font-size: 14px !important;
+    font-size: 12px !important;
+    letter-spacing: -0.2px ;
   }
 
   .card__icons-btnb-basketicon {
@@ -270,14 +282,16 @@
 
   .header__img {
     height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid;
   }
 }
 
 
 @media (max-width: 480px) {
-
   .card {
-    min-height: 270px !important;
+    min-height: 240px !important;
   }
 
   .card img {
@@ -307,5 +321,9 @@
 
   .header__img {
     height: 180px;
+  }
+
+  .card__icons {
+    gap: 0 !important;
   }
 }

@@ -99,7 +99,7 @@ const addToBasket = () => {
   basketStore.changeActive(true);
   setTimeout(() => {
     productQuantity.value = 1;
-  }, 1000);
+  }, 2000);
 };
 
 const addToOrder = (productId) => {
