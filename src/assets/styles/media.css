@@ -22,6 +22,16 @@
   .drawer__price {
     grid-column: 3 span;
   }
+
+  .no__favorites-text {
+    font-size: 22px !important;
+    text-align: center !important;
+  }
+
+  .no__product {
+    width: 310% !important;
+    text-align: center;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -121,18 +131,14 @@
     display: inline !important;
   }
 
-  .footer__bottom {
-    display: none;
-  }
-
-  .footer__top {
+  /* .footer__top {
     margin-bottom: 60px;
-  }
+  } */
 
   .card:hover {
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    transform: translateY(0);
-    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.301);
+    border: 0px solid #fff !important;
+    transform: translateY(0) !important;
+    box-shadow: 0 0 0 #fff !important;
   }
   
   .favourite__cards {
@@ -155,6 +161,11 @@
   .drawer__card-theme-description {
     display: none !important; 
   }
+
+  .no__product-link {
+    display: none !important; 
+  }
+
 }
 
 @media (max-width: 635px) {
@@ -167,13 +178,6 @@
     grid-template-columns: repeat(2, 1fr) !important;
   }
 
-  .footer__app {
-    display: none !important;
-  }
-
-  .footer__link-title-none {
-    display: none !important;
-  }
 
   .home__view-title {
     font-size: 24px !important;
@@ -204,12 +208,6 @@
     margin: 10px 0 !important;
   }
 
-  .card:hover {
-    border:none !important;
-    transform: none !important;
-    box-shadow: none !important;
-  }
-
   .drawer__card-card {
     display: none !important;
   }
@@ -218,13 +216,125 @@
     display: block !important;
   }
 
-  .card__theme-sale {
-    font-size: 12px !important;
+
+  .footer-none {
+    display: block !important;
+    margin-bottom: 60px;
   }
 
-  .card__theme-nation {
-    padding: 1px !important;
-    width: 80px !important;
+  .footer {
+    display: none !important;
+  } 
+  
+  .footer__link-contact {
+    justify-content: center !important;
+    gap: 10px !important; 
+  }
+
+  .footer__app-link {
+    background: #000;
+    color: #fff;
+  }
+
+  .footer__app-link:hover {
+    background: #000 !important;
+    color: #fff;
+  }
+
+  .footer__app-link-icon{
+    fill: #fff ;
+  }
+
+  .footer__link-title {
+    width: 100%;
+  }
+
+  .cards__none::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: black;
+    display: block;
+  }
+
+  .cards__none::before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: black;
+    display: block;
+  }
+
+  .no__favorites {
+    height: 100% !important;
+    margin-top: 45px;
+    margin-bottom: -5px;
+  }
+
+  .no__product {
+    height: 100% !important;
+  }
+
+  .favourite {
+    min-height: 100% !important;
+  }
+
+  .drawer-div {
+    min-height: 100% !important;
+  }
+
+  .no__favorites-title {
+    font-size: 24px !important;
+  }
+
+  .no__product-text {
+    font-size: 24px !important;
+  }
+
+  .no__favorites-text {
+    font-size: 14px !important;
+    line-height: 1.4em;
+  }
+
+  .order__no__product-text2 {
+    font-size: 14px !important;
+    line-height: 1.4em;
+  }
+
+  .footer__links-dropdown.active{
+    height: 100% !important;
+  }
+  .footer__links-dropdown{
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    /* transition: all 5s ease; */
+    transition: 0.2s;
+  }
+
+  .footer__links {
+    width: 100%;
+  }
+
+  .footer__links::after {
+    content: '';
+    width: 90%;
+    align-self: center;
+    height: 1px;
+    display: block;
+    background: hsl(220deg 4% 48% / 20%);
+  }
+  
+  .footer__none-link {
+    padding: 5px 0 !important;
+  }
+  
+  .footer__none-bottom {
+    margin-top: 20px;
+  }
+
+  .footer__app {
+    margin-bottom: 10px;
   }
 
 }
@@ -232,7 +342,7 @@
 @media (max-width: 540px) {
 
   .home__view-title {
-    font-size: 18px !important;
+    font-size: 22px !important;
   }
 
   .category-title {
@@ -251,9 +361,6 @@
     min-height: 0 !important;
   }
 
-  .card__theme-title {
-    font-size: 16px !important;
-  }
 
   .favourite__card__theme-title {
     font-size: 16px !important;
@@ -263,10 +370,6 @@
     font-size: 12px !important;
   }
 
-  .card__theme-newprice {
-    font-size: 12px !important;
-    letter-spacing: -0.2px ;
-  }
 
   .card__icons-btnb-basketicon {
     height: 30px !important;
@@ -306,10 +409,6 @@
     font-size: 14px !important;
   }
 
-  .card__theme-newprice {
-    font-size: 13px !important;
-  }
-
   .bottoms__icon {
     width: 26px !important;
     height: 26px !important;
@@ -326,4 +425,26 @@
   .card__icons {
     gap: 0 !important;
   }
+
+  
+  .card__theme-newprice {
+    font-size: 12px !important;
+    letter-spacing: -0.2px ;
+  }
+
+  .card__theme-sale {
+    font-size: 12px !important;
+  }
+  
+
+  .card__theme-nation {
+    padding: 1px !important;
+    width: 100% !important;
+  }
+
+  .footer__bottom-text {
+    text-align: center;
+    font-size: 10px !important;
+  }
+
 }

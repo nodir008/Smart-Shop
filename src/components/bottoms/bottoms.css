@@ -7,6 +7,7 @@
   background: #fff;
   padding: 3px 0;
   z-index: 2;
+  border-top: 1px solid rgb(54 54 64 / 25%);
 }
 
 .bottoms__icon {
@@ -32,4 +33,25 @@
 .bottoms .container {
   display: flex;
   justify-content: space-between;
+}
+
+.bottoms__link.active {
+  color: #7000ff;
+}
+.bottoms__link.active .bottoms__icon{
+  fill: #7000ff;
+}
+
+.katalog-transition-enter-active,
+.katalog-transition-leave-active {
+  /* transition: opacity 0.5s ease; */
+  transform: translateY(0);
+  transition: 0.4s;
+}
+
+.katalog-transition-enter-from,
+.katalog-transition-leave-to {
+  transition: 0.4s;
+  /* opacity: 0; */
+  transform: translateY(-100%);
 }

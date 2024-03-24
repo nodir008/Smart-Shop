@@ -18,7 +18,7 @@ const closeKatalogAndLoadCategory = (title) => {
 </script>
 
 <template>
-    <div class="katalog"  >
+    <div class="katalog">
         <h3 class="katalog-title">{{ $t("nav__category-title") }}</h3>
         <RouterLink
             v-for="title in productsCategories.categorie"
