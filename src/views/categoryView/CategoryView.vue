@@ -33,6 +33,10 @@ const toggleBasket = (itemId) => {
     const quantity = 1;
     basketStore.getAddDrawerPro(itemId, quantity);
 };
+
+const scrollToTop = () => {
+    window.scrollTo(0, 0);
+};
 </script>
 
 <template>
@@ -46,7 +50,7 @@ const toggleBasket = (itemId) => {
           :key="item.id"
           :card="item"
         >
-          <RouterLink :to="'/product/' + item.id"
+          <RouterLink @click="scrollToTop" :to="'/product/' + item.id"
             ><img :src="item.thumbnail" alt=""
           /></RouterLink>
           <div class="card__theme">

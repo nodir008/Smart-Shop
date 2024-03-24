@@ -11,7 +11,7 @@ const basketStore = useBasketStore();
 </script>
 
 <template>
-  {{ productQuantity  }}
+
     <div class="fixed" :class="{ active: basketStore.isBasketActive }">
         <img class="fixed__img" :src="productSingleStore.product?.thumbnail" alt="" />
         <div class="fixed__theme">

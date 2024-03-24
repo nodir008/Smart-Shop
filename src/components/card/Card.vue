@@ -40,11 +40,15 @@ const toggleBasket = () => {
     // basketStore.changeActive(true)
     console.log(props.card.id);
 };
+
+const scrollToTop = () => {
+    window.scrollTo(0, 0);
+};
 </script>
 
 <template>
     <div class="card">
-        <RouterLink :to="'/product/' + card.id"><img :src="card.thumbnail" alt="" /></RouterLink>
+        <RouterLink @click="scrollToTop" :to="'/product/' + card.id"><img :src="card.thumbnail" alt="" /></RouterLink>
         <div class="card__theme">
             <h3 class="card__theme-title">{{ card.title }}</h3>
             <div class="card__theme-rating-div">

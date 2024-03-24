@@ -31,6 +31,7 @@ export const useBasketStore = defineStore("basket", {
         }
       }
     },
+    
 
     removeDrawerProduct(id) {
       const indexToRemove = this.drawer.findIndex((item) => item.id === id);
@@ -42,57 +43,31 @@ export const useBasketStore = defineStore("basket", {
     updateQuantity(id, quantity) {
       const productIndex = this.drawer.findIndex((item) => item.id === id);
       if (productIndex !== -1) {
-        this.drawer[productIndex].quantity = quantity;
+        if (quantity < 1000) {
+          this.drawer[productIndex].quantity = quantity;
+        } else {
+          this.drawer[productIndex].quantity = 999;
+        }
       }
     },
 
     incrementQuantity(id) {
       const productIndex = this.drawer.findIndex((item) => item.id === id);
       if (productIndex !== -1) {
-        this.drawer[productIndex].quantity++;
+        if (this.drawer[productIndex].quantity < 999) {
+          this.drawer[productIndex].quantity++;
+        } else {
+          this.drawer[productIndex].quantity = 1;
+        }
       }
     },
-
+    
     decrementQuantity(id) {
       const productIndex = this.drawer.findIndex((item) => item.id === id);
       if (productIndex !== -1 && this.drawer[productIndex].quantity > 1) {
         this.drawer[productIndex].quantity--;
       }
     },
-
-    isInBasket(id) {
-      return this.drawer.some((item) => item.id === id);
-    },
-
-    resetDrawer() {
-      this.drawer = [];
-    },
-
-    // addToOrderStore() {
-    //   const productsStore = useProductsStore();
-    //   const orderStore = useOrderStore();
-    //   const categorySingle = useCategoryStore();
-
-    //   this.drawer.forEach((item) => {
-    //     const ordersPro = productsStore.products?.find((product) => product.id === item.id);
-    //     // const ordersPro = productsStore.total?.find((product) => product.id === item.id)
-    //     console.log(ordersPro);
-    //     const ordersCatrgory = categorySingle.category?.find((product) => product.id === item.id);
-
-    //     if (ordersPro || ordersCatrgory) {
-    //       const orderItem = ordersPro || ordersCatrgory;
-    //       const indexInOrders = orderStore.orders.findIndex((orderItem) => orderItem.id === item.id);
-
-    //       if (indexInOrders !== -1) {
-    //         orderStore.orders[indexInOrders].quantity += item.quantity;
-    //       } else {
-    //         orderStore.orders.push({ ...orderItem, quantity: item.quantity });
-    //       }
-    //     }
-    //   });
-
-    //   this.resetDrawer();
-    // },
 
     addToOrderStore() {
       const orderStore = useOrderStore();
@@ -102,6 +77,10 @@ export const useBasketStore = defineStore("basket", {
       });
 
       this.resetDrawer();
+    },
+
+    resetDrawer() {
+      this.drawer = [];
     },
 
     changeActive(bool) {

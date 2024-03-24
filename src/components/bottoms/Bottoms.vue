@@ -3,9 +3,15 @@ import UserIcon from "@/assets/icons/UserIcon.vue";
 import HeartIcon from "@/assets/icons/HeartIcon.vue";
 import BasketIcon from "@/assets/icons/BasketIcon.vue";
 import HomeIcon from "@/assets/icons/HomeIcon.vue";
+import Heart2Icon from "@/assets/icons/Heart2Icon.vue";
 import SearchIcon from "@/assets/icons/SearchIcon.vue";
 import Katalog from "../katalog/Katalog.vue";
 import { ref, onMounted } from "vue";
+import { useBasketStore } from "@/stores/basketStore";
+import { useFavouriteStore } from "@/stores/favouriteStore";
+
+const basketStore = useBasketStore() 
+const favouriteStore = useFavouriteStore() 
 
 const katalog = ref(false);
 const activeLink = ref(""); // hold the active link
@@ -38,10 +44,13 @@ function activateLink(link) {
             </RouterLink>
             <button @click="activateLink('search')" :class="{ active: activeLink === 'search' }" class="bottoms__link"><SearchIcon class="bottoms__icon" /> {{ $t("bottoms__link-2") }}</button>
             <RouterLink @click="activateLink('favourite')" :class="{ active: activeLink === 'favourite' }" class="bottoms__link" to="/favourite">
-                <HeartIcon class="bottoms__icon" /> {{ $t("bottoms__link-4") }}
+                <HeartIcon v-if="favouriteStore.favourites.length == 0 " class="bottoms__icon" />
+                <Heart2Icon v-else  class="bottoms__icon" />
+                 {{ $t("bottoms__link-4") }}
             </RouterLink>
-            <RouterLink @click="activateLink('drawer')" :class="{ active: activeLink === 'drawer' }" class="bottoms__link" to="/drawer">
+            <RouterLink @click="activateLink('drawer')" :class="{ active: activeLink === 'drawer' }" class="bottoms__link bottoms__link-drawer" to="/drawer">
                 <BasketIcon class="bottoms__icon" /> {{ $t("bottoms__link-3") }}
+                <span class="bottoms__icon-span" v-if="basketStore.drawer.length">{{basketStore.drawer.length}}</span>
             </RouterLink>
             <RouterLink @click="activateLink('login')" :class="{ active: activeLink === 'login' }" class="bottoms__link" to="/login">
                 <UserIcon class="bottoms__icon" /> {{ $t("bottoms__link-5") }}

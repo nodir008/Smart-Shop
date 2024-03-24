@@ -117,6 +117,7 @@
 .product__theme-product-title {
   color: #000;
   font-size: 14px;
+  font-weight: 700;
   /* width: 200px; */
 }
 
@@ -209,12 +210,14 @@
   font-size: 14px;
   margin-top: 25px;
   margin-bottom: 10px;
+  font-weight: 700;
 }
 
 .product__theme-price-price {
   margin-top: 35px;
   font-size: 14px;
   margin-bottom: 10px;
+  font-weight: 700;
 }
 
 .product__theme-price {
@@ -783,7 +786,54 @@
 .product__nation-bg.active {
   z-index: 1;
   background: rgba(0, 0, 0, 0.4);
+}
 
+.product__nation-bg-2 {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  display: none;
+}
+
+.product__nation-bg-2.active {
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.product__nation-div-2 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* background: rgba(0, 0, 0, 0.4); */
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: translateY(50%);
+  opacity: 0;
+  display: none;
+}
+
+.product__nation-div-2.active {
+  opacity: 1;
+  z-index: 3;
+  transform: translateY(0);
+}
+
+.product__nation-2 {
+  width: 100%;
+  min-height: 550px;
+  background: #fff;
+  border-radius: 30px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .product__nation {
@@ -823,7 +873,6 @@
 .product__nation-pasport-title {
   color: #1f2026;
   font-weight: 700;
-  /* font-size: 16px; */
   line-height: 20px;
   font-size: 16px;
 }
@@ -943,4 +992,16 @@
   font-size: 16px;
   font-weight: 700;
   color: #7000ff;
+}
+
+
+.product__theme-none {
+  display: none;
+}
+
+.product__theme-none-basket {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  gap: 30px;
 }

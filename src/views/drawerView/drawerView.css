@@ -349,12 +349,44 @@
     opacity: 1;
 }
 
-.drawer__card-theme-description-title {
+
+.drawer__card-none {
     display: none;
-    font-size: 18px;
-    color: #000;
 }
 
-.drawer__card-card-none {
-    display: none;
+.drawer__card-none-images {
+    display: flex;
+    gap: 10px;
+}
+
+.drawer__card-none-count {
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer__card-none-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+
+
+.drawer__card-none-count-count-div-text {
+    font-size: 14px;
+    color: rgba(54, 54, 64, 0.603);
+    opacity: 0;
+    transition: 0.2s;
+    transform: translateX(-20px);
+}
+
+.drawer__card-none-count-count-div-text.active {
+    transform: translateX(0px);
+    opacity: 1;
+}
+
+.drawer__card-none-count-div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
