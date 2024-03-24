@@ -614,7 +614,7 @@
 
 
   .card__theme-newprice {
-    /* font-size: 12px !important; */
+    font-size: 12px !important;
     /* font-size: 10vw; */
     letter-spacing: -0.2px;
   }
