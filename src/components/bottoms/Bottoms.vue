@@ -13,10 +13,8 @@ import { useFavouriteStore } from "@/stores/favouriteStore";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
-console.log(route.fullPath);
 const basketStore = useBasketStore();
 const favouriteStore = useFavouriteStore();
-
 const katalog = ref(false);
 const kabinet = ref(false);
 const activeLink = ref("");
@@ -29,33 +27,19 @@ onMounted(() => {
 });
 
 function activateLink(link) {
-    if (link === "login") {
+    if (link !== "login") {
         localStorage.setItem("activeLink", link);
     }
     activeLink.value = link;
-    
-    if (link === "search") {
-        katalog.value = true;
-        kabinet.value = false;
-    } else if (link === "login") {
-        kabinet.value = true;
-        katalog.value = false;
-    } else {
-        katalog.value = false;
-        kabinet.value = false;
-    }
+    katalog.value = link === "search";
+    kabinet.value = link === "login";
     window.scrollTo(0, 0);
 }
-
 
 function closeKatalog() {
     katalog.value = false;
     kabinet.value = false;
-
-    // Clear localStorage
-    localStorage.removeItem("activeLink");
 }
-
 </script>
 
 <template>
@@ -75,9 +59,6 @@ function closeKatalog() {
                 <span class="bottoms__icon-span" v-if="basketStore.drawer.length">{{ basketStore.drawer.length }}</span>
             </RouterLink>
             <button @click="activateLink('login')" :class="{ active: kabinet }" class="bottoms__link"><UserIcon class="bottoms__icon" /> {{ $t("bottoms__link-5") }}</button>
-            <!-- <RouterLink @click="activateLink('login')" :class="{ active: activeLink === 'login' }" class="bottoms__link" to="/login">
-                <UserIcon class="bottoms__icon" /> {{ $t("bottoms__link-5") }}
-            </RouterLink> -->
         </div>
     </div>
     <Transition name="katalog-transition">

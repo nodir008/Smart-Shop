@@ -6,13 +6,13 @@ import { ref, defineProps, defineEmits } from "vue";
 const props = defineProps({
   katalog: Boolean
 });
-const emits = defineEmits(['closeKatalog']); // Defining the 'closeKatalog' event
+const emits = defineEmits(['closeKatalog']); 
 
 const categoryStore = useCategoryStore();
 const productsCategories = useProductsCategories();
 
 const closeKatalogAndLoadCategory = (title) => {
-    emits('closeKatalog'); // Emitting event to close Katalog component
+    emits('closeKatalog'); 
     categoryStore.getCategorySingle(title);
 };
 </script>

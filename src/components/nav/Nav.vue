@@ -14,7 +14,6 @@ import RusIcon from "@/assets/icons/RusIcon.vue";
 import UzbIcon from "@/assets/icons/UzbIcon.vue";
 import { i18n } from "@/main";
 
-
 const favouriteStore = useFavouriteStore();
 const basketStore = useBasketStore();
 const productsCategories = useProductsCategories();
@@ -36,8 +35,6 @@ const loader = ref(false);
 const test = (lang) => {
     loader.value = true;
 
-    // console.log(lang);
-    // console.log(i18n.global.locale);
     if (lang == "UZ") {
         languageRu.value = true;
         languageUz.value = false;
@@ -50,13 +47,10 @@ const test = (lang) => {
         localStorage.setItem("language", "RU");
     }
 
-    // After 1 second, set loader back to false
-      setTimeout(() => {
+    setTimeout(() => {
         loader.value = false;
     }, 1000);
 };
-
-
 
 const searchInput = ref("");
 
@@ -67,7 +61,6 @@ watch(
     }, 500)
 );
 
-// Load language preferences from localStorage on component mount
 onMounted(() => {
     const savedLanguage = localStorage.getItem("language");
     if (savedLanguage) {
@@ -75,13 +68,11 @@ onMounted(() => {
     }
 });
 
-// Save language preferences to localStorage on component unmount
 onBeforeUnmount(() => {
     localStorage.setItem("languageRu", languageRu.value);
     localStorage.setItem("languageUz", languageUz.value);
 });
 </script>
-
 
 <template>
 

@@ -290,11 +290,15 @@
 }
 
 .no__product {
-    width: 400%;
+    grid-column: 4 span;
     height: 60dvh;
     display: flex;
     align-items: center;
     justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
 .no__product-text {
@@ -302,12 +306,6 @@
     font-weight: 700;
 }
 
-.no__product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
 
 .no__product-link {
     padding: 15px 20px;
