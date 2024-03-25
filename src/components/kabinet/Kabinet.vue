@@ -42,7 +42,6 @@ const test = (lang) => {
         localStorage.setItem("language", "RU");
     }
 
-    emits("loadingLaungage");
 };
 
 onMounted(() => {

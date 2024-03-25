@@ -14,6 +14,7 @@ import RusIcon from "@/assets/icons/RusIcon.vue";
 import UzbIcon from "@/assets/icons/UzbIcon.vue";
 import { i18n } from "@/main";
 
+
 const favouriteStore = useFavouriteStore();
 const basketStore = useBasketStore();
 const productsCategories = useProductsCategories();
@@ -30,11 +31,13 @@ const toggleShow = () => {
     show.value = !show.value;
 };
 
-const emits = defineEmits(["loadingLaungage"]);
+const loader = ref(false);
 
 const test = (lang) => {
-    console.log(lang);
-    console.log(i18n.global.locale);
+    loader.value = true;
+
+    // console.log(lang);
+    // console.log(i18n.global.locale);
     if (lang == "UZ") {
         languageRu.value = true;
         languageUz.value = false;
@@ -47,8 +50,13 @@ const test = (lang) => {
         localStorage.setItem("language", "RU");
     }
 
-    emits("loadingLaungage");
+    // After 1 second, set loader back to false
+      setTimeout(() => {
+        loader.value = false;
+    }, 1000);
 };
+
+
 
 const searchInput = ref("");
 
@@ -74,8 +82,13 @@ onBeforeUnmount(() => {
 });
 </script>
 
+
 <template>
-    <nav class="nav">
+    <div class="loader__div" v-show="loader">
+        <div class="loader"></div>
+    </div>
+    
+    <nav class="nav" >
         <div class="nav__top">
             <div class="container">
                 <p class="nav__top-1">
@@ -172,3 +185,80 @@ onBeforeUnmount(() => {
         </div>
     </nav>
 </template>
+
+<style scoped>
+.loader__div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 9;
+    background: #fff;
+}
+.loader {
+    animation: rotate 1s infinite;
+    height: 50px;
+    width: 50px;
+  }
+
+  .loader:before,
+  .loader:after {
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 20px;
+    width: 20px;
+  }
+  .loader:before {
+    animation: ball1 1s infinite;
+    background-color: #000;
+    box-shadow: 30px 0 0 blue;
+    margin-bottom: 10px;
+  }
+  .loader:after {
+    animation: ball2 1s infinite;
+    background-color: blue;
+    box-shadow: 30px 0 0 #000;
+  }
+
+  @keyframes rotate {
+    0% { transform: rotate(0deg) scale(0.8) }
+    50% { transform: rotate(360deg) scale(1.2) }
+    100% { transform: rotate(720deg) scale(0.8) }
+  }
+
+  @keyframes ball1 {
+    0% {
+      box-shadow: 30px 0 0 blue;
+    }
+    50% {
+      box-shadow: 0 0 0 blue;
+      margin-bottom: 0;
+      transform: translate(15px, 15px);
+    }
+    100% {
+      box-shadow: 30px 0 0 blue;
+      margin-bottom: 10px;
+    }
+  }
+
+  @keyframes ball2 {
+    0% {
+      box-shadow: 30px 0 0 #000;
+    }
+    50% {
+      box-shadow: 0 0 0 #000;
+      margin-top: -20px;
+      transform: translate(15px, 15px);
+    }
+    100% {
+      box-shadow: 30px 0 0 #000;
+      margin-top: 0;
+    }
+  }
+  
+</style>
