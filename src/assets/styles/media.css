@@ -571,6 +571,31 @@
   .drawer__products-top-div-text {
     display: none !important;
   }
+
+  .category__cards {
+    gap: 5px !important;
+  }
+
+  .drawer__card-theme-delete {
+    justify-content: flex-end;
+  }
+
+  .drawer__card-theme-description {
+    font-size: 15px !important;
+  }
+  
+  .drawer__card-count-theme-vendor {
+    font-size: 14px !important;
+  }
+
+  .drawer__card-theme-delete {
+    font-size: 14px !important;
+    gap: 5px;
+  }
+
+  .drawer__card-img {
+    height: 80px !important;
+  }
 }
 
 
@@ -644,4 +669,11 @@
   .no__favorites-title {
     letter-spacing: -0.4px !important;
   }
+  
+}
+
+@media (max-width: 370px) {
+  .drawer__card-none-count-count-div-text {
+    display: none !important; 
+  } 
 }
