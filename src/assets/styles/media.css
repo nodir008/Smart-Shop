@@ -1,5 +1,8 @@
 @media (max-width:1280px) {
-  .cards,
+  .cards {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
   .category__cards {
     grid-template-columns: repeat(4, 1fr) !important;
   }
@@ -29,6 +32,8 @@
     text-align: center;
   }
 
+
+
   .product__images {
     width: 50% !important;
   }
@@ -37,10 +42,23 @@
     width: 45% !important;
   }
 
-  .drawer__price-title,
-  .drawer__price-text,
-  .order__price,
-  .order__price-text,
+  .drawer__price-title {
+    margin-bottom: 5px !important;
+  }
+
+  .drawer__price-text {
+    margin-bottom: 5px !important;
+  }
+
+  .order__price {
+    grid-column: 3 span;
+    height: 150px !important;
+  }
+
+  .order__price-text {
+    margin-bottom: 5px !important;
+  }
+
   .order__price-title {
     margin-bottom: 5px !important;
   }
@@ -51,26 +69,47 @@
     display: none !important;
   }
 
-  .nav__pages-favourites,
-  .nav__pages-user,
+  .nav__pages-favourites {
+    padding: 0 5px !important;
+  }
+
+  .nav__pages-favourites:hover {
+    background: none !important;
+  }
+
+  .nav__pages-user {
+    padding: 0 5px !important;
+  }
+
+  .nav__pages-user:hover {
+    background: none !important;
+  }
+
   .nav__pages-basket {
     padding: 0 5px !important;
   }
 
-  .nav__pages-favourites:hover,
-  .nav__pages-user:hover,
   .nav__pages-basket:hover {
     background: none !important;
   }
 
-  .fav-count,
+  .fav-count {
+    display: none !important;
+  }
+
   .basket-count {
     display: none !important;
   }
 
+  /* .header__img {
+    height: 300px;
+    object-fit: contain;
+  } */
+
   .swiper-pagination {
     display: none !important;
   }
+
 
   .nav__top-2 {
     display: none;
@@ -79,13 +118,18 @@
   .favourite__cards {
     grid-template-columns: repeat(2, 1fr) !important;
   }
+
+
 }
 
 @media (max-width: 960px) {
-  .cards,
-  .category__cards {
+  .cards {
     grid-template-columns: repeat(3, 1fr) !important;
     row-gap: 10px !important;
+  }
+
+  .category__cards {
+    grid-template-columns: repeat(3, 1fr) !important;
   }
 
   .product .container {
@@ -122,6 +166,15 @@
     width: 100% !important;
   }
 
+  .product__theme {
+    display: none !important;
+  }
+
+  .product__theme-none {
+    display: block !important;
+  }
+
+
   .product__images {
     height: 500px !important;
   }
@@ -147,6 +200,7 @@
 }
 
 @media (max-width: 768px) {
+
   .nav {
     display: none;
   }
@@ -155,9 +209,30 @@
     display: inline !important;
   }
 
+  /* .nav__titles-title {
+    font-size: 24px !important;
+  }
+
+  .nav__inputs {
+    margin: 3px 0 !important;
+    height: 35px !important;
+  }
+  
+  .nav__titles-title {
+    width: 130px;
+  } */
+
+  /* .header__img {
+    height: 230px;
+  } */
+
   .bottoms {
     display: inline !important;
   }
+
+  /* .footer__top {
+    margin-bottom: 60px;
+  } */
 
   .card:hover {
     border: 0px solid #fff !important;
@@ -178,24 +253,31 @@
     min-height: 150px !important;
   }
 
+
   .no__product-link {
     display: none !important;
   }
 
-  .product__nation-bg,
+  .product__nation-bg {
+    display: none !important;
+  }
+
   .product__nation-div {
     display: none !important;
   }
 
-  .product__nation-bg-2,
-  .product__nation-div-2 {
+  .product__nation-bg-2 {
     display: block !important;
   }
 
+  .product__nation-div-2 {
+    display: block !important;
+  }
+  
   .product__nation-ul {
     margin: 10px 0 !important;
   }
-
+  
   .product__nation-text {
     margin: 15px 0 !important;
     font-size: 13px !important;
@@ -204,15 +286,17 @@
   .product__nation-title {
     font-size: 20px !important;
   }
-
+  
   .product__nation-pasport-title {
     font-size: 14px !important;
   }
-
+  
   .product__nation-pasport-text {
     font-size: 12px !important;
     margin: 0 !important;
   }
+
+
 }
 
 @media (max-width: 635px) {
@@ -319,6 +403,7 @@
   }
 
   .no__product {
+    height: 100% !important;
     margin: 30px 0;
     gap: 10px !important;
   }
@@ -345,7 +430,7 @@
   }
 
   .order__no__product-text2 {
-    font-size: 12px !important;
+    font-size: 14px !important;
     line-height: 1.4em;
   }
 
@@ -398,10 +483,6 @@
 
   .product__nation-2 {
     min-height: 590px !important;
-  }
-
-  .no__product {
-    height: 100% !important;
   }
 
   .orderTime-div {
@@ -562,14 +643,5 @@
 
   .no__favorites-title {
     letter-spacing: -0.4px !important;
-  }
-
-  
-  /* .no__product {
-    width: 200% !important;
-  } */
-
-  .drawer {
-    grid-column: 3 span;
   }
 }
