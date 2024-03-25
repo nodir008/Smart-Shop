@@ -481,9 +481,6 @@
     justify-content: space-between;
   }
 
-  .product__nation-2 {
-    min-height: 590px !important;
-  }
 
   .orderTime-div {
     min-height: 100% !important;
@@ -596,6 +593,28 @@
   .drawer__card-img {
     height: 80px !important;
   }
+
+  .drawer__products-span {
+    margin: 10px 0 !important;
+  }
+
+  .order__price  {
+    padding: 10px !important;
+    height: 135px !important;
+  }
+
+  .drawer__price  {
+    padding: 10px !important;
+    height: 190px !important;
+  }
+
+  .drawer__price-btn {
+    margin-top: 10px !important;
+  }
+
+  .orders-title {
+    margin-top: 10px !important;
+  }
 }
 
 
@@ -676,4 +695,16 @@
   .drawer__card-none-count-count-div-text {
     display: none !important; 
   } 
+
+  .orders-title {
+    font-size: 24px !important;
+  }
+
+  .drawer__card-count-price1 {
+    font-size: 16px !important;
+  }
+
+  .drawer__card-count-price2 {
+    font-size: 12px !important;
+  }
 }

@@ -5,11 +5,10 @@ import { useOrderTimeStore } from "@/stores/orderTimeStore";
 import { useOrderStore } from "@/stores/orderStore";
 
 const orderStore = useOrderStore();
-const cardBuyShow = ref(true)
-const cardNoneShow = ref(true)
-const cardBuyShowP = ref(false)
-const cardNoneShowP = ref(false)
-
+const cardBuyShow = ref(true);
+const cardNoneShow = ref(true);
+// const cardBuyShowP = ref(false)
+// const cardNoneShowP = ref(false)
 
 const orderTimeStore = useOrderTimeStore();
 const calculateTotalPrice = () => {
@@ -57,49 +56,29 @@ const calculateTotalItemPrice = (item) => {
     return "0";
 };
 
-const cardBuy = (itemId) => {
-    orderTimeStore.ordersTime.forEach(item => {
-        if (item.id === itemId) {
-            item.id = cardBuyShow.value = false;
-            item.id = cardNoneShow.value = false;
-            item.id = cardBuyShowP.value = true;
-        }
-    });
-};
-
-const cardNone = (itemId) => {
-    orderTimeStore.ordersTime.forEach(item => {
-        if (item.id === itemId) {
-            console.log(itemId = item.price);
-            item.id = cardBuyShow.value = false;
-            item.id = cardNoneShow.value = false;
-            item.id = cardNoneShowP.value = true;
-            calculateTotalPrice() - calculateTotalItemPrice(item)
-        }
-    });
-};
-
-
-
-
 </script>
 
 <template>
     <div class="orderTime-div">
         <div class="orders">
             <div class="container">
-                <h1 class="orders-title" v-if="orderTimeStore.ordersTime.length || orderStore.orders.length > 0">   {{ $t("orders__time-title") }}</h1>
+                <h1 class="orders-title" v-if="orderTimeStore.ordersTime.length || orderStore.orders.length > 0">
+                    {{ $t("orders__time-title") }}
+                </h1>
 
                 <div class="drawer">
                     <div class="drawer__products" v-if="orderTimeStore.ordersTime.length || orderStore.orders.length > 0">
                         <div class="drawer__products-top">
-                            <p class="drawer__products-top-title" v-if="orderTimeStore.ordersTime.length > 0">{{ $t("drawer__products-top-title") }}</p>
-                            <p class="drawer__products-top-title" v-else> {{ $t("drawer__products-top-title-2") }}</p>
+                            <p class="drawer__products-top-title" v-if="orderTimeStore.ordersTime.length > 0">
+                                {{ $t("drawer__products-top-title") }}
+                            </p>
+                            <p class="drawer__products-top-title" v-else>{{ $t("drawer__products-top-title-2") }}</p>
                         </div>
                         <div class="drawer__cards">
                             <div class="drawer__card" v-for="item in orderTimeStore.ordersTime" :key="item.id">
+                
                                 <span class="drawer__products-span"></span>
-                                <div class="drawer__card-card " :class="{ 'drawer__card-green': cardBuyShowP, 'drawer__card-red': cardNoneShowP }">
+                                <div class="drawer__card-card" :class="{ 'drawer__card-green': orderTimeStore.cardBuyShowP, 'drawer__card-red': orderTimeStore.cardNoneShowP }">
                                     <img class="drawer__card-img" :src="item.thumbnail" alt="" />
                                     <div class="drawer__card-div">
                                         <div class="drawer__card-theme">
@@ -110,7 +89,8 @@ const cardNone = (itemId) => {
                                         <div class="drawer__card-count">
                                             <div class="drawer__card-count-theme">
                                                 <p class="drawer__card-count-theme-vendor">
-                                                    {{ $t("drawer__card-count-theme-vendor-b") }} <span>{{ item.brand }}</span>
+                                                    {{ $t("drawer__card-count-theme-vendor-b") }}
+                                                    <span>{{ item.brand }}</span>
                                                 </p>
                                                 <p class="drawer__card-count-theme-vendor">
                                                     {{ $t("drawer__card-count-theme-vendor-c") }}
@@ -123,11 +103,12 @@ const cardNone = (itemId) => {
                                                 <p class="drawer__card-count-count-div-txt">{{ item.quantity }} {{ $t("drawer__card-count-count-div-text") }}</p>
                                             </div>
                                             <!-- <div class="drawer__card-count-buy">
-                                                <button class="drawer__card-count-buy-btn" @click="cardBuy(item.id)" v-show="cardBuyShow">Qabul qilish</button>
-                                                <button class="drawer__card-count-buy-btn" @click="cardNone(item.id)" v-show="cardNoneShow">Qaytarib yuborish</button>
-                                                <p class="drawer__card-count-buy-p" v-show="cardBuyShowP">Qabul qilindi</p>
-                                                <p class="drawer__card-count-buy-p" v-show="cardNoneShowP">Qaytarib yuborildi</p>
+                                                <button class="drawer__card-count-buy-btn" @click="orderTimeStore.buyOrderTimeStore(item.id)" v-show="cardBuyShow">Qabul qilish</button>
+                                                <button class="drawer__card-count-buy-btn" @click="orderTimeStore.removeOrderTimeStore(item.id)" v-show="cardNoneShow">Qaytarib yuborish</button>
+                                                <p class="drawer__card-count-buy-p" v-show="orderTimeStore.cardBuyShowP">Qabul qilindi</p>
+                                                <p class="drawer__card-count-buy-p" v-show="orderTimeStore.cardNoneShowP">Qaytarib yuborildi</p>
                                             </div> -->
+
                                             <div class="drawer__card-count-price">
                                                 <p class="drawer__card-count-price1">{{ calculateItemPrice(item) }} $</p>
                                                 <p class="drawer__card-count-price2">{{ calculateTotalItemPrice(item) }} $</p>
@@ -144,7 +125,8 @@ const cardNone = (itemId) => {
                                             </RouterLink>
                                             <div class="drawer__card-count-theme">
                                                 <p class="drawer__card-count-theme-vendor">
-                                                    {{ $t("drawer__card-count-theme-vendor-b") }} <span>{{ item.brand }}</span>
+                                                    {{ $t("drawer__card-count-theme-vendor-b") }}
+                                                    <span>{{ item.brand }}</span>
                                                 </p>
                                                 <p class="drawer__card-count-theme-vendor">
                                                     {{ $t("drawer__card-count-theme-vendor-c") }}
@@ -155,11 +137,9 @@ const cardNone = (itemId) => {
                                     </div>
                                     <div class="drawer__card-none-div">
                                         <div class="drawer__card-none-count-div">
-                                                <p class="drawer__card-count-count-div-txt">
-                                                    {{ item.quantity }} {{ $t("drawer__card-count-count-div-text") }}
-                                                </p>
+                                            <p class="drawer__card-count-count-div-txt">{{ item.quantity }} {{ $t("drawer__card-count-count-div-text") }}</p>
                                         </div>
-        
+
                                         <div class="drawer__card-none-count">
                                             <div class="drawer__card-count-price">
                                                 <p class="drawer__card-count-price2">{{ calculateTotalItemPrice(item) }} $</p>
@@ -172,12 +152,14 @@ const cardNone = (itemId) => {
                         </div>
                     </div>
                     <div class="no__product" v-else>
-                        <p class="order__no__product-title">{{ $t('order__no__product-title') }}</p>
-                        <p class="order__no__product-text2">{{ $t('order__no__product-text2') }}</p>
-                        <RouterLink to="/" class="no__product-link">{{ $t('no__product-link') }}</RouterLink>
+                        <p class="order__no__product-title">{{ $t("order__no__product-title") }}</p>
+                        <p class="order__no__product-text2">{{ $t("order__no__product-text2") }}</p>
+                        <RouterLink to="/" class="no__product-link">{{ $t("no__product-link") }}</RouterLink>
                     </div>
                     <div class="order__price" v-if="orderTimeStore.ordersTime.length || orderStore.orders.length > 0">
-                        <h3 class="order__price-title" v-if="orderTimeStore.ordersTime.length == 1">{{ $t("drawer__price-title-1") }}</h3>
+                        <h3 class="order__price-title" v-if="orderTimeStore.ordersTime.length == 1">
+                            {{ $t("drawer__price-title-1") }}
+                        </h3>
                         <h3 class="order__price-title" v-else>{{ $t("drawer__price-title-2") }}</h3>
                         <div class="order__price-products">
                             <p class="order__price-products-text">{{ $t("drawer__price-products-text") }} ({{ orderTimeStore.ordersTime.length }}):</p>

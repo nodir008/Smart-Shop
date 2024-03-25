@@ -59,7 +59,7 @@ export const useBasketStore = defineStore("basket", {
         } else {
           this.drawer[productIndex].quantity = 1;
         }
-      }
+    }
     },
     
     decrementQuantity(id) {
