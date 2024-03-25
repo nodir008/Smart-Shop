@@ -29,8 +29,11 @@ onMounted(() => {
 });
 
 function activateLink(link) {
+    if (link === "login") {
+        localStorage.setItem("activeLink", link);
+    }
     activeLink.value = link;
-    localStorage.setItem("activeLink", link);
+    
     if (link === "search") {
         katalog.value = true;
         kabinet.value = false;
@@ -44,10 +47,15 @@ function activateLink(link) {
     window.scrollTo(0, 0);
 }
 
+
 function closeKatalog() {
     katalog.value = false;
     kabinet.value = false;
+
+    // Clear localStorage
+    localStorage.removeItem("activeLink");
 }
+
 </script>
 
 <template>

@@ -84,9 +84,7 @@ onBeforeUnmount(() => {
 
 
 <template>
-    <div class="loader__div" v-show="loader">
-        <div class="loader"></div>
-    </div>
+
     
     <nav class="nav" >
         <div class="nav__top">
@@ -175,6 +173,9 @@ onBeforeUnmount(() => {
         <Transition name="fade2">
             <button v-show="show" class="nav__category-bg" @click="show = false"></button>
         </Transition>
+        <div class="loader__div" v-show="loader">
+            <div class="loader"></div>
+        </div>
     </nav>
     <nav>
         <div class="nav__none">
