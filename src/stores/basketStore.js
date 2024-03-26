@@ -32,7 +32,6 @@ export const useBasketStore = defineStore("basket", {
       }
     },
     
-
     removeDrawerProduct(id) {
       const indexToRemove = this.drawer.findIndex((item) => item.id === id);
       if (indexToRemove !== -1) {

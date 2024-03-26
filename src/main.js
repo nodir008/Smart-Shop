@@ -16,7 +16,7 @@ const app = createApp(App)
 const pinia = createPinia()
 
 export const i18n = createI18n({
-    locale: localStorage.lang || 'UZ', // Default locale
+    locale: localStorage.lang || 'UZ',
     messages: {
         UZ: UZ,
         RU: RU,
@@ -27,9 +27,8 @@ pinia.use(piniaPluginPersistedstate)
 
 app.use(pinia)
 app.use(router)
-app.use(i18n) // I18n'i uygulamaya ekleyin
+app.use(i18n)
 app.use(VueAwesomePaginate)
 
-// Pinia'nın mağazaya erişilmeden önce kullanıldığından emin olun
 
 app.mount('#app')

@@ -7,7 +7,7 @@ import Toast from '@/components/toast/Toast.vue'
 const productsStore = useProductsStore();
 const currentPage = ref(1);
 const limit = ref(20);
-const isLoading = ref(false); // Loading indicator state
+const isLoading = ref(false); 
 
 const onClickHandler = (page) => {
   console.log(page);
@@ -22,7 +22,6 @@ const newClick = () => {
       isLoading.value = false; 
     });
   } else {
-    // Mahsulotlarni berkitish chaqirish
     productsStore.getProducts();
     limit.value = 20;
     scrollToTop();

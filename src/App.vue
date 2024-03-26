@@ -18,11 +18,10 @@ onMounted(() => {
     <div class="loader"></div>
   </div>
   <div class="wrapper" v-else>
-    <!-- <Nav @loadingLaungage="loading = true"/> -->
     <Nav />
-    <Transition>
+    <!-- <Transition> -->
       <RouterView> </RouterView>
-    </Transition>
+    <!-- </Transition> -->
     <Footer />
     <Bottoms />
   </div>

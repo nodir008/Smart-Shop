@@ -18,7 +18,6 @@ const router = createRouter({
       beforeEnter(to, from) {
         const productsStore = useProductsStore();
         const exists = to.params.id <= productsStore?.total && to.params.id > 0;
-        // console.log(exists);
         if (!exists) {
           return {
             name: "NotFound",
@@ -53,7 +52,6 @@ const router = createRouter({
         const exists = productsCategories.categorie.includes(
           to.params.category
         );
-        // console.log(exists);
         if (!exists) {
           return {
             name: "NotFound",
@@ -84,16 +82,6 @@ const router = createRouter({
       name: "installment",
       component: () => import("../pages/InstallmentPage.vue"),
     },
-    // {
-    //   path: '/category/:pathMatch(.*)*',
-    //   name: 'NotFound',
-    //   component: () => import('../pages/NotFoundPage.vue')
-    // },
-    // {
-    //   path: '/product/:id/:pathMatch(.*)*',
-    //   name: 'NotFound',
-    //   component: () => import('../pages/NotFoundPage.vue')
-    // },
   ],
 });
 

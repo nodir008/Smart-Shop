@@ -4,10 +4,7 @@ import { useProductsStore } from "./productsStore";
 export const useOrderTimeStore = defineStore("orderTime", {
   state: () => ({
     ordersTime: [],
-    cardBuyShow: true,
-    cardNoneShow: true,
-    cardBuyShowP: false,
-    cardNoneShowP: false
+    totalPrice: 0, 
   }),
   actions: {
     orderTimeStoreAdd(id, quantity) {
@@ -33,18 +30,12 @@ export const useOrderTimeStore = defineStore("orderTime", {
         this.ordersTime[productIndex].cardNoneShowP = false;
       }
     },
-  
     removeOrderTimeStore(id) {
       const productIndex = this.ordersTime.findIndex((item) => item.id === id);
-      if (this.ordersTime[productIndex].id == id) {
-        this.ordersTime[productIndex].cardBuyShow = false;
-        this.ordersTime[productIndex].cardNoneShow = false;
-        this.ordersTime[productIndex].cardBuyShowP = false;
-        this.ordersTime[productIndex].cardNoneShowP = true;
+      if (productIndex !== -1) {
+        this.ordersTime.splice(productIndex, 1);
       }
-    },
+    }
   },
-
-
   persist: true,
 });

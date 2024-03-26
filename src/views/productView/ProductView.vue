@@ -30,7 +30,6 @@ const route = useRoute();
 const modules = [FreeMode, Navigation, Thumbs];
 const productSingleStore = useProductSingleStore();
 productSingleStore.getSingleProduct(route.params.id);
-// const productQuantity = ref(parseInt(localStorage.getItem("productQuantity")) || 1);
 const showLoader = ref(false);
 const show = ref(false);
 
@@ -60,7 +59,6 @@ watchEffect(() => {
     if (0 > productQuantity.value || 1000 <= productQuantity.value) {
         productQuantity.value = 1;
     }
-    // localStorage.setItem("productQuantity", productQuantity.value.toString());
 });
 
 const increaseQuantity = () => {
@@ -107,7 +105,7 @@ const addToBasket2 = () => {
 const addToOrder = (productId) => {
     if (productId === productSingleStore.product?.id) {
         const now = new Date();
-        const deliveryTime = new Date(now.getTime() + 60000); // 1 minute in milliseconds
+        const deliveryTime = new Date(now.getTime() + 60000); 
 
         const deliveryTimeFormatted = `${deliveryTime.getHours().toString().padStart(2, "0")}:${deliveryTime.getMinutes().toString().padStart(2, "0")}:${deliveryTime
             .getSeconds()

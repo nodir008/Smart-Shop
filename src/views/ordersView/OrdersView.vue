@@ -1,13 +1,10 @@
 <script setup>
-// import { useBasketStore } from '@/stores/basketStore';
 import { useOrderStore } from '@/stores/orderStore';
 import { onMounted, ref } from 'vue';
 import { useOrderTimeStore } from '@/stores/orderTimeStore';
 
-
 const orderTimeStore = useOrderTimeStore()
 const orderStore = useOrderStore();
-
 
 const calculateTotalPrice = () => {
     let total = 0;
@@ -18,7 +15,6 @@ const calculateTotalPrice = () => {
     });
     return total.toFixed(0);
 };
-
 
 const calculateNewTotalPrice = () => {
     let total = 0;
@@ -39,8 +35,6 @@ const calculateNewTotalPrice2 = () => {
     });
     return total.toFixed(0);
 };
-
-
 
 const calculateItemPrice = (item) => {
     if (item && item.price && item.discountPercentage && item.quantity) {
