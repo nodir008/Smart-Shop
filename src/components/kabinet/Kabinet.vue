@@ -28,8 +28,8 @@ const toggleActiveClass2 = () => {
 };
 
 const test = (lang) => {
-    console.log(lang);
-    console.log(i18n.global.locale);
+    // console.log(lang);
+    // console.log(i18n.global.locale);
     if (lang == "UZ") {
         languageRu.value = true;
         languageUz.value = false;
@@ -40,9 +40,7 @@ const test = (lang) => {
         languageRu.value = false;
         i18n.global.locale = "RU";
         localStorage.setItem("language", "RU");
-    }
-
-    emits("loadingLaungage");
+    } 
 };
 
 onMounted(() => {

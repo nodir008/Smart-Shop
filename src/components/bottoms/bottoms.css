@@ -71,7 +71,7 @@
   transform: translateY(100%);
 }
 
-.bottoms__icon-span {
+.bottoms__icon-drawer-span {
   width: 17px;
   height: 17px;
   background: #000;
@@ -86,6 +86,25 @@
   font-size: 11px;
 }
 
+.bottoms__icon-favourites-span {
+  width: 17px;
+  height: 17px;
+  background: red;
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 11px;
+}
+
 .bottoms__link-drawer {
+  position: relative;
+}
+
+.bottoms__link-favourite {
   position: relative;
 }

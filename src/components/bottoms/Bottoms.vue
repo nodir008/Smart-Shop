@@ -55,14 +55,15 @@ function closeKatalog() {
                 <HomeIcon class="bottoms__icon" /> {{ $t("bottoms__link-1") }}
             </RouterLink>
             <button @click="activateLink('search')" :class="{ active: katalog }" class="bottoms__link"><SearchIcon class="bottoms__icon" /> {{ $t("bottoms__link-2") }}</button>
-            <RouterLink @click="activateLink('favourite')" :class="{ active: route.fullPath === '/favourite' && !katalog && !kabinet }" class="bottoms__link" to="/favourite">
+            <RouterLink @click="activateLink('favourite')" :class="{ active: route.fullPath === '/favourite' && !katalog && !kabinet }" class="bottoms__link bottoms__link-favourite" to="/favourite">
                 <HeartIcon v-if="favouriteStore.favourites.length == 0" class="bottoms__icon" />
                 <Heart2Icon v-else class="bottoms__icon" />
+                <span class="bottoms__icon-favourites-span" v-if="favouriteStore.favourites.length ">{{ favouriteStore.favourites.length }}</span>
                 {{ $t("bottoms__link-4") }}
             </RouterLink>
             <RouterLink @click="activateLink('drawer')" :class="{ active: route.fullPath === '/drawer' && !katalog && !kabinet }" class="bottoms__link bottoms__link-drawer" to="/drawer">
                 <BasketIcon class="bottoms__icon" /> {{ $t("bottoms__link-3") }}
-                <span class="bottoms__icon-span" v-if="basketStore.drawer.length">{{ basketStore.drawer.length }}</span>
+                <span class="bottoms__icon-drawer-span" v-if="basketStore.drawer.length">{{ basketStore.drawer.length }}</span>
             </RouterLink>
             <button @click="activateLink('login')" :class="{ active: kabinet }" class="bottoms__link"><UserIcon class="bottoms__icon" /> {{ $t("bottoms__link-5") }}</button>
         </div>

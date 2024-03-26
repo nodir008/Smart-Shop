@@ -24,10 +24,14 @@ const newClick = () => {
   } else {
     // Mahsulotlarni berkitish chaqirish
     productsStore.getProducts();
-    limit.value = 20
+    limit.value = 20;
+    scrollToTop();
   }
 }
 
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 
 productsStore.getProducts();

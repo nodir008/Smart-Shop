@@ -49,7 +49,7 @@ const test = (lang) => {
 
     setTimeout(() => {
         loader.value = false;
-    }, 1000);
+    }, 500);
 };
 
 const searchInput = ref("");
@@ -192,65 +192,30 @@ onBeforeUnmount(() => {
     background: #fff;
 }
 .loader {
-    animation: rotate 1s infinite;
-    height: 50px;
-    width: 50px;
-  }
-
-  .loader:before,
-  .loader:after {
+    width: 100px;
+    aspect-ratio: 1;
+    display: grid;
     border-radius: 50%;
+    background: linear-gradient(0deg, rgb(0 0 0/50%) 30%, #0000 0 70%, rgb(0 0 0/100%) 0) 50%/8% 100%, linear-gradient(90deg, rgb(0 0 0/25%) 30%, #0000 0 70%, rgb(0 0 0/75%) 0) 50%/100% 8%;
+    background-repeat: no-repeat;
+    animation: l23 1s infinite steps(12);
+}
+.loader::before,
+.loader::after {
     content: "";
-    display: block;
-    height: 20px;
-    width: 20px;
-  }
-  .loader:before {
-    animation: ball1 1s infinite;
-    background-color: #000;
-    box-shadow: 30px 0 0 blue;
-    margin-bottom: 10px;
-  }
-  .loader:after {
-    animation: ball2 1s infinite;
-    background-color: blue;
-    box-shadow: 30px 0 0 #000;
-  }
-
-  @keyframes rotate {
-    0% { transform: rotate(0deg) scale(0.8) }
-    50% { transform: rotate(360deg) scale(1.2) }
-    100% { transform: rotate(720deg) scale(0.8) }
-  }
-
-  @keyframes ball1 {
-    0% {
-      box-shadow: 30px 0 0 blue;
-    }
-    50% {
-      box-shadow: 0 0 0 blue;
-      margin-bottom: 0;
-      transform: translate(15px, 15px);
-    }
+    grid-area: 1/1;
+    border-radius: 50%;
+    background: inherit;
+    opacity: 0.915;
+    transform: rotate(30deg);
+}
+.loader::after {
+    opacity: 0.83;
+    transform: rotate(60deg);
+}
+@keyframes l23 {
     100% {
-      box-shadow: 30px 0 0 blue;
-      margin-bottom: 10px;
+        transform: rotate(1turn);
     }
-  }
-
-  @keyframes ball2 {
-    0% {
-      box-shadow: 30px 0 0 #000;
-    }
-    50% {
-      box-shadow: 0 0 0 #000;
-      margin-top: -20px;
-      transform: translate(15px, 15px);
-    }
-    100% {
-      box-shadow: 30px 0 0 #000;
-      margin-top: 0;
-    }
-  }
-  
+}
 </style>
