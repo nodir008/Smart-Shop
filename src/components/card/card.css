@@ -148,33 +148,6 @@ background: #d6d7db;
 fill: green;
 }
 
-/* .card__icons-btnb:hover .card__icons-btnb-basketicon {
-  animation: spin2 0.5s linear infinite;
-}
-
-@keyframes spin2 {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  25% {
-    transform: rotate(-8deg);
-  }
-
-  50% {
-    transform: rotate(0deg);
-  }
-
-  75% {
-    transform: rotate(8deg);
-  }
-
-  100% {
-    transform: rotate(0deg);
-  }
-} */
-
-
 .card__theme-sale {
   font-size: 14px;
 }
@@ -210,11 +183,6 @@ fill: green;
     transform: scale(1.1);
   }
 }
-
-
-
-
-
 
 .card__icons-text {
   font-size: 14px;

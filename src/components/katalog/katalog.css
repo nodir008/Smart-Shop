@@ -9,7 +9,7 @@
     z-index: 1;
     bottom: 0;
     overflow-x: scroll;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .katalog::-webkit-scrollbar {

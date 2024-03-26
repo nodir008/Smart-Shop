@@ -24,28 +24,27 @@ export const useOrderTimeStore = defineStore("orderTime", {
         }
       }
     },
+    buyOrderTimeStore(id) {
+      const productIndex = this.ordersTime.findIndex((item) => item.id === id);
+      if (this.ordersTime[productIndex].id == id) {
+        this.ordersTime[productIndex].cardBuyShow = false;
+        this.ordersTime[productIndex].cardNoneShow = false;
+        this.ordersTime[productIndex].cardBuyShowP = true;
+        this.ordersTime[productIndex].cardNoneShowP = false;
+      }
+    },
+  
+    removeOrderTimeStore(id) {
+      const productIndex = this.ordersTime.findIndex((item) => item.id === id);
+      if (this.ordersTime[productIndex].id == id) {
+        this.ordersTime[productIndex].cardBuyShow = false;
+        this.ordersTime[productIndex].cardNoneShow = false;
+        this.ordersTime[productIndex].cardBuyShowP = false;
+        this.ordersTime[productIndex].cardNoneShowP = true;
+      }
+    },
   },
 
-  buyOrderTimeStore(id) {
-    console.log(id)
-    const productIndex = this.ordersTime.findIndex((item) => item.id === id);
-    if (productIndex !== -1) {
-      this.ordersTime[productIndex].cardBuyShow = false;
-      this.ordersTime[productIndex].cardNoneShow = false;
-      this.ordersTime[productIndex].cardBuyShowP = true;
-      this.ordersTime[productIndex].cardNoneShowP = false;
-    }
-  },
-
-  removeOrderTimeStore(id) {
-    const productIndex = this.ordersTime.findIndex((item) => item.id === id);
-    if (productIndex !== -1) {
-      this.ordersTime[productIndex].cardBuyShow = false;
-      this.ordersTime[productIndex].cardNoneShow = false;
-      this.ordersTime[productIndex].cardBuyShowP = false;
-      this.ordersTime[productIndex].cardNoneShowP = true;
-    }
-  },
 
   persist: true,
 });

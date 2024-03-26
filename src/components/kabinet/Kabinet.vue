@@ -28,8 +28,6 @@ const toggleActiveClass2 = () => {
 };
 
 const test = (lang) => {
-    // console.log(lang);
-    // console.log(i18n.global.locale);
     if (lang == "UZ") {
         languageRu.value = true;
         languageUz.value = false;
@@ -50,7 +48,6 @@ onMounted(() => {
     }
 });
 
-// Save language preferences to localStorage on component unmount
 onBeforeUnmount(() => {
     localStorage.setItem("languageRu", languageRu.value);
     localStorage.setItem("languageUz", languageUz.value);

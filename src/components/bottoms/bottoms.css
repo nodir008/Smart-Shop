@@ -44,7 +44,6 @@
 
 .katalog-transition-enter-active,
 .katalog-transition-leave-active {
-  /* transition: opacity 0.5s ease; */
   transform: translateY(0);
   transition: 0.4s;
 }
@@ -52,14 +51,12 @@
 .katalog-transition-enter-from,
 .katalog-transition-leave-to {
   transition: 0.4s;
-  /* opacity: 0; */
   transform: translateY(-100%);
 }
 
 
 .kabinet-transition-enter-active,
 .kabinet-transition-leave-active {
-  /* transition: opacity 0.5s ease; */
   transform: translateY(0);
   transition: 0.4s;
 }
@@ -67,7 +64,6 @@
 .kabinet-transition-enter-from,
 .kabinet-transition-leave-to {
   transition: 0.4s;
-  /* opacity: 0; */
   transform: translateY(100%);
 }
 

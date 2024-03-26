@@ -115,13 +115,3 @@
         transform: scaleX(var(--s, 1)) rotate(360deg);
     }
 }
-
-.home__view-div {
-    transition: transform 0.3s ease;
-    /* CSS transitisi */
-}
-
-.scrollToTop {
-    transform: translateY(-100%);
-    /* Yukorgi topish */
-}

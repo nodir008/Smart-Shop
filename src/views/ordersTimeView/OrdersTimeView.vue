@@ -5,8 +5,8 @@ import { useOrderTimeStore } from "@/stores/orderTimeStore";
 import { useOrderStore } from "@/stores/orderStore";
 
 const orderStore = useOrderStore();
-const cardBuyShow = ref(true);
-const cardNoneShow = ref(true);
+// const cardBuyShow = ref(true);
+// const cardNoneShow = ref(true);
 // const cardBuyShowP = ref(false)
 // const cardNoneShowP = ref(false)
 
@@ -102,12 +102,12 @@ const calculateTotalItemPrice = (item) => {
                                             <div class="drawer__card-count-count-div">
                                                 <p class="drawer__card-count-count-div-txt">{{ item.quantity }} {{ $t("drawer__card-count-count-div-text") }}</p>
                                             </div>
-                                            <!-- <div class="drawer__card-count-buy">
-                                                <button class="drawer__card-count-buy-btn" @click="orderTimeStore.buyOrderTimeStore(item.id)" v-show="cardBuyShow">Qabul qilish</button>
-                                                <button class="drawer__card-count-buy-btn" @click="orderTimeStore.removeOrderTimeStore(item.id)" v-show="cardNoneShow">Qaytarib yuborish</button>
+                                            <div class="drawer__card-count-buy">
+                                                <button class="drawer__card-count-buy-btn" @click="orderTimeStore.buyOrderTimeStore(item.id)" v-show="orderTimeStore.cardBuyShow">Qabul qilish</button>
+                                                <button class="drawer__card-count-buy-btn" @click="orderTimeStore.removeOrderTimeStore(item.id)" v-show="orderTimeStore.cardNoneShow">Qaytarib yuborish</button>
                                                 <p class="drawer__card-count-buy-p" v-show="orderTimeStore.cardBuyShowP">Qabul qilindi</p>
                                                 <p class="drawer__card-count-buy-p" v-show="orderTimeStore.cardNoneShowP">Qaytarib yuborildi</p>
-                                            </div> -->
+                                            </div>
 
                                             <div class="drawer__card-count-price">
                                                 <p class="drawer__card-count-price1">{{ calculateItemPrice(item) }} $</p>

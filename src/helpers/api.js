@@ -16,12 +16,7 @@ const apiProducts = {
     getCategorySingle(name) {
         const url = `/products/category/${name}`
         return axiosClient.get(url)
-    },
-    // getSearch(keyword) {
-    //     const url = `/products/search?q=${keyword}`
-    //     console.log('asd');
-    //     return axiosClient.get(url)
-    // },
+    }
 }
 
 export default apiProducts
