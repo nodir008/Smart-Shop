@@ -148,5 +148,10 @@
     "fixed__theme-drawer": " Savatga otish ",
     "hidden-home__view-pagination-2": " Mahsulotlarni berkitish ",
     "kabinet__sign-in": " Kirish ",
-    "kabinet__sign-up": "  Roʻyxatdan oʻtish  "
+    "kabinet__sign-up": "  Roʻyxatdan oʻtish  ",
+    "no__product-text-2": "  Mahsulotga buyurtma berildi  ",
+    "no__product-link-2": "  Buyurtmalarimga otish  ",
+    "drawer__card-count-buy-btn": "  Qabul qilish   ",
+    "drawer__card-count-buy-btn-2": "  Qabul qilish   ",
+    "drawer__card-count-buy-btn-3": "  Qabul qilindi   "
 }

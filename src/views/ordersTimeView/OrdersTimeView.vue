@@ -143,20 +143,20 @@ const recalculateAfterRemove = (itemId, item) => {
                           @click="orderTimeStore.buyOrderTimeStore(item.id)"
                           v-show="item?.cardBuyShow"
                         >
-                          Qabul qilish
+                         {{ $t("drawer__card-count-buy-btn") }}
                         </button>
                         <button
                           class="drawer__card-count-buy-btn"
                           @click="recalculateAfterRemove(item.id, item)"
                           v-show="item?.cardNoneShow"
                         >
-                          Qaytarib yuborish
+                          {{ $t("drawer__card-count-buy-btn-2") }}
                         </button>
                         <p
                           class="drawer__card-count-buy-p"
                           v-show="item?.cardBuyShowP"
                         >
-                          Qabul qilindi
+                         {{ $t("drawer__card-count-buy-btn-3") }}
                         </p>
                         <p
                           class="drawer__card-count-buy-p"

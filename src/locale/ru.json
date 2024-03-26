@@ -149,6 +149,11 @@
     "fixed__theme-drawer": " Перейти в корзину ",
     "hidden-home__view-pagination-2": " Производство товаров ",
     "kabinet__sign-in": "  Войти  ",
-    "kabinet__sign-up": "  Зарегистрироваться  "
+    "kabinet__sign-up": "  Зарегистрироваться  ",
+    "no__product-text-2": "  Товар заказан  ",
+    "no__product-link-2": "  Перейти к моим заказам  ",
+    "drawer__card-count-buy-btn": "  Принятие  ",
+    "drawer__card-count-buy-btn-2": "  Отправить его обратно  ",
+    "drawer__card-count-buy-btn-3": "  Принял  "
 
 }
