@@ -270,6 +270,15 @@
     margin: 0 !important;
   }
 
+  .drawer__card-count-count-div {
+    flex-direction: column;
+    gap: 3px !important;
+  }
+
+  .drawer__card-count-theme {
+    max-width: 230px !important;
+  }
+
 }
 
 @media (max-width: 635px) {
@@ -318,9 +327,10 @@
   }
 
   .drawer__card-none {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 5px;
   }
-
 
   .footer-none {
     display: block !important;
@@ -460,6 +470,24 @@
   .drawer__card-time {
     flex-direction: column !important;
     align-items: flex-end !important;
+  }
+
+  .drawer__card-count-buy-p {
+    font-size: 16px;
+    padding: 3px 5px;
+    color: red;
+    font-weight: 700;
+  }
+
+  .drawer__card-count-buy-none {
+    font-size: 16px;
+    padding: 3px 5px;
+    color: #2E8B57	;
+    font-weight: 700;
+  }
+
+  .drawer__card-count-buy-btn {
+    font-size: 16px !important;
   }
 }
 
@@ -653,6 +681,11 @@
     letter-spacing: -0.4px !important;
   }
 
+
+  .drawer__card-none-btns-btn {
+    justify-content: space-between;
+  }
+
 }
 
 @media (max-width: 370px) {
@@ -668,7 +701,11 @@
     font-size: 16px !important;
   }
 
-  .drawer__card-count-price2 {
-    font-size: 12px !important;
+  .drawer__card-count-buy-none {
+    font-size: 14px !important;
+  }
+
+  .drawer__card-count-buy-p {
+    font-size: 14px !important;
   }
 }

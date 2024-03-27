@@ -92,7 +92,7 @@ const calculateTotalItemPrice = (item) => {
 const addToOrder = () => {
   basketStore.addToOrderStore();
   const now = new Date();
-  const deliveryTime = new Date(now.getTime() + 60000);
+  const deliveryTime = new Date(now.getTime() + 100);
 
   // Construct delivery time including hour, minute, day, month, and year
   const deliveryTimeFormatted = `${deliveryTime
@@ -117,7 +117,7 @@ const addToOrder = () => {
     orderStore.orders.forEach((item) => {
       orderStore.removeOrder(item.id);
     });
-  }, 60000);
+  }, 100);
 
   // Show the order confirmation message for 3 seconds
   showOrderConfirmation.value = true;

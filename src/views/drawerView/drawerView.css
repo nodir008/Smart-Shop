@@ -201,7 +201,7 @@
     flex-direction: column;
     align-items: end;
     gap: 5px;
-    width: 100px;
+    width: 80px;
 }
 
 .drawer__card-count-price1 {
@@ -333,7 +333,6 @@
 
 .drawer__card-count-count-div {
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 3px;
 }
