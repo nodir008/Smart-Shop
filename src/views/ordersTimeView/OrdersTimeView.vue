@@ -169,7 +169,7 @@ const totalOrderSale = computed(() => {
                             {{ $t("drawer__card-count-buy-btn-3") }}
                           </p>
                           <p
-                            class="drawer__card-count-buy-p"
+                            class="drawer__card-count-buy-none"
                             v-show="item?.cardNoneShowP"
                           >
                             {{ $t("drawer__card-count-buy-btn-4") }}

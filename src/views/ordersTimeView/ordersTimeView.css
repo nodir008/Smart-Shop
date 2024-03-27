@@ -332,7 +332,7 @@
     gap: 15px;
 }
 
-.no__product-link{
+.no__product-link {
     padding: 15px 20px;
     background: #7000ff;
     border-radius: 10px;
@@ -371,4 +371,18 @@
 .drawer__card-none-btns-btn {
     display: flex;
     gap: 20px;
+}
+
+.drawer__card-count-buy-p {
+    font-size: 16px;
+    padding: 3px 5px;
+    color: red;
+    font-weight: 700;
+}
+
+.drawer__card-count-buy-none {
+    font-size: 16px;
+    padding: 3px 5px;
+    color: #2E8B57;
+    font-weight: 700;
 }
