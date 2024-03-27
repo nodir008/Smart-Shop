@@ -58,9 +58,9 @@ const scrollToTop = () => {
         >
       </div>
       <p class="card__theme-nation">
-        {{ calculateFormattedPrice(card.price) }} $/{{
+         {{
           $t("card__theme-nation")
-        }}
+        }}  {{ calculateFormattedPrice(card.price) }} $
       </p>
       <p class="card__theme-price">
         {{ $t("card__theme-price") }} {{ card.price }}$
