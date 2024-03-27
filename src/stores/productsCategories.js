@@ -9,7 +9,6 @@ export const useProductsCategories = defineStore("productsCategories", {
     async getCategories() {
       try {
         const res = await apiProducts.getCategories();
-        // console.log(res);
         this.categorie = res
       } catch (error) {
         console.error(error);

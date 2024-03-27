@@ -279,6 +279,15 @@
     max-width: 230px !important;
   }
 
+  .drawer__card-count-count-div-text {
+    transform: translateY(-10px) !important;
+}
+
+.drawer__card-count-count-div-text.active {
+    transform: translateY(0px) !important;
+    opacity: 1;
+}
+
 }
 
 @media (max-width: 635px) {

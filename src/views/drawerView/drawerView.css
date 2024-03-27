@@ -342,11 +342,11 @@
     color: rgba(54, 54, 64, 0.603);
     opacity: 0;
     transition: 0.4s;
-    transform: translateY(-10px);
+    transform: translateX(-10px);
 }
 
 .drawer__card-count-count-div-text.active {
-    transform: translateY(0px);
+    transform: translateX(0px);
     opacity: 1;
 }
 
