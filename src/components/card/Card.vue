@@ -37,7 +37,10 @@ const toggleBasket = () => {
   const quantity = 1;
   basketStore.getAddDrawerPro(props.card.id, quantity);
   console.log(props.card.id);
+  basketStore.changeActive(true, props.card.description, props.card.thumbnail);
 };
+
+
 
 const scrollToTop = () => {
   window.scrollTo(0, 0);
