@@ -114,6 +114,10 @@
     grid-template-columns: repeat(2, 1fr) !important;
   }
 
+  .fixed {
+    top: 10px !important;
+    right: 100px !important;
+  }
 
 }
 
@@ -281,12 +285,22 @@
 
   .drawer__card-count-count-div-text {
     transform: translateY(-10px) !important;
-}
+  }
 
-.drawer__card-count-count-div-text.active {
+  .drawer__card-count-count-div-text.active {
     transform: translateY(0px) !important;
     opacity: 1;
-}
+  }
+  
+  .fixed {
+    top: 10px !important;
+    right:30px !important;
+    width: 430px !important;
+  }  
+
+  .fixed__theme-drawer {
+    display: none;
+  }
 
 }
 
@@ -491,7 +505,7 @@
   .drawer__card-count-buy-none {
     font-size: 16px;
     padding: 3px 5px;
-    color: #2E8B57	;
+    color: #2E8B57;
     font-weight: 700;
   }
 
@@ -693,6 +707,27 @@
 
   .drawer__card-none-btns-btn {
     justify-content: space-between;
+  }
+
+  .fixed {
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    min-height: 50px !important;
+  }  
+
+  .fixed__img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .fixed__theme-text {
+    width: 100% !important;
+  }
+
+  .fixed__theme {
+    padding: 0 !important;
   }
 
 }

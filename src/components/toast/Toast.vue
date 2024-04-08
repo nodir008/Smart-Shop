@@ -46,7 +46,7 @@ console.log(basketStore.drawer);
   top: 31px;
   right: 200px;
   z-index: -1;
-  width: 500px;
+  width: 600px;
   min-height: 100px;
   border: 1px solid black;
   background: #fff;
@@ -96,13 +96,13 @@ console.log(basketStore.drawer);
 
 .fixed__theme-text {
   font-size: 14px;
-  width: 240px;
+  width: 290px;
 }
 
 .fixed__theme-drawer {
   font-size: 18px;
   font-weight: 700;
-  color: #7000ff;
+  color: #7000ff
 }
 
 .fixed__theme-text span {
