@@ -92,6 +92,7 @@ export const useBasketStore = defineStore("basket", {
         this.isBasketActive = false;
       }, 2000);
     },
+    
   },
   persist: true,
 });

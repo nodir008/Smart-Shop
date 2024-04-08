@@ -30,9 +30,12 @@ const handleHeartClick = (itemId) => {
 };
 
 const toggleBasket = (itemId) => {
-    const quantity = 1;
-    basketStore.getAddDrawerPro(itemId, quantity);
+  const quantity = 1;
+  basketStore.getAddDrawerPro(itemId, quantity);
 };
+
+
+
 
 const scrollToTop = () => {
     window.scrollTo(0, 0);
