@@ -54,8 +54,8 @@ const toggleActiveClass3 = () => {
                     </div>
                     <h3 class="footer__apps-title">{{ $t("footer__apps-title") }}</h3>
                     <div class="footer__link-contact">
-                        <a href="#"><img src="@/assets/images/instagram.png" alt="" /></a>
-                        <a href="#"><img src="@/assets/images/telegram.png" alt="" /></a>
+                        <a target="_blank" href="https://instagram.com/_kh1kmatof__"><img src="@/assets/images/instagram.png" alt="" /></a>
+                        <a target="_blank" href="https://t.me/kh1kmatof_a"><img src="@/assets/images/telegram.png" alt="" /></a>
                     </div>
                 </div>
             </div>
@@ -115,8 +115,8 @@ const toggleActiveClass3 = () => {
                     </div>
                     <h3 class="footer__apps-title">{{ $t("footer__apps-title") }}</h3>
                     <div class="footer__link-contact">
-                        <a href="https://instagram.com/_kh1kmatof__"><img src="@/assets/images/instagram.png" alt="" /></a>
-                        <a href="https://t.me/kh1kmatof_a"><img src="@/assets/images/telegram.png" alt="" /></a>
+                        <a target="_blank" href="https://instagram.com/_kh1kmatof__"><img src="@/assets/images/instagram.png" alt="" /></a>
+                        <a target="_blank" href="https://t.me/kh1kmatof_a"><img src="@/assets/images/telegram.png" alt="" /></a>
                     </div>
                 </div>
             </div>

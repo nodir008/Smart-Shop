@@ -231,11 +231,6 @@
     min-height: 150px !important;
   }
 
-
-  .no__product-link {
-    display: none !important;
-  }
-
   .product__nation-bg {
     display: none !important;
   }
@@ -716,7 +711,7 @@
     width: 100% !important;
     min-height: 50px !important;
     transform: translateY(-10px) !important;
-    transition: 0.2s !important;
+    transition: 0.4s !important;
   }  
 
   .fixed.active {
