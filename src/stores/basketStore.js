@@ -89,7 +89,7 @@ export const useBasketStore = defineStore("basket", {
       this.descriptionToast = description;
       this.imgToast = thumbnail;
       setTimeout(() => {
-        this.isBasketActive = true;
+        this.isBasketActive = false;
       }, 2000);
     },
     

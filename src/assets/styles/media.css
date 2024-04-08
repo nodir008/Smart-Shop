@@ -715,7 +715,13 @@
     right: 0 !important;
     width: 100% !important;
     min-height: 50px !important;
+    transform: translateY(-10px) !important;
+    transition: 0.2s !important;
   }  
+
+  .fixed.active {
+    transform: translateY(0) !important;
+  }
 
   .fixed__img {
     width: 60px !important;
