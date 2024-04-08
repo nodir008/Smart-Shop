@@ -8,7 +8,6 @@ const props = defineProps({
 });
 
 const basketStore = useBasketStore();
-console.log(basketStore.drawer);
 </script>
 
 <template>

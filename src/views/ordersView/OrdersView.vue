@@ -61,7 +61,7 @@ const calculateTotalItemPrice = (item) => {
                     <div class="drawer__products" v-if="orderStore.orders.length > 0">
                         <div class="drawer__products-top">
                             <p class="drawer__products-top-title">{{ $t("drawer__products-top-title") }}</p>
-                            <!-- <p class="drawer__card-time-data">{{ orderStore.deliveryTime   }}</p> -->
+                            <p class="drawer__card-time-data-2">{{ orderStore.deliveryTime   }}</p>
                         </div>
                         <div class="drawer__cards">
                             <div class="drawer__card" v-for="item in orderStore.orders" :key="item.id">

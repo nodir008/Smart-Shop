@@ -507,6 +507,10 @@
   .drawer__card-count-buy-btn {
     font-size: 16px !important;
   }
+
+  .drawer__card-time-data-2 {
+    display: block !important; 
+  }
 }
 
 @media (max-width: 540px) {

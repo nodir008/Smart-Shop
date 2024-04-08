@@ -41,7 +41,6 @@ export const useOrderStore = defineStore("order", {
     setDeliveryTime(newTime) {
       this.deliveryTime = newTime;
       localStorage.setItem("deliveryTime", newTime); 
-      console.log(newTime);
     },
   },
   persist: true,

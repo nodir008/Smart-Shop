@@ -339,3 +339,7 @@
 .order__no__product-text2 {
     font-size: 24px;
 }
+
+.drawer__card-time-data-2 {
+    display: none;
+}
