@@ -1,18 +1,35 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watchEffect  } from "vue";
 import Card from "@/components/card/Card.vue";
 import { useProductsStore } from "@/stores/productsStore";
 import Toast from '@/components/toast/Toast.vue'
 
+import { useRoute, useRouter } from "vue-router";
+
+const router = useRouter();
+const route = useRoute();
 const productsStore = useProductsStore();
-const currentPage = ref(1);
+// const currentPage = ref(1);
 const limit = ref(20);
 const isLoading = ref(false); 
-
+const currentPage = ref(1);
+productsStore.getProducts(currentPage.value)
 const onClickHandler = (page) => {
-  console.log(page);
-  productsStore.getProducts(page * 20 - 20);
+  if (page !== 1) {
+    router.push(`/?page=${page}`);
+  } else {
+    router.push(`/`);
+  }
+  // console.log(page);
+  productsStore.getProducts(page * limit.value - limit.value);
 };
+
+function notfound(){
+  if(+route.query.page > 20){
+    router.push(`/notfound`);
+  } 
+}
+notfound()
 
 const newClick = () => {
   if (limit.value < 100) {
@@ -34,7 +51,6 @@ const scrollToTop = () => {
 
 
 productsStore.getProducts();
-
 </script>
 <template>
   <div class="home__view">
