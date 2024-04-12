@@ -28,7 +28,7 @@ export const useBasketStore = defineStore("basket", {
           if (indexInDrawer !== -1) {
             this.drawer[indexInDrawer].quantity += quantity;
           } else {
-            this.drawer.push({ ...drawerToAdd, quantity, isdrawerForActive: false });
+            this.drawer.push({ ...drawerToAdd, quantity, isdrawerForActive: true });
           }
         }
       }
@@ -72,12 +72,14 @@ export const useBasketStore = defineStore("basket", {
 
     addToOrderStore() {
       const orderStore = useOrderStore();
-
-      this.drawer.forEach((item) => {
-        orderStore.orders.push({ ...item });
+    
+      const itemsToAdd = this.drawer.filter(item => item.isdrawerForActive);
+      
+      orderStore.orders.push(...itemsToAdd);
+      
+      itemsToAdd.forEach(item => {
+        this.removeDrawerProduct(item.id);
       });
-
-      this.resetDrawer();
     },
     
 

@@ -1,6 +1,6 @@
 <script setup>
 import { useBasketStore } from "@/stores/basketStore";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { useOrderStore } from "@/stores/orderStore";
 import { useOrderTimeStore } from "@/stores/orderTimeStore";
 import DeleteIcon from "@/assets/icons/DeleteIcon.vue";
@@ -14,17 +14,10 @@ const currentDateTime = ref("");
 const showOrderConfirmation = ref(false);
 const drawerTitle = ref(true);
 
-// Buyurtma sanasini yangilash funksiyasi
-onMounted(() => {
-    updateCurrentDateTime();
-    setInterval(updateCurrentDateTime, 1000);
+// Check if all items are selected
+const checkboxAdd = computed(() => {
+    return basketStore.drawer.every((item) => item.isdrawerForActive);
 });
-
-function updateCurrentDateTime() {
-    const now = new Date();
-    const formattedTime = now.toLocaleTimeString();
-    currentDateTime.value = formattedTime;
-}
 
 // Maxsulotlar sonini yangilash funksiyasi
 const updateQuantity = (item) => {
@@ -36,7 +29,7 @@ const updateQuantity = (item) => {
 const calculateTotalPrice = () => {
     let total = 0;
     basketStore.drawer.forEach((item) => {
-        if (item && item.price && item.quantity) {
+        if (item && item.price && item.quantity && item.isdrawerForActive) {
             total += item.price * item.quantity;
         }
     });
@@ -47,7 +40,7 @@ const calculateTotalPrice = () => {
 const calculateNewTotalPrice = () => {
     let total = 0;
     basketStore.drawer.forEach((item) => {
-        if (item && item.price && item.discountPercentage && item.quantity) {
+        if (item && item.price && item.discountPercentage && item.quantity && item.isdrawerForActive) {
             total += (item.price - (item.price * item.discountPercentage) / 100) * item.quantity;
         }
     });
@@ -58,7 +51,7 @@ const calculateNewTotalPrice = () => {
 const calculateNewTotalPrice2 = () => {
     let total = 0;
     basketStore.drawer.forEach((item) => {
-        if (item && item.price && item.discountPercentage && item.quantity) {
+        if (item && item.price && item.discountPercentage && item.quantity && item.isdrawerForActive) {
             total += ((item.price * item.discountPercentage) / 100) * item.quantity;
         }
     });
@@ -87,29 +80,28 @@ const calculateTotalItemPrice = (item) => {
 const addToOrder = () => {
     basketStore.drawer.forEach((item) => {
         if (item.isdrawerForActive) {
-            basketStore.addToOrderStore();
             const now = new Date();
             const deliveryTime = new Date(now.getTime() + 60000);
 
             const deliveryTimeFormatted = deliveryTime.toLocaleString();
             orderStore.setDeliveryTime(deliveryTimeFormatted);
+            console.log(deliveryTimeFormatted);
 
             setTimeout(() => {
-                basketStore.removeDrawerProduct(item.id);
+                orderStore.removeOrder();
             }, 60000);
-
-            showOrderConfirmation.value = true;
-            drawerTitle.value = false;
-            setTimeout(() => {
-                showOrderConfirmation.value = false;
-                drawerTitle.value = true;
-            }, 3000);
-        } else {
-          console.log('Xato');
+            basketStore.addToOrderStore();
         }
     });
 };
 
+const toggleCheckboxAdd = () => {
+    // Har bir element uchun isdrawerForActive qiymatini qarshilavchi qilib sozlash
+    const newValue = !checkboxAdd.value;
+    basketStore.drawer.forEach((item) => {
+        item.isdrawerForActive = newValue;
+    });
+};
 </script>
 
 <template>
@@ -123,9 +115,23 @@ const addToOrder = () => {
             <div class="drawer">
                 <div class="drawer__products" v-if="basketStore.drawer.length > 0">
                     <div class="drawer__products-top">
-                        <p class="drawer__products-top-title">
-                            {{ $t("drawer__products-top-title") }}
-                        </p>
+                        <div class="drawer__products-top__checklist">
+                            <p class="drawer__products-top-title">
+                                {{ $t("drawer__products-top-title") }}
+                            </p>
+                            <div class="checkbox-wrapper-33">
+                                <label class="checkbox">
+                                    <input class="checkbox__trigger visuallyhidden" type="checkbox" v-model="checkboxAdd" @click="toggleCheckboxAdd" />
+                                    <span class="checkbox__symbol">
+                                        <svg aria-hidden="true" class="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4 14l8 7L24 7"></path>
+                                        </svg>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        
+
                         <div class="drawer__products-top-div">
                             <p class="drawer__products-top-div-text">
                                 {{ $t("drawer__products-top-div-text") }}
@@ -138,7 +144,6 @@ const addToOrder = () => {
                     <div class="drawer__cards">
                         <div class="drawer__card" v-for="item in basketStore.drawer" :key="item.id">
                             <span class="drawer__products-span"></span>
-                            {{ basketStore.checbox }}
                             <div class="drawer__card-card">
                                 <div class="checkbox-wrapper-12">
                                     <div class="cbx">
@@ -206,7 +211,8 @@ const addToOrder = () => {
 
                             <div class="drawer__card-none">
                                 <div class="drawer__card-none-images">
-                                    <img class="drawer__card-img" :src="item.thumbnail" alt="" />
+                                    <div class="drawer__card-none-images-div">
+                                        <img class="drawer__card-img" :src="item.thumbnail" alt="" />
                                     <div class="drawer__card-none-theme">
                                         <RouterLink class="drawer__card-theme-description" :to="'/product/' + item.id">
                                             {{ item.title }}
@@ -221,6 +227,27 @@ const addToOrder = () => {
                                                 <RouterLink class="drawer__card-count-theme-vendor-rout" :to="'/category/' + item.category"> {{ item.category }}</RouterLink>
                                             </p>
                                         </div>
+                                    </div>
+                                    </div>
+                                    <div class="checkbox-wrapper-12">
+                                        <div class="cbx">
+                                            <input type="checkbox" v-model="item.isdrawerForActive" />
+    
+                                            <label for="cbx-12"></label>
+                                            <svg fill="none" viewBox="0 0 15 14" height="14" width="15">
+                                                <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                            </svg>
+                                        </div>
+    
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                            <defs>
+                                                <filter id="goo-12">
+                                                    <feGaussianBlur result="blur" stdDeviation="4" in="SourceGraphic"></feGaussianBlur>
+                                                    <feColorMatrix result="goo-12" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7" mode="matrix" in="blur"></feColorMatrix>
+                                                    <feBlend in2="goo-12" in="SourceGraphic"></feBlend>
+                                                </filter>
+                                            </defs>
+                                        </svg>
                                     </div>
                                 </div>
                                 <div class="drawer__card-none-div">

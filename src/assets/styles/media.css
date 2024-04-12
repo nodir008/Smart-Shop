@@ -533,6 +533,10 @@
   .drawer__price {
     height: 175px !important;
   }
+
+  .checkbox-wrapper-12 {
+    align-self: flex-start !important;
+  }
 }
 
 @media (max-width: 540px) {

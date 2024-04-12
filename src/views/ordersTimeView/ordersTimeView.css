@@ -77,11 +77,11 @@
 }
 
 .drawer__card-green {
-    background-color: rgba(0, 128, 0, 0.200);
+    background-color: rgba(0, 255, 0, 0.1);
 }
 
 .drawer__card-red {
-    background-color: rgba(255, 0, 0, 0.200);
+    background-color: rgba(255, 0, 0, 0.1);
 }
 
 
@@ -90,13 +90,6 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 10px;
-}
-
-.drawer__card-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
 }
 
 .drawer__card-count {
@@ -311,6 +304,7 @@
 .drawer__card-count-count-div-txt {
     font-size: 16px;
     color: rgba(54, 54, 64, 0.808);
+    font-weight: 700;
 }
 
 .no__product {
@@ -355,13 +349,6 @@
 .drawer__card-count-buy-p {
     font-size: 16px;
     padding: 3px 5px;
-    color: red;
-    font-weight: 700;
-}
-
-.drawer__card-count-buy-none {
-    font-size: 16px;
-    padding: 3px 5px;
-    color: #2E8B57;
-    font-weight: 700;
+    color: #000 ;
+    font-weight: 400;
 }
