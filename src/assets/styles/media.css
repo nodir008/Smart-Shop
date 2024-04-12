@@ -21,6 +21,7 @@
 
   .drawer__price {
     grid-column: 3 span;
+    height: 205px !important;
   }
 
   .no__favorites-text {
@@ -196,6 +197,7 @@
     background: #7000ff;
     color: #fff;
   }
+
 }
 
 @media (max-width: 768px) {
@@ -286,12 +288,12 @@
     transform: translateY(0px) !important;
     opacity: 1;
   }
-  
+
   .fixed {
     top: 10px !important;
-    right:30px !important;
+    right: 30px !important;
     width: 430px !important;
-  }  
+  }
 
   .fixed__theme-drawer {
     display: none;
@@ -309,7 +311,6 @@
   .category__cards {
     grid-template-columns: repeat(2, 1fr) !important;
   }
-
 
   .home__view-title {
     font-size: 26px !important;
@@ -509,7 +510,28 @@
   }
 
   .drawer__card-time-data-2 {
-    display: block !important; 
+    display: block !important;
+  }
+
+  .no__product-link {
+    padding: 8px 10px !important;
+  }
+
+  .drawer__price-products {
+    margin-bottom: 3px !important;
+  }
+
+  .drawer__price-text {
+    margin-bottom: 3px !important;
+  }
+
+  .drawer__price-btn {
+    margin-top: 5px !important  ;
+    padding: 7px 0 !important;
+  }
+  
+  .drawer__price {
+    height: 175px !important;
   }
 }
 
@@ -714,9 +736,9 @@
     right: 0 !important;
     width: 100% !important;
     min-height: 50px !important;
-    transform: translateY(-10px) !important;
+    transform: translateY(-30px) !important;
     transition: 0.4s !important;
-  }  
+  }
 
   .fixed.active {
     transform: translateY(0) !important;
@@ -735,11 +757,62 @@
     padding: 0 !important;
   }
 
+  .product__theme-title {
+    font-size: 24px !important;
+    margin-top: 5px !important;
+  }
+
+  .product__theme-term {
+    margin-top: 10px !important;
+    height: 40px !important;
+  }
+
+  .product__theme-none-basket {
+    margin-top: 10px !important;
+  }
+
+  .product__theme-none-basket-btns-btn {
+    height: 35px !important;
+  }
+
+  .product__theme-count-number {
+    height: 35px !important;
+  }
+
+  .product__nation-text {
+    margin: 5px 0 !important;
+  }
+
+  .product__nation-separator {
+    margin: 5px auto 5px 22px !important;
+  }
+
+  .product__nation-ul {
+    gap: 5px !important;
+  }
+
+  .product__nation-btn {
+    min-height: 40px !important;
+  }
+
+  .product__nation-title {
+    font-size: 18px !important;
+  }
+
 }
 
 @media (max-width: 370px) {
   .drawer__card-none-count-count-div-text {
-    display: none !important;
+    /* display: none !important; */
+    transform: translateY(-10px) !important;
+  }
+
+  .drawer__card-none-count-count-div-text.active {
+    transform: translateY(0) !important;
+  }
+
+  .drawer__card-none-count-div {
+    flex-direction: column;
   }
 
   .orders-title {

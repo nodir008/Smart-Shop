@@ -64,7 +64,7 @@
 .kabinet-transition-enter-from,
 .kabinet-transition-leave-to {
   transition: 0.4s;
-  transform: translateY(100%);
+  transform: translateY(-100%);
 }
 
 .bottoms__icon-drawer-span {

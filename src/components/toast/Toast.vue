@@ -20,7 +20,7 @@ const basketStore = useBasketStore();
       />
       <div class="fixed__theme">
         <div class="fixed__theme-top">
-          <h3 class="fixed__theme-title">{{ $t("fixed__theme-title") }}</h3>
+          <h3 class="fixed__theme-title">{{ $t("fixed__theme-title-2") }}</h3>
           <p class="fixed__theme-x" @click="basketStore.changeActive(false)">
             X
           </p>

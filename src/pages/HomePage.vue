@@ -25,7 +25,7 @@ const photos = [carusel1, carusel2, carusel3, carusel4, carusel5, carusel6, caru
                 :pagination="{
                     clickable: true,
                 }"
-                >
+            >
                 <SwiperSlide v-for="(photo, i) in photos" :key="i">
                     <!-- <img class="header__img" :src="`src/assets/images/${photo}`" alt="" /> -->
                     <img class="header__img" :src="photo" alt="" />
@@ -37,5 +37,7 @@ const photos = [carusel1, carusel2, carusel3, carusel4, carusel5, carusel6, caru
 </template>
 
 <style>
-.header__img {width: 100%;}
+.header__img {
+    width: 100%;
+}
 </style>

@@ -58,22 +58,10 @@
     color: #8b8e99;
 }
 
-.drawer__products-top-div-title {
-    color: #7000ff;
-    border: 1px solid #7000ff;
-    padding: 2px 6px;
-    font-size: 12px;
-}
-
 .drawer__card-img {
     width: 120px;
     height: 120px;
     object-fit: cover;
-}
-
-.drawer__card-card {
-    display: flex;
-    gap: 30px;
 }
 
 .drawer__card-theme {
@@ -320,15 +308,6 @@
     flex-direction: column;
     align-items: center;
     gap: 15px;
-}
-
-.no__product-link{
-    padding: 15px 20px;
-    background: #7000ff;
-    border-radius: 10px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 16px;
 }
 
 .order__no__product-title {

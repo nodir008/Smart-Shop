@@ -8,7 +8,7 @@ export const useBasketStore = defineStore("basket", {
     drawer: [],
     isBasketActive: false,
     imgToast: null,
-    descriptionToast: null
+    descriptionToast: null,
   }),
   actions: {
     getAddDrawerPro(id, quantity) {
@@ -28,7 +28,7 @@ export const useBasketStore = defineStore("basket", {
           if (indexInDrawer !== -1) {
             this.drawer[indexInDrawer].quantity += quantity;
           } else {
-            this.drawer.push({ ...drawerToAdd, quantity });
+            this.drawer.push({ ...drawerToAdd, quantity, isdrawerForActive: false });
           }
         }
       }
@@ -79,6 +79,7 @@ export const useBasketStore = defineStore("basket", {
 
       this.resetDrawer();
     },
+    
 
     resetDrawer() {
       this.drawer = [];
@@ -92,7 +93,6 @@ export const useBasketStore = defineStore("basket", {
         this.isBasketActive = false;
       }, 2000);
     },
-    
   },
   persist: true,
 });

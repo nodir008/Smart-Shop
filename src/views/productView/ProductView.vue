@@ -99,18 +99,6 @@ const addToBasket = () => {
     productSingleStore.product?.description,
     productSingleStore.product?.thumbnail
   );
-
-  setTimeout(() => {
-    productQuantity.value = 1;
-  }, 2000);
-};
-
-const addToBasket2 = () => {
-  const productId = productSingleStore.product?.id;
-  if (productId) {
-    basketStore.getAddDrawerPro(productId, productQuantity.value);
-    productQuantity.value = 1;
-  }
 };
 
 const addToOrder = (productId) => {
@@ -452,7 +440,7 @@ const addToOrder = (productId) => {
           </div>
           <button
             class="product__theme-none-basket-btns-btn"
-            @click="addToBasket2"
+            @click="addToBasket"
           >
             {{ $t("product__theme-btns-btn") }}
           </button>
