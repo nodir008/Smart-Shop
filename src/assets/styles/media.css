@@ -803,6 +803,27 @@
     font-size: 18px !important;
   }
 
+  .checkbox-wrapper-12 .cbx input {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  
+  .checkbox-wrapper-12 .cbx {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .checkbox-wrapper-12 .cbx label {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .checkbox-wrapper-12 .cbx svg {
+    left: 3px !important;
+    top: 3px !important;
+
+  }
+
 }
 
 @media (max-width: 370px) {
