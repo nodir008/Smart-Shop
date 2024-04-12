@@ -110,7 +110,7 @@ const calculateTotalItemPrice = (item) => {
                                 </div>
                                 <!--  -->
                                 <div class="drawer__card-none">
-                                    <div class="drawer__card-none-images">
+                                    <div class="order__card-none-images">
                                         <img class="drawer__card-img" :src="item.thumbnail" alt="" />
                                         <div class="drawer__card-none-theme">
                                             <RouterLink class="drawer__card-theme-description" :to="'/product/' + item.id">

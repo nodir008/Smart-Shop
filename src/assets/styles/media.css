@@ -498,13 +498,6 @@
     font-weight: 700;
   }
 
-  .drawer__card-count-buy-none {
-    font-size: 16px;
-    padding: 3px 5px;
-    color: #2E8B57;
-    font-weight: 700;
-  }
-
   .drawer__card-count-buy-btn {
     font-size: 16px !important;
   }
@@ -536,6 +529,35 @@
 
   .checkbox-wrapper-12 {
     align-self: flex-start !important;
+  }
+
+  .drawer__card {
+    padding: 5px ;
+  }
+
+  .drawer__card-green {
+    padding: 5px ;
+  }
+
+  .drawer__card-red {
+    padding: 5px ;
+  }
+
+  .not__found  {
+    height: 30% !important;
+  }
+
+  .glitch {
+    font-size: 130px !important;
+  }
+
+  .not__found-title {
+    font-size: 25px !important;
+  }
+
+  .not__found-text {
+    font-size: 30px !important;
+    margin-top: 5px !important;
   }
 }
 
@@ -832,9 +854,6 @@
     font-size: 16px !important;
   }
 
-  .drawer__card-count-buy-none {
-    font-size: 14px !important;
-  }
 
   .drawer__card-count-buy-p {
     font-size: 14px !important;

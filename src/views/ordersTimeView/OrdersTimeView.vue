@@ -196,7 +196,7 @@ const totalOrderSale = computed(() => {
                     'drawer__card-red': item?.cardNoneShowP,
                   }"
                 >
-                  <div class="drawer__card-none-images">
+                  <div class="order__card-none-images">
                     <img
                       class="drawer__card-img"
                       :src="item.thumbnail"
@@ -269,7 +269,7 @@ const totalOrderSale = computed(() => {
                       {{ $t("drawer__card-count-buy-btn-3") }}
                     </p>
                     <p
-                      class="drawer__card-count-buy-none"
+                      class="drawer__card-count-buy-p"
                       v-show="item?.cardNoneShowP"
                     >
                       {{ $t("drawer__card-count-buy-btn-4") }}

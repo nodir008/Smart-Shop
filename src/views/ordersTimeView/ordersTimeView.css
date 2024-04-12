@@ -307,6 +307,11 @@
     font-weight: 700;
 }
 
+.order__card-none-images {
+    display: flex;
+    gap: 10px;
+}
+
 .no__product {
     display: flex;
     flex-direction: column;
