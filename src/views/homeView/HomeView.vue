@@ -13,8 +13,6 @@ const limit = ref(20);
 const isLoading = ref(false);
 const currentPage = ref(+route.query.page || 1);
 
-productsStore.getProducts(currentPage.value * limit.value - limit.value);
-
 function onClickHandler(page) {
     if (page === 1) {
         router.push(`/`);

@@ -9,6 +9,8 @@ export const useBasketStore = defineStore("basket", {
     isBasketActive: false,
     imgToast: null,
     descriptionToast: null,
+    imgOrder: [],
+    showOrderConfirmation: false
   }),
   actions: {
     getAddDrawerPro(id, quantity) {
@@ -74,14 +76,28 @@ export const useBasketStore = defineStore("basket", {
       const orderStore = useOrderStore();
     
       const itemsToAdd = this.drawer.filter(item => item.isdrawerForActive);
-      
       orderStore.orders.push(...itemsToAdd);
-      
+    
       itemsToAdd.forEach(item => {
         this.removeDrawerProduct(item.id);
+        this.imgOrder.push(item.thumbnail)
       });
+    
+      // Set showOrderConfirmation to true
+      this.showOrderConfirmation = true;
+    
+      // Revert showOrderConfirmation to false after 5 seconds
+      setTimeout(() => {
+        this.showOrderConfirmation = false;
+      }, 4000);
+      setTimeout(() => {
+        this.imgOrder = []
+      }, 4200);
     },
     
+
+
+
 
     resetDrawer() {
       this.drawer = [];
@@ -91,6 +107,7 @@ export const useBasketStore = defineStore("basket", {
       this.isBasketActive = bool;
       this.descriptionToast = description;
       this.imgToast = thumbnail;
+      console.log(bool);
       setTimeout(() => {
         this.isBasketActive = false;
       }, 2000);

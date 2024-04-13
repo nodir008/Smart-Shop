@@ -13,28 +13,22 @@ const basketStore = useBasketStore();
 <template>
   <div class="fixed" :class="{ active: basketStore.isBasketActive }">
     <!-- <div v-for="(item, i) in basketStore.drawer" :key="i"> -->
-      <img
-        class="fixed__img"
-        :src="basketStore.imgToast"
-        alt=""
-      />
-      <div class="fixed__theme">
-        <div class="fixed__theme-top">
-          <h3 class="fixed__theme-title">{{ $t("fixed__theme-title-2") }}</h3>
-          <p class="fixed__theme-x" @click="basketStore.changeActive(false)">
-            X
-          </p>
-        </div>
-        <div class="fixed__theme-bottom">
-          <p class="fixed__theme-text">
-            {{  basketStore.descriptionToast}}
-            <span v-if="productQuantity > 1">x {{ productQuantity }}</span>
-          </p>
-          <RouterLink to="/drawer" class="fixed__theme-drawer">
-            {{ $t("fixed__theme-drawer") }}
-          </RouterLink>
-        </div>
+    <img class="fixed__img" :src="basketStore.imgToast" alt="" />
+    <div class="fixed__theme">
+      <div class="fixed__theme-top">
+        <h3 class="fixed__theme-title">{{ $t("fixed__theme-title-2") }}</h3>
+        <p class="fixed__theme-x" @click="basketStore.changeActive(false)">X</p>
       </div>
+      <div class="fixed__theme-bottom">
+        <p class="fixed__theme-text">
+          {{ basketStore.descriptionToast }}
+          <span v-if="productQuantity > 1">x {{ productQuantity }}</span>
+        </p>
+        <RouterLink to="/drawer" class="fixed__theme-drawer">
+          {{ $t("fixed__theme-drawer") }}
+        </RouterLink>
+      </div>
+    </div>
     <!-- </div> -->
   </div>
 </template>
@@ -49,18 +43,47 @@ const basketStore = useBasketStore();
   min-height: 100px;
   border: 1px solid black;
   background: #fff;
-  opacity: 0;
-  transform: translateX(100px);
-  transition: 0.5s;
+  /* opacity: 0;
+  transform: translateX(100px); */
   display: flex;
   gap: 20px;
   padding: 5px 10px;
+  animation: hide_toast 0.3s ease forwards;
 }
 
 .fixed.active {
-  opacity: 1;
-  transform: translateX(0);
+  /* opacity: 1;
+  transform: translateX(0); */
   z-index: 10;
+  animation: show_toast 0.6s ease forwards;
+  transition: 1s;
+}
+@keyframes show_toast {
+  0% {
+    transform: translateX(100%);
+  }
+  40% {
+    transform: translateX(-5%);
+  }
+  80% {
+    transform: translateX(0%);
+  }
+  100% { transform: translateX(0); }
+}
+
+@keyframes hide_toast {
+  0% {
+    transform: translateX(0%);
+  }
+  40% {
+    transform: translateX(0%);
+  }
+  80% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: translateX(calc(100% + 20px));
+  }
 }
 
 .fixed__img {
@@ -101,7 +124,7 @@ const basketStore = useBasketStore();
 .fixed__theme-drawer {
   font-size: 18px;
   font-weight: 700;
-  color: #7000ff
+  color: #7000ff;
 }
 
 .fixed__theme-text span {

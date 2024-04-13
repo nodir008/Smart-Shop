@@ -8,6 +8,7 @@ import Heart2Icon from "@/assets/icons/Heart2Icon.vue";
 import HeartIcon from "@/assets/icons/HeartIcon.vue";
 import Basket2Icon from "@/assets/icons/Basket2Icon.vue";
 import { useBasketStore } from "@/stores/basketStore";
+import Toast from "@/components/toast/Toast.vue";
 const basketStore = useBasketStore()
 
 const route = useRoute();
@@ -29,9 +30,10 @@ const handleHeartClick = (itemId) => {
   favouriteStore.getAddFavPro(itemId)
 };
 
-const toggleBasket = (itemId) => {
+const toggleBasket = (itemId, itemText, itemImg) => {
   const quantity = 1;
   basketStore.getAddDrawerPro(itemId, quantity);
+  basketStore.changeActive(true, itemText, itemImg);
 };
 
 
@@ -78,7 +80,7 @@ const scrollToTop = () => {
             </p>
             <div class="card__icons">
               <p class="card__icons-text">{{ $t('card__icons-text') }} </p>
-              <button class="card__icons-btnb" @click="toggleBasket(item.id)">
+              <button class="card__icons-btnb" @click="toggleBasket(item.id, item.description, item.thumbnail)">
                 <Basket2Icon class="card__icons-btnb-basketicon" />
               </button>
             </div>
@@ -87,6 +89,7 @@ const scrollToTop = () => {
       </div>
     </div>
   </div>
+  <Toast />
 </template>
 
 <style>

@@ -5,6 +5,7 @@ import StarIcon from "@/assets/icons/StarIcon.vue";
 import { ref } from "vue";
 import { useFavouriteStore } from "@/stores/favouriteStore";
 import { useBasketStore } from "@/stores/basketStore";
+import Toast from '@/components/toast/Toast.vue'
 const basketStore = useBasketStore()
 
 
@@ -27,10 +28,10 @@ const toggleShow = () => {
   show.value = !show.value;
 };
 
-const toggleBasket = (favouritesId) => {
+const toggleBasket = (favouritesId, favouritesText, favouritesImg ) => {
     const quantity = 1; // or any other default quantity
     basketStore.getAddDrawerPro(favouritesId, quantity);
-    // basketStore.changeActive(true)
+    basketStore.changeActive(true, favouritesText, favouritesImg)
 };
 </script>
 
@@ -71,7 +72,7 @@ const toggleBasket = (favouritesId) => {
                 </button>
                 <div class="favourite__card__icons">
                   <p class="favourite__card__icons-text">{{ $t('card__icons-text') }}</p>
-                  <button class="favourite__card__icons-btnb" @click="toggleBasket(item.id)">
+                  <button class="favourite__card__icons-btnb" @click="toggleBasket(item.id, item.description, item.thumbnail)">
                     <Basket2Icon
                       class="favourite__card__icons-btnb-basketicon"
                     />
@@ -83,4 +84,5 @@ const toggleBasket = (favouritesId) => {
       </div>
     </div>
   </div>
+  <Toast/>
 </template>
