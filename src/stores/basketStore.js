@@ -83,16 +83,14 @@ export const useBasketStore = defineStore("basket", {
         this.imgOrder.push(item.thumbnail)
       });
     
-      // Set showOrderConfirmation to true
       this.showOrderConfirmation = true;
     
-      // Revert showOrderConfirmation to false after 5 seconds
-      setTimeout(() => {
-        this.showOrderConfirmation = false;
-      }, 4000);
-      setTimeout(() => {
-        this.imgOrder = []
-      }, 4200);
+      // setTimeout(() => {
+      //   this.showOrderConfirmation = false;
+      // }, 4000);
+      // setTimeout(() => {
+      //   this.imgOrder = []
+      // }, 4200);
     },
     
 

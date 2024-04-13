@@ -63,6 +63,10 @@
   .order__price-title {
     margin-bottom: 5px !important;
   }
+  
+  .no__product-driwer {
+    right: 200px !important;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -117,6 +121,10 @@
 
   .fixed {
     top: 10px !important;
+    right: 100px !important;
+  }
+  
+  .no__product-driwer {
     right: 100px !important;
   }
 
@@ -299,7 +307,12 @@
     display: none;
   }
 
+  .no__product-driwer {
+    right: 40px !important;
+  }
+  
 }
+
 
 @media (max-width: 635px) {
   .cards {
@@ -679,6 +692,7 @@
   .orders-title {
     margin-top: 10px !important;
   }
+
 }
 
 @media (max-width: 480px) {
@@ -828,6 +842,21 @@
   .checkbox-wrapper label {
     width: 22px !important;
     height: 20px !important;
+  }
+  
+    
+  .no__product-driwer {
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    min-height: 75px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .no__product-driwer-items {
+    display: none !important;
   }
 
 }
