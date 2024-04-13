@@ -21,15 +21,15 @@ function onClickHandler(page) {
     } else {
         router.push(`/?page=${page}`);
     }
-    productsStore.getProducts(page * limit.value - limit.value, "", limit.value);  
+    productsStore.getProducts(page * limit.value - limit.value);  
 };
 
-// function notfound(){
-//   if(+route.query.page > 20){
-//     router.push(`/notfound`);
-//   }
-// }
-// notfound()
+function notfound(){
+  if(+route.query.page > 5 || +route.query.page === '' ){
+    router.push(`/notfound`);
+  }
+}
+notfound()
 
 const newClick = () => {
     if (limit.value < 100) {
@@ -49,7 +49,7 @@ const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
-productsStore.getProducts();
+productsStore.getProducts(currentPage.value * limit.value - limit.value);
 </script>
 <template>
     <div class="home__view">

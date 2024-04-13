@@ -20,7 +20,11 @@ import HeartIcon from "@/assets/icons/HeartIcon.vue";
 import BasketIcon from "@/assets/icons/BasketIcon.vue";
 import RusIcon from "@/assets/icons/RusIcon.vue";
 import UzbIcon from "@/assets/icons/UzbIcon.vue";
+import { useRoute, useRouter } from "vue-router";
 
+
+const route = useRoute();
+const router = useRouter();
 const favouriteStore = useFavouriteStore();
 const basketStore = useBasketStore();
 const productsCategories = useProductsCategories();
@@ -79,7 +83,27 @@ onBeforeUnmount(() => {
   localStorage.setItem("languageRu", languageRu.value);
   localStorage.setItem("languageUz", languageUz.value);
 });
+
+const clearSearchInput = () => {
+  searchInput.value = "";
+};
+
+watch(
+  () => route.name,
+  (newValue) => {
+    if (newValue !== 'home') {
+      clearSearchInput();
+    }
+  }
+);
+watch(searchInput, (newValue) => {
+  if (newValue !== '') {
+    router.push('/');
+  }
+});
+
 </script>
+
 
 <template>
   <nav class="nav">
@@ -87,11 +111,11 @@ onBeforeUnmount(() => {
       <div class="container">
         <p class="nav__top-1">
           <LocationIcon /> {{ $t("nav__top-1") }}
-          <a href="https://maps.app.goo.gl/2tNs8A9QYtZ47YLK9">Toshkent</a>
+          <a target="_blank"  href="https://maps.app.goo.gl/2tNs8A9QYtZ47YLK9">Toshkent</a>
         </p>
         <p class="nav__top-2">{{ $t("nav__top-2") }}</p>
         <div class="nav__top-div">
-          <RouterLink to="/orders" class="nav__top-3">{{
+          <RouterLink @click="clearSearchInput();" to="/orders" class="nav__top-3">{{
             $t("nav__top-3")
           }}</RouterLink>
           <button
@@ -118,24 +142,25 @@ onBeforeUnmount(() => {
           <span></span>
           <span></span>
         </button>
-        <RouterLink class="nav__titles-title" to="/">Smart Shop</RouterLink>
+        <RouterLink @click="clearSearchInput();" class="nav__titles-title" to="/">Smart Shop</RouterLink>
       </div>
       <div class="nav__inputs">
         <input
           v-model="searchInput"
-          type="search"
+          type="text"
           name="text"
           class="search-bar"
           :placeholder="$t('search-bar')"
         />
+        <button @click="clearSearchInput" v-if="0 < searchInput.length" class="nav__inputs-btn">X</button>
       </div>
 
       <div class="nav__pages">
-        <RouterLink class="nav__pages-user" to="/login">
+        <RouterLink @click="clearSearchInput();" class="nav__pages-user" to="/login">
           <UserIcon />
           <span class="nav__pages-span">{{ $t("nav__pages-user") }}</span>
         </RouterLink>
-        <RouterLink class="nav__pages-favourites" to="/favourite">
+        <RouterLink @click="clearSearchInput();" class="nav__pages-favourites" to="/favourite">
           <HeartIcon />
           <span class="nav__pages-span">{{ $t("nav__pages-favourites") }}</span>
           <span v-if="favouriteStore.favourites.length > 0" class="fav-count">
@@ -146,7 +171,7 @@ onBeforeUnmount(() => {
         <RouterLink
           to="/drawer"
           class="nav__pages-basket"
-          @click="openDrawer = true"
+          @click="openDrawer = true, clearSearchInput()"
         >
           <BasketIcon />
           <span class="nav__pages-span">{{ $t("nav__pages-basket") }}</span>
@@ -168,7 +193,7 @@ onBeforeUnmount(() => {
             :to="'/category/' + title"
             class="nav__category-page"
             :key="title.id"
-            @click="(show = false), categoryStore.getCategorySingle(title)"
+            @click="(show = false), categoryStore.getCategorySingle(title),  clearSearchInput()"
           >
             {{ title }}
           </RouterLink>

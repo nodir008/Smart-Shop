@@ -99,6 +99,10 @@ const addToBasket = () => {
     productSingleStore.product?.description,
     productSingleStore.product?.thumbnail
   );
+  setTimeout(() => {
+    productQuantity.value = 1;
+    showToast.value = false;
+  }, 2000);
 };
 
 const addToOrder = (productId) => {
