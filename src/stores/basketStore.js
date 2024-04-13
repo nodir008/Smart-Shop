@@ -87,10 +87,10 @@ export const useBasketStore = defineStore("basket", {
     
       setTimeout(() => {
         this.showOrderConfirmation = false;
-      }, 4000);
+      }, 3000);
       setTimeout(() => {
         this.imgOrder = []
-      }, 4200);
+      }, 3200);
     },
     
 
