@@ -1,33 +1,27 @@
 <script setup>
 import { useCategoryStore } from "@/stores/categorySingleStore";
-import { ref } from "vue";
-import { useRoute } from "vue-router";
 import { useFavouriteStore } from "@/stores/favouriteStore";
+import { useBasketStore } from "@/stores/basketStore";
+import { useRoute } from "vue-router";;
 import StarIcon from "@/assets/icons/StarIcon.vue";
 import Heart2Icon from "@/assets/icons/Heart2Icon.vue";
 import HeartIcon from "@/assets/icons/HeartIcon.vue";
 import Basket2Icon from "@/assets/icons/Basket2Icon.vue";
-import { useBasketStore } from "@/stores/basketStore";
 import Toast from "@/components/toast/Toast.vue";
-const basketStore = useBasketStore()
 
 const route = useRoute();
-const favouriteStore = useFavouriteStore()
 const categoryStore = useCategoryStore();
+const favouriteStore = useFavouriteStore();
+const basketStore = useBasketStore();
+
 categoryStore.getCategorySingle(route.params.category);
 
-const calculateFormattedPrice = (price) => {
-  return (price / 12).toFixed(0);
-};
-
-const calculateFormatted = (price, discountPercentage) => {
-  const discountedPrice = price - (price / 100) * discountPercentage;
-  return discountedPrice.toFixed(0);
-};
+const calculateFormattedPrice = (price) => (price / 12).toFixed(0);
+const calculateFormatted = (price, discountPercentage) => (price - (price / 100) * discountPercentage).toFixed(0);
 
 const handleHeartClick = (itemId) => {
-  favouriteStore.activeStates[itemId] = !favouriteStore.activeStates[itemId]
-  favouriteStore.getAddFavPro(itemId)
+  favouriteStore.activeStates[itemId] = !favouriteStore.activeStates[itemId];
+  favouriteStore.getAddFavPro(itemId);
 };
 
 const toggleBasket = (itemId, itemText, itemImg) => {
@@ -36,11 +30,8 @@ const toggleBasket = (itemId, itemText, itemImg) => {
   basketStore.changeActive(true, itemText, itemImg);
 };
 
-
-
-
 const scrollToTop = () => {
-    window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
 };
 </script>
 
@@ -53,22 +44,19 @@ const scrollToTop = () => {
           class="card"
           v-for="item in categoryStore.category"
           :key="item.id"
-          :card="item"
         >
-          <RouterLink @click="scrollToTop" :to="'/product/' + item.id"
-            ><img :src="item.thumbnail" alt=""
-          /></RouterLink>
+          <RouterLink @click="scrollToTop" :to="'/product/' + item.id">
+            <img :src="item.thumbnail" alt="" />
+          </RouterLink>
           <div class="card__theme">
             <button class="card__icons-btnh" @click="handleHeartClick(item.id)">
-              <HeartIcon class="card__icons-btnh-1" v-if="!favouriteStore.activeStates[item?.id] " />
+              <HeartIcon class="card__icons-btnh-1" v-if="!favouriteStore.activeStates[item?.id]" />
               <Heart2Icon class="card__icons-btnh-2" v-else />
             </button>
             <h3 class="card__theme-title">{{ item.title }}</h3>
             <div class="card__theme-rating-div">
               <p class="card__theme-rating"><StarIcon />{{ item.rating }}</p>
-              <span class="card__theme-sale"
-                >-{{ item.discountPercentage.toFixed(0) }}% Sale</span
-              >
+              <span class="card__theme-sale">-{{ item.discountPercentage.toFixed(0) }}% Sale</span>
             </div>
             <p class="card__theme-nation">
               {{ calculateFormattedPrice(item.price) }} $/{{ $t('card__theme-nation') }}
@@ -91,7 +79,6 @@ const scrollToTop = () => {
   </div>
   <Toast />
 </template>
-
 <style>
 .category__cards {
   display: grid;

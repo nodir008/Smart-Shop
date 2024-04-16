@@ -9,23 +9,24 @@ export const useProductsStore = defineStore('products', {
   }),
   actions: {
     async getProducts(skip = 0, keyword = "", limit = 20) {
-      try {
-        const res = await apiProducts.getProducts(skip, keyword, limit)
-        this.products = res.products
-        this.total = res.total
-      } catch (error) {
-        console.error(error);
-      }
+      const { products, total } = await this.fetchProducts(apiProducts.getProducts, skip, keyword, limit);
+      this.products = products;
+      this.total = total;
     },
     async getSearch(keyword) {
+      const { products, total } = await this.fetchProducts(apiProducts.getSearch, 0, keyword);
+      this.products = products;
+      this.total = total;
+    },
+    async fetchProducts(apiMethod, ...args) {
       try {
-        const res = await apiProducts.getSearch(keyword)
-        this.products = res.products
-        this.total = res.total
+        const res = await apiMethod(...args);
+        return { products: res.products, total: res.total };
       } catch (error) {
         console.error(error);
+        return { products: null, total: null };
       }
     },
   },
   persist: true
-})
+});

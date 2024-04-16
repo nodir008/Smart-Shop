@@ -36,18 +36,11 @@ const accordion = [
   },
 ];
 
-
 const accordionStatus = ref(Array(accordion.length).fill(false));
 
 const toggleAccordion = (index) => {
   accordionStatus.value[index] = !accordionStatus.value[index];
 };
-
-const accordionItem1 = ref(false);
-const accordionItem2 = ref(false);
-const accordionItem3 = ref(false);
-const accordionItem4 = ref(false);
-const accordionItem5 = ref(false);
 </script>
 
 

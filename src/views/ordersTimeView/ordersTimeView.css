@@ -98,15 +98,6 @@
     align-items: flex-end;
 }
 
-.drawer__card-count-count {
-    border: 1px solid rgb(54, 54, 64, 0.2);
-    border-radius: 5px;
-    display: flex;
-    padding: 5px 10px;
-    height: 35px;
-    align-items: center;
-}
-
 .drawer__card-theme-description {
     font-size: 18px;
     color: #000;

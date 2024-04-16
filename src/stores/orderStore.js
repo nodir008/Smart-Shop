@@ -11,18 +11,16 @@ export const useOrderStore = defineStore("order", {
   actions: {
     orderStoreAdd(id, quantity) {
       const productsStore = useProductsStore();
-      const ordersPro = productsStore.products?.find((item) => item.id === id);
+      const ordersPro = productsStore.products?.find(item => item.id === id);
       const categorySingle = useCategoryStore();
-      const ordersCategory = categorySingle.category?.find((item) => item.id == id);
+      const ordersCategory = categorySingle.category?.find(item => item.id == id);
 
       const orderToAdd = ordersPro || ordersCategory;
       if (orderToAdd) {
-        const indexInOrders = this.orders.findIndex((item) => item.id === id);
-        if (indexInOrders !== -1) {
-          this.orders[indexInOrders].quantity += quantity;
-        } else {
-          this.orders.push({ ...orderToAdd, quantity });
-        }
+        const indexInOrders = this.orders.findIndex(item => item.id === id);
+        indexInOrders !== -1
+          ? this.orders[indexInOrders].quantity += quantity
+          : this.orders.push({ ...orderToAdd, quantity });
       }
     },
 
@@ -32,15 +30,15 @@ export const useOrderStore = defineStore("order", {
 
     removeOrder() {
       const orderTimeStore = useOrderTimeStore();
-      this.orders.forEach((item) => {
-        orderTimeStore.ordersTime.push({...item, cardBuyShowP: false, cardNoneShowP: false, cardBuyShow: true, cardNoneShow: true, quantity: item.quantity});
+      this.orders.forEach(item => {
+        orderTimeStore.ordersTime.push({ ...item, cardBuyShowP: false, cardNoneShowP: false, cardBuyShow: true, cardNoneShow: true, quantity: item.quantity });
       });
       this.resetOrder();
     },
 
     setDeliveryTime(newTime) {
       this.deliveryTime = newTime;
-      localStorage.setItem("deliveryTime", newTime); 
+      localStorage.setItem("deliveryTime", newTime);
     },
   },
   persist: true,

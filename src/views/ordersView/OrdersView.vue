@@ -1,6 +1,5 @@
 <script setup>
 import { useOrderStore } from '@/stores/orderStore';
-import { onMounted, ref } from 'vue';
 import { useOrderTimeStore } from '@/stores/orderTimeStore';
 
 const orderTimeStore = useOrderTimeStore()
@@ -74,10 +73,10 @@ const calculateTotalItemPrice = (item) => {
                                                 {{ item.description }}
                                             </RouterLink>
                                         </div>
-                                        <div class="drawer__card-time">
+                                        <!-- <div class="drawer__card-time">
                                             <p class="drawer__card-time-text">{{ $t("drawer__card-time-text") }}</p>
                                             <p class="drawer__card-time-data">{{ orderStore.deliveryTime   }}</p>
-                                        </div>
+                                        </div> -->
                                         <div class="drawer__card-count">
                                             <div class="drawer__card-count-theme">
                                                 <p class="drawer__card-count-theme-vendor">

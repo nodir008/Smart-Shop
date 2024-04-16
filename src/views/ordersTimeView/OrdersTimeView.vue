@@ -6,38 +6,6 @@ import { computed } from "vue";
 const orderStore = useOrderStore();
 const orderTimeStore = useOrderTimeStore();
 
-const calculateNewTotalPrice = () => {
-  let total = 0;
-  orderTimeStore.ordersTime.forEach((item) => {
-    if (item && item.price && item.discountPercentage && item.quantity) {
-      total +=
-        (item.price - (item.price * item.discountPercentage) / 100) *
-        item.quantity;
-    }
-  });
-  return total.toFixed(0);
-};
-
-const calculateTotalPrice = () => {
-  let total = 0;
-  orderTimeStore.ordersTime.forEach((item) => {
-    if (item && item.price && item.quantity) {
-      total += item.price * item.quantity;
-    }
-  });
-  return total.toFixed(0);
-};
-
-const calculateNewTotalPrice2 = () => {
-  let total = 0;
-  orderTimeStore.ordersTime.forEach((item) => {
-    if (item && item.price && item.discountPercentage && item.quantity) {
-      total += ((item.price * item.discountPercentage) / 100) * item.quantity;
-    }
-  });
-  return total.toFixed(0);
-};
-
 const calculateItemPrice = (item) => {
   if (item && item.price && item.discountPercentage && item.quantity) {
     const discountedPrice =
@@ -307,9 +275,10 @@ const totalOrderSale = computed(() => {
             </h3>
             <div class="order__price-products">
               <p class="order__price-products-text">
-                {{ $t("drawer__price-products-text") }} ({{
-                  orderTimeStore.ordersTime.length
-                }}):
+                {{ $t("drawer__price-products-text") }} (
+                  <!-- {{orderTimeStore.ordersTime.length}} -->
+                  {{ orderTimeStore.total }}
+                  ):
               </p>
               <p class="order__price-products-price">
                 <!-- {{ calculateTotalPrice() }} $ -->

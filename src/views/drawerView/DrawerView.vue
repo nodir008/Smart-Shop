@@ -7,7 +7,7 @@ import DeleteIcon from "@/assets/icons/DeleteIcon.vue";
 import MinusIcon from "@/assets/icons/MinusIcon.vue";
 import PlusIcon from "@/assets/icons/PlusIcon.vue";
 import CheckIcon from "@/assets/icons/Check.vue";
-// Ma'lumotlar va funksiyalar
+
 const orderStore = useOrderStore();
 const basketStore = useBasketStore();
 const currentDateTime = ref("");
@@ -15,94 +15,65 @@ const drawerTitle = ref(true);
 
 const updateCurrentDateTime = () => {
   const now = new Date();
-  const futureTime = new Date(now.getTime() + 60000); // 1 minute interval
+  const futureTime = new Date(now.getTime() + 60000);
   currentDateTime.value = futureTime.toLocaleString();
 };
 
-// Komponent sahifaga qo'shilganda avvalgi vaqtni oladi
 onMounted(() => {
   updateCurrentDateTime();
-  // Intervalni o'rnating
-  setInterval(updateCurrentDateTime, 1000); // Har 1 sekundga bir yangilab turish
+  setInterval(updateCurrentDateTime, 1000);
 });
 
-// Check if all items are selected
 const checkboxAdd = computed(() => {
   return basketStore.drawer.every((item) => item.isdrawerForActive);
 });
 
-// Maxsulotlar sonini yangilash funksiyasi
 const updateQuantity = (item) => {
   const newQuantity = Math.max(1, item.quantity);
   basketStore.updateQuantity(item.id, newQuantity);
 };
 
-// Umumiy narxni hisoblash funksiyasi
 const calculateTotalPrice = () => {
-  let total = 0;
-  basketStore.drawer.forEach((item) => {
+  return basketStore.drawer.reduce((total, item) => {
     if (item && item.price && item.quantity && item.isdrawerForActive) {
       total += item.price * item.quantity;
     }
-  });
-  return total.toFixed(0);
+    return total;
+  }, 0).toFixed(0);
 };
 
-// Chegirma qo'llanilgan yangi umumiy narxni hisoblash funksiyasi
 const calculateNewTotalPrice = () => {
-  let total = 0;
-  basketStore.drawer.forEach((item) => {
-    if (
-      item &&
-      item.price &&
-      item.discountPercentage &&
-      item.quantity &&
-      item.isdrawerForActive
-    ) {
-      total +=
-        (item.price - (item.price * item.discountPercentage) / 100) *
-        item.quantity;
+  return basketStore.drawer.reduce((total, item) => {
+    if (item && item.price && item.discountPercentage && item.quantity && item.isdrawerForActive) {
+      total += (item.price - (item.price * item.discountPercentage) / 100) * item.quantity;
     }
-  });
-  return total.toFixed(0);
+    return total;
+  }, 0).toFixed(0);
 };
 
-// Chegirma miqdorini hisoblash funksiyasi
 const calculateNewTotalPrice2 = () => {
-  let total = 0;
-  basketStore.drawer.forEach((item) => {
-    if (
-      item &&
-      item.price &&
-      item.discountPercentage &&
-      item.quantity &&
-      item.isdrawerForActive
-    ) {
+  return basketStore.drawer.reduce((total, item) => {
+    if (item && item.price && item.discountPercentage && item.quantity && item.isdrawerForActive) {
       total += ((item.price * item.discountPercentage) / 100) * item.quantity;
     }
-  });
-  return total.toFixed(0);
+    return total;
+  }, 0).toFixed(0);
 };
 
-// Maxsulot narxini hisoblash funksiyasi
 const calculateItemPrice = (item) => {
   if (item && item.price && item.discountPercentage && item.quantity) {
-    const discountedPrice =
-      item.price - (item.price * item.discountPercentage) / 100;
+    const discountedPrice = item.price - (item.price * item.discountPercentage) / 100;
     return (discountedPrice * item.quantity).toFixed(0);
   }
   return "0";
 };
 
-// Maxsulotlar umumiy narxini hisoblash funksiyasi
 const calculateTotalItemPrice = (item) => {
   if (item && item.price && item.quantity) {
     return (item.price * item.quantity).toFixed(0);
   }
   return "0";
 };
-
-// Buyurtmaga qo'shish funksiyasi
 
 const addToOrder = () => {
   basketStore.drawer.forEach((item) => {
@@ -113,7 +84,6 @@ const addToOrder = () => {
 
       const deliveryTimeFormatted = deliveryTime.toLocaleString();
       orderStore.setDeliveryTime(deliveryTimeFormatted);
-      console.log(deliveryTimeFormatted);
 
       setTimeout(() => {
         orderStore.removeOrder();
@@ -121,13 +91,9 @@ const addToOrder = () => {
       basketStore.addToOrderStore();
     }
   });
-//   setTimeout(() => {
-//     basketStore.showOrderConfirmation = false; // 5 soniyadan keyin showOrderConfirmation false bo'lishi
-//   }, 5000);
 };
 
 const toggleCheckboxAdd = () => {
-  // Har bir element uchun isdrawerForActive qiymatini qarshilavchi qilib sozlash
   const newValue = !checkboxAdd.value;
   basketStore.drawer.forEach((item) => {
     item.isdrawerForActive = newValue;
@@ -138,13 +104,11 @@ const isAllItemsInactive = computed(() => {
   return basketStore.drawer.every((item) => !item.isdrawerForActive);
 });
 
-// drawer__price-products-text ga nechta item.isdrawerForActive true bo'lsa, shu miqdorni ko'rsatish
 const activeItemCount = computed(() => {
   return basketStore.drawer.filter(item => item.isdrawerForActive).length;
 });
-
-
 </script>
+
 
 <template>
   <div class="drawer-div">

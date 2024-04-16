@@ -141,7 +141,7 @@ const addToOrder = (productId) => {
       orderStore.orders.forEach((item) => {
         orderStore.removeOrder(item.id);
       });
-    }, 60000);
+    }, 1000);
   }
 };
 </script>

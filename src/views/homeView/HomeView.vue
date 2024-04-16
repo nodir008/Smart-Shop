@@ -3,7 +3,6 @@ import { ref, watchEffect } from "vue";
 import Card from "@/components/card/Card.vue";
 import { useProductsStore } from "@/stores/productsStore";
 import Toast from "@/components/toast/Toast.vue";
-
 import { useRoute, useRouter } from "vue-router";
 
 const router = useRouter();
@@ -14,11 +13,7 @@ const isLoading = ref(false);
 const currentPage = ref(+route.query.page || 1);
 
 function onClickHandler(page) {
-    if (page === 1) {
-        router.push(`/`);
-    } else {
-        router.push(`/?page=${page}`);
-    }
+    router.push(page === 1 ? "/" : `/?page=${page}`);
     productsStore.getProducts(page * limit.value - limit.value);  
 };
 
@@ -27,7 +22,7 @@ function notfound(){
     router.push(`/notfound`);
   }
 }
-notfound()
+notfound();
 
 const newClick = () => {
     if (limit.value < 100) {
@@ -47,8 +42,11 @@ const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
-productsStore.getProducts(currentPage.value * limit.value - limit.value);
+watchEffect(() => {
+    productsStore.getProducts(currentPage.value * limit.value - limit.value);
+});
 </script>
+
 <template>
     <div class="home__view">
         <div class="container">

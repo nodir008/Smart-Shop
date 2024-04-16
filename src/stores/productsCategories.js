@@ -3,7 +3,7 @@ import apiProducts from "@/helpers/api";
 
 export const useProductsCategories = defineStore("productsCategories", {
   state: () => ({
-    categorie: null,
+    categorie: null, 
   }),
   actions: {
     async getCategories() {

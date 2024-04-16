@@ -8,8 +8,7 @@ export const useCategoryStore = defineStore("categorySingle", {
   actions: {
     async getCategorySingle(title) {
       try {
-        const res = await apiProducts.getCategorySingle(title);
-        this.category = res.products.map(item => ({...item, category: title}));
+        this.category = (await apiProducts.getCategorySingle(title)).products.map(item => ({ ...item, category: title }));
       } catch (error) {
         console.error(error);
       }

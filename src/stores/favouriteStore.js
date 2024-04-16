@@ -11,34 +11,27 @@ export const useFavouriteStore = defineStore("favourite", {
   actions: {
     getAddFavPro(id) {
       const productsStore = useProductsStore();
-      if (productsStore.products) {
-        const favPro = productsStore.products.find((item) => item.id == id);
-        const categorySingle = useCategoryStore();
-        const favCategory = categorySingle.category?.find((item) => item.id == id);
-        const indexInFavourites = this.favourites.findIndex((item) => item.id === id);
-        const favIdIndex = this.favIds?.findIndex((item) => item == id);
+      const favPro = productsStore.products?.find(item => item.id == id);
+      const categorySingle = useCategoryStore();
+      const favCategory = categorySingle.category?.find(item => item.id == id);
+      const indexInFavourites = this.favourites.findIndex(item => item.id === id);
+      const favIdIndex = this.favIds?.findIndex(item => item == id);
 
-        if (indexInFavourites !== -1) {
-          this.favourites.splice(indexInFavourites, 1);
-          this.favIds.splice(favIdIndex, 1);
-          this.setActiveState(id, false);
-        } else {
-          this.favIds.push(id);
-          this.setActiveState(id, true);
-          
-          if (favPro) {
-            this.favourites.push(favPro);
-          } else if (favCategory) {
-            this.favourites.push(favCategory);
-            this.setActiveState(id, true);
-          }
-        }
+      if (indexInFavourites !== -1) {
+        this.favourites.splice(indexInFavourites, 1);
+        this.favIds.splice(favIdIndex, 1);
+        this.setActiveState(id, false);
+      } else {
+        this.favIds.push(id);
+        this.setActiveState(id, true);
+        this.favourites.push(favPro || favCategory);
+        if (favCategory) this.setActiveState(id, true);
       }
       this.saveToLocalStorage();
     },
 
     removeFavProduct(id) {
-      const indexToRemove = this.favourites.findIndex((item) => item.id === id);
+      const indexToRemove = this.favourites.findIndex(item => item.id === id);
       if (indexToRemove !== -1) {
         this.favourites.splice(indexToRemove, 1);
         this.setActiveState(id, false);
@@ -56,14 +49,8 @@ export const useFavouriteStore = defineStore("favourite", {
     },
 
     loadFromLocalStorage() {
-      const storedFavourites = localStorage.getItem("favourites");
-      const storedActiveStates = localStorage.getItem("activeStates");
-      if (storedFavourites) {
-        this.favourites = JSON.parse(storedFavourites);
-      }
-      if (storedActiveStates) {
-        this.activeStates = JSON.parse(storedActiveStates);
-      }
+      this.favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+      this.activeStates = JSON.parse(localStorage.getItem("activeStates")) || {};
     },
   },
   persist: true

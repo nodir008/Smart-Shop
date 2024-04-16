@@ -3,6 +3,7 @@ import { useCategoryStore } from "./categorySingleStore";
 import { useProductsStore } from "./productsStore";
 import { useOrderStore } from "./orderStore";
 
+
 export const useBasketStore = defineStore("basket", {
   state: () => ({
     drawer: [],
@@ -14,88 +15,54 @@ export const useBasketStore = defineStore("basket", {
   }),
   actions: {
     getAddDrawerPro(id, quantity) {
-      const productsStore = useProductsStore();
-      if (productsStore.products) {
-        const drawerItem = productsStore.products.find(
-          (item) => item.id === id
-        );
-        const categorySingle = useCategoryStore();
-        const drawerCategory = categorySingle.category?.find(
-          (item) => item.id == id
-        );
-
-        const drawerToAdd = drawerItem || drawerCategory;
-        if (drawerToAdd) {
-          const indexInDrawer = this.drawer.findIndex((item) => item.id === id);
-          if (indexInDrawer !== -1) {
-            this.drawer[indexInDrawer].quantity += quantity;
-          } else {
-            this.drawer.push({ ...drawerToAdd, quantity, isdrawerForActive: true });
-          }
-        }
+      const useCategory = useCategoryStore();
+      const useProducts = useProductsStore();
+      const drawerItem = useProducts.products.find(item => item.id === id);
+      const drawerCategory = useCategory.category?.find(item => item.id == id);
+      const drawerToAdd = drawerItem || drawerCategory;
+      if (drawerToAdd) {
+        const indexInDrawer = this.drawer.findIndex(item => item.id === id);
+        indexInDrawer !== -1
+          ? this.drawer[indexInDrawer].quantity += quantity
+          : this.drawer.push({ ...drawerToAdd, quantity, isdrawerForActive: true });
       }
     },
 
     removeDrawerProduct(id) {
-      const indexToRemove = this.drawer.findIndex((item) => item.id === id);
-      if (indexToRemove !== -1) {
-        this.drawer.splice(indexToRemove, 1);
-      }
+      const indexToRemove = this.drawer.findIndex(item => item.id === id);
+      indexToRemove !== -1 && this.drawer.splice(indexToRemove, 1);
     },
 
     updateQuantity(id, quantity) {
-      const productIndex = this.drawer.findIndex((item) => item.id === id);
-      if (productIndex !== -1) {
-        if (quantity < 1000) {
-          this.drawer[productIndex].quantity = quantity;
-        } else {
-          this.drawer[productIndex].quantity = 999;
-        }
-      }
+      const productIndex = this.drawer.findIndex(item => item.id === id);
+      if (productIndex !== -1)
+        this.drawer[productIndex].quantity = Math.min(quantity, 999);
     },
 
     incrementQuantity(id) {
-      const productIndex = this.drawer.findIndex((item) => item.id === id);
-      if (productIndex !== -1) {
-        if (this.drawer[productIndex].quantity < 999) {
-          this.drawer[productIndex].quantity++;
-        } else {
-          this.drawer[productIndex].quantity = 1;
-        }
-      }
+      const productIndex = this.drawer.findIndex(item => item.id === id);
+      if (productIndex !== -1)
+        this.drawer[productIndex].quantity = Math.min(this.drawer[productIndex].quantity + 1, 999);
     },
 
     decrementQuantity(id) {
-      const productIndex = this.drawer.findIndex((item) => item.id === id);
-      if (productIndex !== -1 && this.drawer[productIndex].quantity > 1) {
+      const productIndex = this.drawer.findIndex(item => item.id === id);
+      if (productIndex !== -1 && this.drawer[productIndex].quantity > 1)
         this.drawer[productIndex].quantity--;
-      }
     },
 
     addToOrderStore() {
-      const orderStore = useOrderStore();
-    
+      const useOrder = useOrderStore();
       const itemsToAdd = this.drawer.filter(item => item.isdrawerForActive);
-      orderStore.orders.push(...itemsToAdd);
-    
+      useOrder.orders.push(...itemsToAdd);
       itemsToAdd.forEach(item => {
         this.removeDrawerProduct(item.id);
-        this.imgOrder.push(item.thumbnail)
+        this.imgOrder.push(item.thumbnail);
       });
-    
       this.showOrderConfirmation = true;
-    
-      setTimeout(() => {
-        this.showOrderConfirmation = false;
-      }, 3000);
-      setTimeout(() => {
-        this.imgOrder = []
-      }, 3200);
+      setTimeout(() => { this.showOrderConfirmation = false; }, 3000);
+      setTimeout(() => { this.imgOrder = []; }, 3200);
     },
-    
-
-
-
 
     resetDrawer() {
       this.drawer = [];
@@ -105,10 +72,12 @@ export const useBasketStore = defineStore("basket", {
       this.isBasketActive = bool;
       this.descriptionToast = description;
       this.imgToast = thumbnail;
-      console.log(bool);
-      setTimeout(() => {
-        this.isBasketActive = false;
-      }, 2000);
+      setTimeout(() => { this.isBasketActive = false; }, 2000);
+    },
+
+    toast(title, thumbnail) {
+      this.descriptionToast = title;
+      this.imgToast = thumbnail;
     },
   },
   persist: true,
