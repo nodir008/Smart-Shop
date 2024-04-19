@@ -141,7 +141,7 @@ const addToOrder = (productId) => {
       orderStore.orders.forEach((item) => {
         orderStore.removeOrder(item.id);
       });
-    }, 1000);
+    }, 60000);
   }
 };
 </script>
@@ -159,7 +159,7 @@ const addToOrder = (productId) => {
           :freeMode="true"
           :watchSlidesProgress="true"
           :modules="modules"
-          class="mySwiper"
+          class="mySwiper-vertikal"
         >
           <swiper-slide
             imgper-slide
@@ -589,6 +589,7 @@ const addToOrder = (productId) => {
         </p>
         <p class="fixed__theme-text" v-else>
           {{ productSingleStore.product?.description }}
+
           <span>x {{ productQuantity }} </span>
         </p>
         <!-- <RouterLink to="/orders" class="product__theme-toast-orders">Buyurtmalarimga otish</RouterLink> -->
@@ -596,3 +597,6 @@ const addToOrder = (productId) => {
     </div>
   </div>
 </template>
+
+<style scoped>
+</style>

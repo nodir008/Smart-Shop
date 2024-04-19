@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "../pages/HomePage.vue";
 import { useProductsStore } from "@/stores/productsStore";
 import { useProductsCategories } from "@/stores/productsCategories";
+import { useCategoryStore } from "@/stores/categorySingleStore";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,72 +20,70 @@ const router = createRouter({
         const productsStore = useProductsStore();
         productsStore.getProducts(0, "", 100)
         const exists = productsStore.products?.find(item => item.id == to.params.id)
-        // const exists = productsStore?.total >=  to.params.id  && to.params.id > 0;
-        console.log(productsStore?.total >=  to.params.id);
-        if(!exists) {
-        return {
-          name: "NotFound",
-          params: { pathMatch: to.path.split("/").slice(1) },
-          query: to.query,
-          hash: to.hash,
-        };
-      }
+        if (!exists.id) {
+          return {
+            name: "NotFound",
+            params: { pathMatch: to.path.split("/").slice(1) },
+            query: to.query,
+            hash: to.hash,
+          };
+        }
+      },
     },
+    {
+      path: "/login",
+      name: "login",
+      component: () => import("../pages/LoginPage.vue"),
     },
-  {
-    path: "/login",
-    name: "login",
-    component: () => import("../pages/LoginPage.vue"),
-  },
-  {
-    path: "/favourite/",
-    name: "favourite",
-    component: () => import("../pages/FavouritePage.vue"),
-  },
-  {
-    path: "/drawer",
-    name: "drawer",
-    component: () => import("../pages/DrawerPage.vue"),
-  },
-  {
-    path: "/category/:category",
-    name: "category",
-    component: () => import("../pages/CategoryPage.vue"),
-    beforeEnter(to, from) {
-      const productsCategories = useProductsCategories();
-      const exists = productsCategories.categorie.includes(
-        to.params.category
-      );
-      if (!exists) {
-        return {
-          name: "NotFound",
-          params: { pathMatch: to.path.split("/").slice(1) },
-          query: to.query,
-          hash: to.hash,
-        };
-      }
+    {
+      path: "/favourite/",
+      name: "favourite",
+      component: () => import("../pages/FavouritePage.vue"),
     },
-  },
-  {
-    path: "/:pathMatch(.*)*",
-    name: "NotFound",
-    component: () => import("../pages/NotFoundPage.vue"),
-  },
-  {
-    path: "/orders",
-    name: "orders",
-    component: () => import("../pages/OrdersPage.vue"),
-  },
-  {
-    path: "/sign-up",
-    name: "sign-up",
-    component: () => import("../pages/SignUpPage.vue"),
-  },
-  {
-    path: "/installment",
-    name: "installment",
-    component: () => import("../pages/InstallmentPage.vue"),
-  },
+    {
+      path: "/drawer",
+      name: "drawer",
+      component: () => import("../pages/DrawerPage.vue"),
+    },
+    {
+      path: "/category/:category",
+      name: "category",
+      component: () => import("../pages/CategoryPage.vue"),
+      beforeEnter(to, from) {
+        const productsCategories = useProductsCategories();
+        const exists = productsCategories.categorie.includes(
+          to.params.category
+        );
+        if (!exists) {
+          return {
+            name: "NotFound",
+            params: { pathMatch: to.path.split("/").slice(1) },
+            query: to.query,
+            hash: to.hash,
+          };
+        }
+      },
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "NotFound",
+      component: () => import("../pages/NotFoundPage.vue"),
+    },
+    {
+      path: "/orders",
+      name: "orders",
+      component: () => import("../pages/OrdersPage.vue"),
+    },
+    {
+      path: "/sign-up",
+      name: "sign-up",
+      component: () => import("../pages/SignUpPage.vue"),
+    },
+    {
+      path: "/installment",
+      name: "installment",
+      component: () => import("../pages/InstallmentPage.vue"),
+    },
   ],
 });
 

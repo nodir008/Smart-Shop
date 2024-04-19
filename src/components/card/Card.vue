@@ -37,11 +37,18 @@ const handleHeartClick = () => {
   favouriteStore.getAddFavPro(props.card.id);
 };
 
-const ac = 'salom'
+// Define a set to keep track of product IDs for which toast message has been shown
+const toastShownProducts = new Set();
 
 const toggleBasket = (til) => {
   const quantity = 1;
   basketStore.getAddDrawerPro(props.card.id, quantity);
+  // Check if the toast message has already been shown for this product
+  if (toastShownProducts.has(props.card.id)) {
+    // If yes, return without doing anything
+    return;
+  }
+
   console.log(props.card.id);
   // basketStore.changeActive(true, props.card.title, props.card.thumbnail);
   basketStore.toast(props.card.title, props.card.thumbnail);
@@ -54,14 +61,22 @@ const toggleBasket = (til) => {
     // "pauseOnFocusLoss": false,
     "autoClose": 1000,
     "hideProgressBar": true,
-    "dangerouslyHTMLString": true
+    "dangerouslyHTMLString": true,
+    "limit": 5
   });
+
+  // Add the product ID to the set to mark that the toast message has been shown for this product
+  toastShownProducts.add(props.card.id);
+
+  // Clear the toastShownProducts set after showing toast for the current product
+  setTimeout(() => {
+    toastShownProducts.delete(props.card.id);
+  }, 5000); 
 };
 
 
-console.log(ac);
 
-const scrollToTop = () => {
+const scrollToTop = (cardId) => {
   window.scrollTo(0, 0);
 };
 
@@ -69,7 +84,7 @@ const scrollToTop = () => {
 
 <template>
   <div class="card">
-    <RouterLink @click="scrollToTop" :to="'/product/' + card.id"><img :src="card.thumbnail" alt="" /></RouterLink>
+    <RouterLink @click="scrollToTop(card.id)" :to="'/product/' + card.id"><img :src="card.thumbnail" alt="" /></RouterLink>
     <div class="card__theme">
       <h3 class="card__theme-title">{{ card.title }}</h3>
       <div class="card__theme-rating-div">
