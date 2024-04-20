@@ -151,15 +151,15 @@ const addToOrder = (productId) => {
     <div class="container">
       <div class="product__images">
         <swiper
+          v-if="productSingleStore.product?.images.length > 1"
           @swiper="setThumbsSwiper"
-          :loop="true"
           :grabCursor="true"
           :spaceBetween="1"
-          :slidesPerView="3"
+          :slidesPerView="productSingleStore.product?.images.length"
           :freeMode="true"
           :watchSlidesProgress="true"
           :modules="modules"
-          class="mySwiper-vertikal"
+          class="mySwiper"
         >
           <swiper-slide
             imgper-slide
@@ -173,13 +173,13 @@ const addToOrder = (productId) => {
             '--swiper-pagination-color': '#fff',
             '--swiper-navigation-color': 'grey',
           }"
-          :loop="true"
           :spaceBetween="10"
           :navigation="true"
           :thumbs="{ swiper: thumbsSwiper }"
           :modules="modules"
           :grabCursor="true"
           class="mySwiper2"
+          :class="{active: productSingleStore.product?.images.length == 1}"
         >
           <swiper-slide
             v-for="(image, i) in productSingleStore.product?.images"

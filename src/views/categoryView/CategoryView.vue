@@ -7,7 +7,9 @@ import StarIcon from "@/assets/icons/StarIcon.vue";
 import Heart2Icon from "@/assets/icons/Heart2Icon.vue";
 import HeartIcon from "@/assets/icons/HeartIcon.vue";
 import Basket2Icon from "@/assets/icons/Basket2Icon.vue";
-import Toast from "@/components/toast/Toast.vue";
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
+
 
 const route = useRoute();
 const categoryStore = useCategoryStore();
@@ -24,11 +26,35 @@ const handleHeartClick = (itemId) => {
   favouriteStore.getAddFavPro(itemId);
 };
 
-const toggleBasket = (itemId, itemText, itemImg) => {
+const toastShownProducts = new Set();
+
+const toggleBasket = (til, itemId, itemText, itemImg) => {
   const quantity = 1;
   basketStore.getAddDrawerPro(itemId, quantity);
-  basketStore.changeActive(true, itemText, itemImg);
+  if (toastShownProducts.has(itemId)) {
+    return;
+  }
+
+  basketStore.toast(itemText, itemImg);
+
+  const toastMessage = `<h3 class="toast-title">${til}</h3><div class="toast-description"><img class="toast-image" src="${basketStore.imgToast}" alt="Product Image" /> ${basketStore.descriptionToast}</div> `;
+  toast(toastMessage, {
+    "theme": "auto",
+    "type": "default",
+    "closeOnClick": false,
+    "autoClose": 1000,
+    "hideProgressBar": true,
+    "dangerouslyHTMLString": true,
+    "limit": 5
+  });
+  
+  toastShownProducts.add(itemId);
+  
+  setTimeout(() => {
+    toastShownProducts.delete(itemId);
+  }, 3000); 
 };
+
 
 const scrollToTop = () => {
   window.scrollTo(0, 0);
@@ -68,7 +94,7 @@ const scrollToTop = () => {
             </p>
             <div class="card__icons">
               <p class="card__icons-text">{{ $t('card__icons-text') }} </p>
-              <button class="card__icons-btnb" @click="toggleBasket(item.id, item.description, item.thumbnail)">
+              <button class="card__icons-btnb" @click="toggleBasket($t('fixed__theme-title-2'), item.id, item.title, item.thumbnail)">
                 <Basket2Icon class="card__icons-btnb-basketicon" />
               </button>
             </div>
@@ -77,7 +103,6 @@ const scrollToTop = () => {
       </div>
     </div>
   </div>
-  <Toast />
 </template>
 <style>
 .category__cards {

@@ -33,7 +33,7 @@ export const useOrderStore = defineStore("order", {
       this.orders.forEach(item => {
         orderTimeStore.ordersTime.push({ ...item, cardBuyShowP: false, cardNoneShowP: false, cardBuyShow: true, cardNoneShow: true, quantity: item.quantity });
       });
-      this.resetOrder();
+      this.orders = [];
     },
 
     setDeliveryTime(newTime) {

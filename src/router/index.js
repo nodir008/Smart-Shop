@@ -16,20 +16,25 @@ const router = createRouter({
       path: "/product/:id",
       name: "product",
       component: () => import("../pages/ProductPage.vue"),
-      beforeEnter(to, from) {
+      beforeEnter(to, from, next) {
         const productsStore = useProductsStore();
         productsStore.getProducts(0, "", 100)
-        const exists = productsStore.products?.find(item => item.id == to.params.id)
-        if (!exists.id) {
-          return {
-            name: "NotFound",
-            params: { pathMatch: to.path.split("/").slice(1) },
-            query: to.query,
-            hash: to.hash,
-          };
-        }
-      },
+          .then(() => {
+            const exists = productsStore.products?.find(item => item.id == to.params.id);
+            if (!exists || exists.id < to.params.id) {
+              next({
+                name: "NotFound",
+                params: { pathMatch: to.path.split("/").slice(1) },
+                query: to.query,
+                hash: to.hash,
+              });
+            } else {
+              next();
+            }
+         })
+      }
     },
+
     {
       path: "/login",
       name: "login",

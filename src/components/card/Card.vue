@@ -13,7 +13,6 @@ import 'vue3-toastify/dist/index.css';
 
 const basketStore = useBasketStore();
 const favouriteStore = useFavouriteStore();
-// const addToBasketMessage = $t("fixed__theme-title-2");
 const props = defineProps({
   card: {
     type: Object,
@@ -36,21 +35,15 @@ const handleHeartClick = () => {
     !favouriteStore.activeStates[props.card.id];
   favouriteStore.getAddFavPro(props.card.id);
 };
-
-// Define a set to keep track of product IDs for which toast message has been shown
 const toastShownProducts = new Set();
 
 const toggleBasket = (til) => {
   const quantity = 1;
   basketStore.getAddDrawerPro(props.card.id, quantity);
-  // Check if the toast message has already been shown for this product
   if (toastShownProducts.has(props.card.id)) {
-    // If yes, return without doing anything
     return;
   }
-
-  console.log(props.card.id);
-  // basketStore.changeActive(true, props.card.title, props.card.thumbnail);
+  
   basketStore.toast(props.card.title, props.card.thumbnail);
 
   const toastMessage = `<h3 class="toast-title">${til}</h3><div class="toast-description"><img class="toast-image" src="${basketStore.imgToast}" alt="Product Image" /> ${basketStore.descriptionToast}</div> `;
@@ -65,13 +58,11 @@ const toggleBasket = (til) => {
     "limit": 5
   });
 
-  // Add the product ID to the set to mark that the toast message has been shown for this product
   toastShownProducts.add(props.card.id);
 
-  // Clear the toastShownProducts set after showing toast for the current product
   setTimeout(() => {
     toastShownProducts.delete(props.card.id);
-  }, 5000); 
+  }, 3000); 
 };
 
 

@@ -26,7 +26,6 @@ const toggleBasket = (favouritesId, favouritesText, favouritesImg, til) => {
     return;
   }
 
-  console.log(favouritesId);
   basketStore.toast(favouritesText, favouritesImg);
   const toastMessage = `<h3 class="toast-title">${til}</h3><div class="toast-description"><img class="toast-image" src="${basketStore.imgToast}" alt="Product Image" /> ${basketStore.descriptionToast}</div> `;
   toast(toastMessage, {
