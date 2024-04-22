@@ -1,6 +1,6 @@
 <script setup>
 import { createI18n } from 'vue-i18n'
-import { ref, defineProps, watch } from "vue";
+import { ref, defineProps, watch, onMounted } from "vue";
 import { useFavouriteStore } from "@/stores/favouriteStore";
 import { useBasketStore } from "@/stores/basketStore";
 import StarIcon from "@/assets/icons/StarIcon.vue";
@@ -10,7 +10,9 @@ import HeartIcon from "@/assets/icons/HeartIcon.vue";
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
-
+onMounted(() => {
+  window.scrollTo(0, 0);
+});
 const basketStore = useBasketStore();
 const favouriteStore = useFavouriteStore();
 const props = defineProps({
@@ -68,8 +70,8 @@ const toggleBasket = (til) => {
 
 
 const scrollToTop = (cardId) => {
-  window.scrollTo(0, 0);
-};
+ // window.scrollTo(0, 0);
+} 
 
 </script>
 
