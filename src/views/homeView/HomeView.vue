@@ -2,7 +2,6 @@
 import { ref, watchEffect } from "vue";
 import Card from "@/components/card/Card.vue";
 import { useProductsStore } from "@/stores/productsStore";
-import Toast from "@/components/toast/Toast.vue";
 import { useRoute, useRouter } from "vue-router";
 
 const router = useRouter();
@@ -90,6 +89,5 @@ watchEffect(() => {
                 </button>
             </div>
         </div>
-        <Toast />
     </div>
 </template>

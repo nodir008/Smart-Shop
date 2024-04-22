@@ -34,8 +34,8 @@ const productsStore = useProductsStore();
 const categoryStore = useCategoryStore();
 
 const show = ref(false);
-const languageRu = ref(true);
-const languageUz = ref(false);
+const languageRu = ref(false);
+const languageUz = ref(true);
 
 const toggleShow = () => {
   show.value = !show.value;
@@ -49,13 +49,13 @@ const test = (lang) => {
   if (lang == "UZ") {
     languageRu.value = true;
     languageUz.value = false;
-    i18n.global.locale = "UZ";
-    localStorage.setItem("language", "UZ");
+    i18n.global.locale = "RU";
+    localStorage.setItem("language", "RU");
   } else if (lang == "RU") {
     languageUz.value = true;
     languageRu.value = false;
-    i18n.global.locale = "RU";
-    localStorage.setItem("language", "RU");
+    i18n.global.locale = "UZ";
+    localStorage.setItem("language", "UZ");
   }
 
   setTimeout(() => {

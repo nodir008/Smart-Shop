@@ -107,6 +107,9 @@ const isAllItemsInactive = computed(() => {
 const activeItemCount = computed(() => {
   return basketStore.drawer.filter(item => item.isdrawerForActive).length;
 });
+
+
+
 </script>
 
 
@@ -252,7 +255,8 @@ const activeItemCount = computed(() => {
                           class="drawer__card-count-count-btn"
                           @click="basketStore.incrementQuantity(item.id)"
                         >
-                          <PlusIcon class="drawer__card-count-count-btn-plus" />
+                        <span class="tooltiptext" :class="{active: item.quantity == item.stock}"> {{ $t("productSingleStore__product-stock-laungage") }} {{ item.quantity }} {{ $t("product__theme-count-text-2") }}</span>
+                          <PlusIcon class="drawer__card-count-count-btn-plus" :class="{active: item.quantity == item.stock}" />
                         </button>
                       </div>
                       <p
@@ -344,12 +348,12 @@ const activeItemCount = computed(() => {
                         class="drawer__card-count-count-btn"
                         @click="basketStore.incrementQuantity(item.id)"
                       >
-                        <PlusIcon class="drawer__card-count-count-btn-plus" />
+                        <PlusIcon class="drawer__card-count-count-btn-plus" :class="{active: item.quantity == item.stock}"  />
                       </button>
                     </div>
                     <p
                       class="drawer__card-none-count-count-div-text"
-                      :class="{ active: item.quantity >= 2 }"
+                      :class="{ active: item.quantity > 1 }"
                     >
                       {{
                         (

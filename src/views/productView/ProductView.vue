@@ -59,6 +59,7 @@ const decreaseQuantity = () => {
     productQuantity.value--;
   }
 };
+
 watchEffect(() => {
   if (
     0 > productQuantity.value ||
@@ -96,6 +97,10 @@ const toggleLoader = () => {
 };
 
 const addToBasket = () => {
+  if (productQuantity.value <= 0 || productQuantity.value === null) {
+    alert("Mahsulot miqdori 0 ga teng!");
+    return;
+  }
   const productId = productSingleStore.product?.id;
   if (productId) {
     basketStore.getAddDrawerPro(productId, productQuantity.value);
@@ -112,6 +117,10 @@ const addToBasket = () => {
 };
 
 const addToOrder = (productId) => {
+  if (productQuantity.value <= 0 || productQuantity.value === null) {
+    alert("Mahsulot miqdori 0 ga teng!");
+    return;
+  }
   if (productId === productSingleStore.product?.id) {
     const now = new Date();
     const deliveryTime = new Date(now.getTime() + 60000);
@@ -278,7 +287,7 @@ const addToOrder = (productId) => {
               class="product__theme-count-number-b"
               @click="increaseQuantity"
             >
-            <span class="tooltiptext" :class="{active: productQuantity === productSingleStore.product?.stock}"> {{ $t("productSingleStore__product-stock-laungage") }} {{ productSingleStore.product?.stock }} {{ $t("productSingleStore__product-stock-laungage-2") }}</span>
+            <span class="tooltiptext" :class="{active: productQuantity === productSingleStore.product?.stock}"> {{ $t("productSingleStore__product-stock-laungage") }} {{ productSingleStore.product?.stock }} {{ $t("product__theme-count-text-2") }}</span>
               <PlusIcon
                 class="product__theme-count-number-b-icon2"
                 :class="{

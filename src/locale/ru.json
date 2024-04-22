@@ -52,6 +52,7 @@
     "product__theme-btns-btn-18": "Купить в 1 клик",
     "drawer-title": "Ваша корзина,",
     "drawer-span": "товар",
+    "product__theme-count-text-2": "шт",
     "drawer__products-top-title": "Все товары",
     "drawer__products-top-div-text": "Срок поставки:",
     "drawer__products-top-div-title": "( 1 минута )",
@@ -156,6 +157,5 @@
     "drawer__card-count-buy-btn-2": "  Отправить его обратно  ",
     "drawer__card-count-buy-btn-3": "  Принял  ",
     "drawer__card-count-buy-btn-4": "Отправили обратно",
-    "productSingleStore__product-stock-laungage": "В наличии только",
-    "productSingleStore__product-stock-laungage-2": "шт"
+    "productSingleStore__product-stock-laungage": "В наличии только"
 }
