@@ -40,7 +40,8 @@
     "product__theme-rating-favourite-headericon-2": "Istaklarda",
     "product__theme-theme-title": "Mahsulot haqida qisqacha:",
     "product__theme-count-count": "Miqdor:",
-    "product__theme-count-text": "Sotuvda bor",
+    "product__theme-count-text": "Sotuvda ",
+    "product__theme-count-text-2": "dona bor",
     "product__theme-price-price": "Narxi:",
     "product__theme-price-price3-1": "donasi ",
     "product__theme-price-price3-2": "chegirma",
@@ -154,5 +155,7 @@
     "drawer__card-count-buy-btn": "Qabul qilish",
     "drawer__card-count-buy-btn-2": "Qaytarib yuborish",
     "drawer__card-count-buy-btn-3": "Qabul qilindi",
-    "drawer__card-count-buy-btn-4": "Qaytarib yuborildi"
+    "drawer__card-count-buy-btn-4": "Qaytarib yuborildi",
+    "productSingleStore__product-stock-laungage": "Sotuvda faqat",
+    "productSingleStore__product-stock-laungage-2": "dona bor"
 }

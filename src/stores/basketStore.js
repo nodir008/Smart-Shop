@@ -35,15 +35,21 @@ export const useBasketStore = defineStore("basket", {
 
     updateQuantity(id, quantity) {
       const productIndex = this.drawer.findIndex(item => item.id === id);
+      const maxStock = this.drawer[productIndex].stock;
       if (productIndex !== -1)
-        this.drawer[productIndex].quantity = Math.min(quantity, 999);
+        this.drawer[productIndex].quantity = Math.min(quantity, maxStock);
     },
 
     incrementQuantity(id) {
       const productIndex = this.drawer.findIndex(item => item.id === id);
-      if (productIndex !== -1)
-        this.drawer[productIndex].quantity = Math.min(this.drawer[productIndex].quantity + 1, 999);
+      if (productIndex !== -1) {
+        const maxStock = this.drawer[productIndex].stock;
+        if (this.drawer[productIndex].quantity < maxStock) {
+          this.drawer[productIndex].quantity++;
+        }
+      } 
     },
+
 
     decrementQuantity(id) {
       const productIndex = this.drawer.findIndex(item => item.id === id);

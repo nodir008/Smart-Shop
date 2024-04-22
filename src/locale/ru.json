@@ -155,6 +155,7 @@
     "drawer__card-count-buy-btn": "  Принятие  ",
     "drawer__card-count-buy-btn-2": "  Отправить его обратно  ",
     "drawer__card-count-buy-btn-3": "  Принял  ",
-    "drawer__card-count-buy-btn-4": "Отправили обратно"
-
+    "drawer__card-count-buy-btn-4": "Отправили обратно",
+    "productSingleStore__product-stock-laungage": "В наличии только",
+    "productSingleStore__product-stock-laungage-2": "шт"
 }

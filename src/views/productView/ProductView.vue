@@ -55,17 +55,23 @@ const totalFormattedPrice = computed(() => {
 });
 
 const decreaseQuantity = () => {
-  productQuantity.value = Math.max(1, productQuantity.value - 1);
+  if (productQuantity.value > 1) {
+    productQuantity.value--;
+  }
 };
-
 watchEffect(() => {
-  if (0 > productQuantity.value || 1000 <= productQuantity.value) {
-    productQuantity.value = 1;
+  if (
+    0 > productQuantity.value ||
+    productSingleStore.product?.stock <= productQuantity.value
+  ) {
+    productQuantity.value = productSingleStore.product?.stock;
   }
 });
 
 const increaseQuantity = () => {
-  productQuantity.value++;
+  if (productQuantity.value < productSingleStore.product?.stock) {
+    productQuantity.value++;
+  }
 };
 
 const updateTotalPrice = () => {
@@ -179,7 +185,7 @@ const addToOrder = (productId) => {
           :modules="modules"
           :grabCursor="true"
           class="mySwiper2"
-          :class="{active: productSingleStore.product?.images.length == 1}"
+          :class="{ active: productSingleStore.product?.images.length == 1 }"
         >
           <swiper-slide
             v-for="(image, i) in productSingleStore.product?.images"
@@ -251,6 +257,7 @@ const addToOrder = (productId) => {
         </p>
         <div class="product__theme-count">
           <div class="product__theme-count-number">
+             
             <button
               class="product__theme-count-number-b"
               @click="decreaseQuantity"
@@ -271,11 +278,19 @@ const addToOrder = (productId) => {
               class="product__theme-count-number-b"
               @click="increaseQuantity"
             >
-              <PlusIcon class="product__theme-count-number-b-icon2" />
+            <span class="tooltiptext" :class="{active: productQuantity === productSingleStore.product?.stock}"> {{ $t("productSingleStore__product-stock-laungage") }} {{ productSingleStore.product?.stock }} {{ $t("productSingleStore__product-stock-laungage-2") }}</span>
+              <PlusIcon
+                class="product__theme-count-number-b-icon2"
+                :class="{
+                  active: productQuantity === productSingleStore.product?.stock,
+                }"
+              />
             </button>
           </div>
           <p class="product__theme-count-text">
             {{ $t("product__theme-count-text") }}
+            {{ productSingleStore.product?.stock }}
+            {{ $t("product__theme-count-text-2") }}
           </p>
         </div>
         <p class="product__theme-price-price">
@@ -597,6 +612,3 @@ const addToOrder = (productId) => {
     </div>
   </div>
 </template>
-
-<style scoped>
-</style>
