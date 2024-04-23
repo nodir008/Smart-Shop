@@ -21,9 +21,9 @@ categoryStore.getCategorySingle(route.params.category);
 const calculateFormattedPrice = (price) => (price / 12).toFixed(0);
 const calculateFormatted = (price, discountPercentage) => (price - (price / 100) * discountPercentage).toFixed(0);
 
-const handleHeartClick = (itemId) => {
-  favouriteStore.activeStates[itemId] = !favouriteStore.activeStates[itemId];
-  favouriteStore.getAddFavPro(itemId);
+const handleHeartClick = (item) => {
+  favouriteStore.activeStates[item] = !favouriteStore.activeStates[item];
+  favouriteStore.getAddFavPro(item);
 };
 
 const toastShownProducts = new Set();
@@ -71,7 +71,7 @@ const addToBasket = (til, item, itemText, itemImg) => {
             <img :src="item.thumbnail" alt="" />
           </RouterLink>
           <div class="card__theme">
-            <button class="card__icons-btnh" @click="handleHeartClick(item.id)">
+            <button class="card__icons-btnh" @click="handleHeartClick(item)">
               <HeartIcon class="card__icons-btnh-1" v-if="!favouriteStore.activeStates[item?.id]" />
               <Heart2Icon class="card__icons-btnh-2" v-else />
             </button>

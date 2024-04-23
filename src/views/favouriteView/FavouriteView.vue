@@ -17,11 +17,11 @@ const calculateFormatted = (item) =>
 
 const toastShownProducts = new Set();
 
-const toggleBasket = (favouritesId, favouritesText, favouritesImg, til) => {
+const addToBasket = (favourites, favouritesText, favouritesImg, til) => {
   const quantity = 1;
-  basketStore.getAddDrawerPro(favouritesId, quantity);
+  basketStore.getAddDrawerPro(favourites, quantity);
   // Check if the toast message has already been shown for this product
-  if (toastShownProducts.has(favouritesId)) {
+  if (toastShownProducts.has(favourites.id)) {
     // If yes, return without doing anything
     return;
   }
@@ -116,8 +116,8 @@ const toggleBasket = (favouritesId, favouritesText, favouritesImg, til) => {
                 <button
                   class="favourite__card__icons-btnb"
                   @click="
-                    toggleBasket(
-                      item.id,
+                    addToBasket(
+                      item,
                       item.title,
                       item.thumbnail,
                       $t('fixed__theme-title-2')

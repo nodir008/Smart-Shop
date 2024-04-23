@@ -33,7 +33,7 @@ const calculateFormatted = () => {
 const handleHeartClick = () => {
   favouriteStore.activeStates[props.card.id] =
     !favouriteStore.activeStates[props.card.id];
-  favouriteStore.getAddFavPro(props.card.id);
+  favouriteStore.getAddFavPro(props.card);
 };
 const toastShownProducts = new Set();
 

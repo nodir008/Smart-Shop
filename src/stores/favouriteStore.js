@@ -9,23 +9,20 @@ export const useFavouriteStore = defineStore("favourite", {
     activeStates: {},
   }),
   actions: {
-    getAddFavPro(id) {
-      const productsStore = useProductsStore();
-      const favPro = productsStore.products?.find(item => item.id == id);
-      const categorySingle = useCategoryStore();
-      const favCategory = categorySingle.category?.find(item => item.id == id);
-      const indexInFavourites = this.favourites.findIndex(item => item.id === id);
-      const favIdIndex = this.favIds?.findIndex(item => item == id);
-
+    getAddFavPro(product) {
+      
+      const favIdIndex = this.favIds?.findIndex(item => item == product);
+      const indexInFavourites = this.favourites.findIndex(item => item.id === product.id);
+      
       if (indexInFavourites !== -1) {
         this.favourites.splice(indexInFavourites, 1);
         this.favIds.splice(favIdIndex, 1);
-        this.setActiveState(id, false);
+        this.setActiveState(product.id, false);
       } else {
-        this.favIds.push(id);
-        this.setActiveState(id, true);
-        this.favourites.push(favPro || favCategory);
-        if (favCategory) this.setActiveState(id, true);
+        this.favIds.push(product.id);
+        this.setActiveState(product.id, true);
+        this.favourites.push(product);
+        this.setActiveState(product.id, true);
       }
       this.saveToLocalStorage();
     },

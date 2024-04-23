@@ -89,7 +89,7 @@ const updateTotalPrice = () => {
 const handleHeartClick = () => {
   favouriteStore.activeStates[productSingleStore.product?.id] =
     !favouriteStore.activeStates[productSingleStore.product?.id];
-  favouriteStore.getAddFavPro(productSingleStore.product?.id);
+  favouriteStore.getAddFavPro(productSingleStore.product);
 };  
 
 const toggleLoader = () => {
