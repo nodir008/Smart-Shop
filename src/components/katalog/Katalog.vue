@@ -14,10 +14,6 @@ const productsCategories = useProductsCategories();
 const closeKatalogAndLoadCategory = (title) => {
   emits("closeKatalog");
   categoryStore.getCategorySingle(title);
-  scrollToTop();
-};
-
-const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 </script>

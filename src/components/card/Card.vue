@@ -10,9 +10,7 @@ import HeartIcon from "@/assets/icons/HeartIcon.vue";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 
-onMounted(() => {
-  window.scrollTo(0, 0);
-});
+
 const basketStore = useBasketStore();
 const favouriteStore = useFavouriteStore();
 const props = defineProps({
@@ -41,7 +39,7 @@ const toastShownProducts = new Set();
 
 const toggleBasket = (til) => {
   const quantity = 1;
-  basketStore.getAddDrawerPro(props.card.id, quantity);
+  basketStore.getAddDrawerPro(props.card, quantity);
   if (toastShownProducts.has(props.card.id)) {
     return;
   }
@@ -67,14 +65,11 @@ const toggleBasket = (til) => {
   }, 3000);
 };
 
-const scrollToTop = (cardId) => {
-  // window.scrollTo(0, 0);
-};
 </script>
 
 <template>
   <div class="card">
-    <RouterLink @click="scrollToTop(card.id)" :to="'/product/' + card.id"
+    <RouterLink :to="'/product/' + card.id"
       ><img :src="card.thumbnail" alt=""
     /></RouterLink>
     <div class="card__theme">

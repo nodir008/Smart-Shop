@@ -33,7 +33,6 @@ function activateLink(link) {
   activeLink.value = link;
   katalog.value = link === "search";
   kabinet.value = link === "login";
-  window.scrollTo(0, 0);
 }
 
 function closeKatalog() {

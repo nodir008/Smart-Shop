@@ -28,10 +28,10 @@ const handleHeartClick = (itemId) => {
 
 const toastShownProducts = new Set();
 
-const toggleBasket = (til, itemId, itemText, itemImg) => {
+const addToBasket = (til, item, itemText, itemImg) => {
   const quantity = 1;
-  basketStore.getAddDrawerPro(itemId, quantity);
-  if (toastShownProducts.has(itemId)) {
+  basketStore.getAddDrawerPro(item, quantity);
+  if (toastShownProducts.has(item.id)) {
     return;
   }
 
@@ -48,17 +48,13 @@ const toggleBasket = (til, itemId, itemText, itemImg) => {
     "limit": 5
   });
   
-  toastShownProducts.add(itemId);
+  toastShownProducts.add(item.id);
   
   setTimeout(() => {
-    toastShownProducts.delete(itemId);
+    toastShownProducts.delete(item.id);
   }, 3000); 
 };
 
-
-const scrollToTop = () => {
-  window.scrollTo(0, 0);
-};
 </script>
 
 <template>
@@ -71,7 +67,7 @@ const scrollToTop = () => {
           v-for="item in categoryStore.category"
           :key="item.id"
         >
-          <RouterLink @click="scrollToTop" :to="'/product/' + item.id">
+          <RouterLink :to="'/product/' + item.id">
             <img :src="item.thumbnail" alt="" />
           </RouterLink>
           <div class="card__theme">
@@ -94,7 +90,7 @@ const scrollToTop = () => {
             </p>
             <div class="card__icons">
               <p class="card__icons-text">{{ $t('card__icons-text') }} </p>
-              <button class="card__icons-btnb" @click="toggleBasket($t('fixed__theme-title-2'), item.id, item.title, item.thumbnail)">
+              <button class="card__icons-btnb" @click="addToBasket($t('fixed__theme-title-2'), item, item.title, item.thumbnail)">
                 <Basket2Icon class="card__icons-btnb-basketicon" />
               </button>
             </div>

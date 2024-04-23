@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css";
-import { ref, computed, watchEffect } from "vue";
+import { ref, computed, watchEffect, onMounted } from "vue";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { useProductSingleStore } from "@/stores/productSingleStore";
 import { useFavouriteStore } from "@/stores/favouriteStore";
@@ -20,6 +20,10 @@ import ArrowIcon from "@/assets/icons/ArrowIcon.vue";
 import DeleteXIcon from "@/assets/icons/DeleteXIcon.vue";
 import PlusIcon from "@/assets/icons/PlusIcon.vue";
 
+
+onMounted(() => {
+  window.scrollTo(0, 0);
+});
 const orderStore = useOrderStore();
 const productQuantity = ref(1);
 const favouriteStore = useFavouriteStore();
@@ -86,7 +90,7 @@ const handleHeartClick = () => {
   favouriteStore.activeStates[productSingleStore.product?.id] =
     !favouriteStore.activeStates[productSingleStore.product?.id];
   favouriteStore.getAddFavPro(productSingleStore.product?.id);
-};
+};  
 
 const toggleLoader = () => {
   showLoader.value = true;
@@ -98,13 +102,10 @@ const toggleLoader = () => {
 
 const addToBasket = () => {
   if (productQuantity.value <= 0 || productQuantity.value === null) {
-    alert("Mahsulot miqdori 0 ga teng!");
-    return;
+    productQuantity.value = 1 
   }
-  const productId = productSingleStore.product?.id;
-  if (productId) {
-    basketStore.getAddDrawerPro(productId, productQuantity.value);
-  }
+  const product = productSingleStore.product;
+  basketStore.getAddDrawerPro(product, productQuantity.value);
   basketStore.changeActive(
     true,
     productSingleStore.product?.description,
@@ -170,7 +171,7 @@ const addToOrder = (productId) => {
           @swiper="setThumbsSwiper"
           :grabCursor="true"
           :spaceBetween="1"
-          :slidesPerView="productSingleStore.product?.images.length"
+          :slidesPerView="productSingleStore.product?.images.length "
           :freeMode="true"
           :watchSlidesProgress="true"
           :modules="modules"

@@ -165,14 +165,6 @@
     fill: rgb(54, 54, 64, 0.5);
 }
 
-.drawer__card-count-price {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    gap: 5px;
-    width: 100px;
-}
-
 .drawer__card-count-price1 {
     font-size: 20px;
     font-weight: 700;
