@@ -9,7 +9,7 @@ export const useOrderStore = defineStore("order", {
   actions: {
     orderStoreAdd(product, quantity) {
       if (product.id) {
-        const indexInOrders = this.orders.findIndex(item => item.id === id);
+        const indexInOrders = this.orders.findIndex(item => item.id === product.id);
         indexInOrders !== -1
           ? this.orders[indexInOrders].quantity += quantity
           : this.orders.push({ ...product, quantity });
