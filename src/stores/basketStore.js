@@ -1,6 +1,4 @@
 import { defineStore } from "pinia";
-import { useCategoryStore } from "./categorySingleStore";
-import { useProductsStore } from "./productsStore";
 import { useOrderStore } from "./orderStore";
 
 
@@ -15,17 +13,10 @@ export const useBasketStore = defineStore("basket", {
   }),
   actions: {
     getAddDrawerPro(product, quantity) {
-      // const useCategory = useCategoryStore();
-      // const useProducts = useProductsStore();
-      // const drawerItem = useProducts.products.find(item => item.id === id);
-      // const drawerCategory = useCategory.category?.find(item => item.id == id);
-      // const drawerToAdd = drawerItem || drawerCategory;
-      // if (drawerToAdd) {
         const indexInDrawer = this.drawer.findIndex(item => item.id === product.id);
         indexInDrawer !== -1
           ? this.drawer[indexInDrawer].quantity += quantity
           : this.drawer.push({ ...product, quantity, isdrawerForActive: true });
-      // }
     },
 
     removeDrawerProduct(id) {

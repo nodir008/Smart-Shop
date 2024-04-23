@@ -117,12 +117,12 @@ const addToBasket = () => {
   }, 2000);
 };
 
-const addToOrder = (productId) => {
+const addToOrder = (product) => {
   if (productQuantity.value <= 0 || productQuantity.value === null) {
     alert("Mahsulot miqdori 0 ga teng!");
     return;
   }
-  if (productId === productSingleStore.product?.id) {
+  if (product.id === productSingleStore.product?.id) {
     const now = new Date();
     const deliveryTime = new Date(now.getTime() + 60000);
 
@@ -144,8 +144,8 @@ const addToOrder = (productId) => {
     orderStore.setDeliveryTime(deliveryTimeFormatted);
   }
 
-  if (productId) {
-    orderStore.orderStoreAdd(productId, productQuantity.value);
+  if (product.id) {
+    orderStore.orderStoreAdd(product, productQuantity.value);
     showToast.value = true;
 
     setTimeout(() => {
@@ -346,7 +346,7 @@ const addToOrder = (productId) => {
           </button>
           <button
             class="product__theme-btns-btn-18"
-            @click="addToOrder(productSingleStore.product.id)"
+            @click="addToOrder(productSingleStore.product)"
           >
             <span class="text-container">
               <span class="text"> {{ $t("product__theme-btns-btn-18") }}</span>

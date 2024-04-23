@@ -1,7 +1,5 @@
 import { defineStore } from "pinia";
 import { useOrderTimeStore } from "./orderTimeStore";
-import { useProductsStore } from "./productsStore";
-import { useCategoryStore } from "./categorySingleStore";
 
 export const useOrderStore = defineStore("order", {
   state: () => ({
@@ -9,18 +7,12 @@ export const useOrderStore = defineStore("order", {
     deliveryTime: null,
   }),
   actions: {
-    orderStoreAdd(id, quantity) {
-      const productsStore = useProductsStore();
-      const ordersPro = productsStore.products?.find(item => item.id === id);
-      const categorySingle = useCategoryStore();
-      const ordersCategory = categorySingle.category?.find(item => item.id == id);
-
-      const orderToAdd = ordersPro || ordersCategory;
-      if (orderToAdd) {
+    orderStoreAdd(product, quantity) {
+      if (product.id) {
         const indexInOrders = this.orders.findIndex(item => item.id === id);
         indexInOrders !== -1
           ? this.orders[indexInOrders].quantity += quantity
-          : this.orders.push({ ...orderToAdd, quantity });
+          : this.orders.push({ ...product, quantity });
       }
     },
 
