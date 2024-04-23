@@ -195,7 +195,6 @@ const addToOrder = (productId) => {
           :modules="modules"
           :grabCursor="true"
           class="mySwiper2"
-          :class="{ active: productSingleStore.product?.images.length == 1 }"
         >
           <swiper-slide
             v-for="(image, i) in productSingleStore.product?.images"
