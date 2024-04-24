@@ -39,11 +39,11 @@ const addToBasket = (favourites, favouritesText, favouritesImg, til) => {
   });
 
   // Add the product ID to the set to mark that the toast message has been shown for this product
-  toastShownProducts.add(favouritesId);
+  toastShownProducts.add(favourites.id);
 
   // Clear the toastShownProducts set after showing toast for the current product
   setTimeout(() => {
-    toastShownProducts.delete(favouritesId);
+    toastShownProducts.delete(favourites.id);
   }, 5000);
 };
 </script>

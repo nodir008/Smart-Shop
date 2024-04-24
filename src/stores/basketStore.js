@@ -13,11 +13,21 @@ export const useBasketStore = defineStore("basket", {
   }),
   actions: {
     getAddDrawerPro(product, quantity) {
-        const indexInDrawer = this.drawer.findIndex(item => item.id === product.id);
-        indexInDrawer !== -1
-          ? this.drawer[indexInDrawer].quantity += quantity
-          : this.drawer.push({ ...product, quantity, isdrawerForActive: true });
+      const indexInDrawer = this.drawer.findIndex(item => item.id === product.id);
+      const maxStock = product.stock;
+      
+      if (indexInDrawer !== -1) {
+        // Product already exists in the drawer
+        const currentQuantity = this.drawer[indexInDrawer].quantity;
+        const newQuantity = currentQuantity + quantity;
+        this.drawer[indexInDrawer].quantity = Math.min(newQuantity, maxStock);
+      } else {
+        // Product does not exist in the drawer
+        const actualQuantity = Math.min(quantity, maxStock);
+        this.drawer.push({ ...product, quantity: actualQuantity, isdrawerForActive: true });
+      }
     },
+    
 
     removeDrawerProduct(id) {
       const indexToRemove = this.drawer.findIndex(item => item.id === id);
