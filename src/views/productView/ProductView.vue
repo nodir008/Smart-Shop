@@ -118,10 +118,6 @@ const addToBasket = () => {
 };
 
 const addToOrder = (product) => {
-  if (productQuantity.value <= 0 || productQuantity.value === null) {
-    alert("Mahsulot miqdori 0 ga teng!");
-    return;
-  }
   if (product.id === productSingleStore.product?.id) {
     const now = new Date();
     const deliveryTime = new Date(now.getTime() + 60000);

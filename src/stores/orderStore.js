@@ -16,10 +16,6 @@ export const useOrderStore = defineStore("order", {
       }
     },
 
-    resetOrder() {
-      this.orders = [];
-    },
-
     removeOrder() {
       const orderTimeStore = useOrderTimeStore();
       this.orders.forEach(item => {
