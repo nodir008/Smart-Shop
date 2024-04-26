@@ -3,6 +3,7 @@ import { createI18n } from "vue-i18n";
 import { ref, defineProps, watch, onMounted } from "vue";
 import { useFavouriteStore } from "@/stores/favouriteStore";
 import { useBasketStore } from "@/stores/basketStore";
+import { useOrderStore } from "@/stores/orderStore";
 import StarIcon from "@/assets/icons/StarIcon.vue";
 import Heart2Icon from "@/assets/icons/Heart2Icon.vue";
 import Basket2Icon from "@/assets/icons/Basket2Icon.vue";
@@ -10,8 +11,8 @@ import HeartIcon from "@/assets/icons/HeartIcon.vue";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 
-
 const basketStore = useBasketStore();
+const orderStore = useOrderStore();
 const favouriteStore = useFavouriteStore();
 const props = defineProps({
   card: {
@@ -38,6 +39,10 @@ const handleHeartClick = () => {
 const toastShownProducts = new Set();
 
 const toggleBasket = (til) => {
+  // orderStore.orders.forEach((element) => {
+  //   console.log(element.id);
+  //   console.log(props.card.id);
+  // });
   const quantity = 1;
   basketStore.getAddDrawerPro(props.card, quantity);
   if (toastShownProducts.has(props.card.id)) {
@@ -65,6 +70,9 @@ const toggleBasket = (til) => {
   }, 3000);
 };
 
+// const ala = orderStore.orders.forEach((element) => {});
+
+// console.log(ala);
 </script>
 
 <template>
@@ -72,6 +80,13 @@ const toggleBasket = (til) => {
     <RouterLink :to="'/product/' + card.id"
       ><img :src="card.thumbnail" alt=""
     /></RouterLink>
+    <!-- <div class="card__active active">
+      <RouterLink :to="'/product/' + card.id"
+        ><img :src="card.thumbnail" alt=""
+      /></RouterLink>
+      <span>Mahsulot mavjud emas</span>
+    </div> -->
+    <div class="card__active2"><span>Mahsulot mavjud emas</span></div>
     <div class="card__theme">
       <h3 class="card__theme-title">{{ card.title }}</h3>
       <div class="card__theme-rating-div">
