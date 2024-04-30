@@ -322,3 +322,8 @@
   font-size: 16px;
   cursor: pointer;
 }
+
+
+.card.active {
+  background: rgba(0, 0, 0, 0.3)
+}

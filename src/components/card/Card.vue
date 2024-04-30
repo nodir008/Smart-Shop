@@ -4,6 +4,7 @@ import { ref, defineProps, watch, onMounted } from "vue";
 import { useFavouriteStore } from "@/stores/favouriteStore";
 import { useBasketStore } from "@/stores/basketStore";
 import { useOrderStore } from "@/stores/orderStore";
+import { useOrderTimeStore } from "@/stores/orderTimeStore";
 import StarIcon from "@/assets/icons/StarIcon.vue";
 import Heart2Icon from "@/assets/icons/Heart2Icon.vue";
 import Basket2Icon from "@/assets/icons/Basket2Icon.vue";
@@ -13,7 +14,9 @@ import "vue3-toastify/dist/index.css";
 
 const basketStore = useBasketStore();
 const orderStore = useOrderStore();
+const orderTimeStore = useOrderTimeStore();
 const favouriteStore = useFavouriteStore();
+const activeCard = ref(false)
 const props = defineProps({
   card: {
     type: Object,
@@ -39,10 +42,6 @@ const handleHeartClick = () => {
 const toastShownProducts = new Set();
 
 const toggleBasket = (til) => {
-  // orderStore.orders.forEach((element) => {
-  //   console.log(element.id);
-  //   console.log(props.card.id);
-  // });
   const quantity = 1;
   basketStore.getAddDrawerPro(props.card, quantity);
   if (toastShownProducts.has(props.card.id)) {
@@ -70,23 +69,36 @@ const toggleBasket = (til) => {
   }, 3000);
 };
 
-// const ala = orderStore.orders.forEach((element) => {});
 
-// console.log(ala);
+// Loop through orders to find a matching product
+orderStore.orders.forEach((element) => {
+  if (element.id === props.card.id) {
+    // Check if the stock matches the quantity
+    if (element.stock === element.quantity) {
+      // Update activeCard to true if condition is met
+      activeCard.value = true;
+    }
+  }
+});
+
+orderTimeStore.ordersTime.forEach((element) => {
+  if (element.id === props.card.id) {
+    // Check if the stock matches the quantity
+    if (element.stock === element.quantity) {
+      // Update activeCard to true if condition is met
+      activeCard.value = true;
+    }
+  }
+});
+
 </script>
 
 <template>
-  <div class="card">
+  <div class="card " :class="{active: activeCard}">
     <RouterLink :to="'/product/' + card.id"
       ><img :src="card.thumbnail" alt=""
     /></RouterLink>
-    <!-- <div class="card__active active">
-      <RouterLink :to="'/product/' + card.id"
-        ><img :src="card.thumbnail" alt=""
-      /></RouterLink>
-      <span>Mahsulot mavjud emas</span>
-    </div> -->
-    <div class="card__active2"><span>Mahsulot mavjud emas</span></div>
+    <div class="card__active2   " :class="{active: activeCard}"><span>Mahsulot mavjud emas</span></div>
     <div class="card__theme">
       <h3 class="card__theme-title">{{ card.title }}</h3>
       <div class="card__theme-rating-div">

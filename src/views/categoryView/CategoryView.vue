@@ -9,12 +9,15 @@ import HeartIcon from "@/assets/icons/HeartIcon.vue";
 import Basket2Icon from "@/assets/icons/Basket2Icon.vue";
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
-
+import { useOrderTimeStore } from "@/stores/orderTimeStore";
+import { useOrderStore } from "@/stores/orderStore";
 
 const route = useRoute();
 const categoryStore = useCategoryStore();
 const favouriteStore = useFavouriteStore();
 const basketStore = useBasketStore();
+const orderStore = useOrderStore();
+const orderTimeStore = useOrderTimeStore();
 
 categoryStore.getCategorySingle(route.params.category);
 
@@ -55,6 +58,23 @@ const addToBasket = (til, item, itemText, itemImg) => {
   }, 3000); 
 };
 
+const isActiveCard = (itemId) => {
+  let isActive = false;
+  orderStore.orders.forEach((element) => {
+    if (element.id === itemId && element.stock === element.quantity) {
+      isActive = true;
+    }
+  });
+
+  orderTimeStore.ordersTime.forEach((element) => {
+    if (element.id === itemId && element.stock === element.quantity) {
+      isActive = true;
+    }
+  });
+
+  return isActive;
+};
+
 </script>
 
 <template>
@@ -63,13 +83,15 @@ const addToBasket = (til, item, itemText, itemImg) => {
       <h1 class="category-title">{{ route.params.category }}</h1>
       <div class="category__cards">
         <div
-          class="card"
+          class="card "
+          :class="{ active: isActiveCard(item.id)}"
           v-for="item in categoryStore.category"
           :key="item.id"
         >
           <RouterLink :to="'/product/' + item.id">
             <img :src="item.thumbnail" alt="" />
           </RouterLink>
+          <div class="card__active2 " :class="{ active: isActiveCard(item.id)  }"><span>Mahsulot mavjud emas</span></div>
           <div class="card__theme">
             <button class="card__icons-btnh" @click="handleHeartClick(item)">
               <HeartIcon class="card__icons-btnh-1" v-if="!favouriteStore.activeStates[item?.id]" />
