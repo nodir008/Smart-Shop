@@ -852,6 +852,14 @@
   /* .no__product-driwer-items {
     display: none !important;
   } */
+
+  .card__active2 span {
+    font-size: 12px;
+  }
+
+  .card__active2.active {
+    top: 150px !important;
+  }
 }
 
 @media (max-width: 370px) {
