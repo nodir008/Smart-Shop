@@ -210,10 +210,6 @@ const addToOrder = (product) => {
               </span>
               )
             </p>
-            <p class="product__theme-rating-stock">
-              {{ productSingleStore.product?.stock }}
-              {{ $t("product__theme-rating-stock") }}
-            </p>
           </div>
           <!-- @click="toggleFavorite" :class="{ active: isFavourite }" -->
           <button
@@ -361,10 +357,6 @@ const addToOrder = (product) => {
               </span>
               )
             </p>
-            <p class="product__theme-rating-stock">
-              {{ productSingleStore.product?.stock }}
-              {{ $t("product__theme-rating-stock") }}
-            </p>
           </div>
           <button
             class="product__theme-rating-favourite"
@@ -459,7 +451,11 @@ const addToOrder = (product) => {
               class="product__theme-count-number-b"
               @click="increaseQuantity"
             >
-              <PlusIcon class="product__theme-count-number-b-icon2" />
+            <span class="tooltiptext" :class="{active: productQuantity === productSingleStore.product?.stock}"> {{ $t("productSingleStore__product-stock-laungage") }} {{ productSingleStore.product?.stock }} {{ $t("product__theme-count-text-2") }}</span>
+              <PlusIcon class="product__theme-count-number-b-icon2" 
+              :class="{
+                active: productQuantity === productSingleStore.product?.stock,
+              }"/>
             </button>
           </div>
           <button
