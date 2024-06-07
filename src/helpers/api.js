@@ -10,7 +10,7 @@ const apiProducts = {
         return axiosClient.get(url)
     },
     getCategories() {
-        const url = `/products/categories`
+        const url = `/products/category-list`
         return axiosClient.get(url)
     },
     getCategorySingle(name) {

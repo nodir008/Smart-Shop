@@ -20,7 +20,6 @@ import ArrowIcon from "@/assets/icons/ArrowIcon.vue";
 import DeleteXIcon from "@/assets/icons/DeleteXIcon.vue";
 import PlusIcon from "@/assets/icons/PlusIcon.vue";
 
-
 onMounted(() => {
   window.scrollTo(0, 0);
 });
@@ -90,7 +89,7 @@ const handleHeartClick = () => {
   favouriteStore.activeStates[productSingleStore.product?.id] =
     !favouriteStore.activeStates[productSingleStore.product?.id];
   favouriteStore.getAddFavPro(productSingleStore.product);
-};  
+};
 
 const toggleLoader = () => {
   showLoader.value = true;
@@ -102,7 +101,7 @@ const toggleLoader = () => {
 
 const addToBasket = () => {
   if (productQuantity.value <= 0 || productQuantity.value === null) {
-    productQuantity.value = 1 
+    productQuantity.value = 1;
   }
   const product = productSingleStore.product;
   basketStore.getAddDrawerPro(product, productQuantity.value);
@@ -167,7 +166,7 @@ const addToOrder = (product) => {
           @swiper="setThumbsSwiper"
           :grabCursor="true"
           :spaceBetween="1"
-          :slidesPerView="productSingleStore.product?.images.length "
+          :slidesPerView="productSingleStore.product?.images.length"
           :freeMode="true"
           :watchSlidesProgress="true"
           :modules="modules"
@@ -191,15 +190,21 @@ const addToOrder = (product) => {
           :modules="modules"
           :grabCursor="true"
           class="mySwiper2"
+          :class="{ active: productSingleStore.product?.images.length <= 1 }"
         >
           <swiper-slide
             v-for="(image, i) in productSingleStore.product?.images"
             :key="i"
-            ><img class="swiper__slide-img2" :src="image" alt=""
+            ><img
+              class="swiper__slide-img2"
+              :src="image"
+              alt=""
+              :class="{
+                active: productSingleStore.product?.images.length <= 1,
+              }"
           /></swiper-slide>
         </swiper>
       </div>
-
       <div class="product__theme">
         <div class="product__theme-rating">
           <div class="product__theme-rating-text">
@@ -258,7 +263,6 @@ const addToOrder = (product) => {
         </p>
         <div class="product__theme-count">
           <div class="product__theme-count-number">
-             
             <button
               class="product__theme-count-number-b"
               @click="decreaseQuantity"
@@ -279,7 +283,16 @@ const addToOrder = (product) => {
               class="product__theme-count-number-b"
               @click="increaseQuantity"
             >
-            <span class="tooltiptext" :class="{active: productQuantity === productSingleStore.product?.stock}"> {{ $t("productSingleStore__product-stock-laungage") }} {{ productSingleStore.product?.stock }} {{ $t("product__theme-count-text-2") }}</span>
+              <span
+                class="tooltiptext"
+                :class="{
+                  active: productQuantity === productSingleStore.product?.stock,
+                }"
+              >
+                {{ $t("productSingleStore__product-stock-laungage") }}
+                {{ productSingleStore.product?.stock }}
+                {{ $t("product__theme-count-text-2") }}</span
+              >
               <PlusIcon
                 class="product__theme-count-number-b-icon2"
                 :class="{
@@ -451,11 +464,22 @@ const addToOrder = (product) => {
               class="product__theme-count-number-b"
               @click="increaseQuantity"
             >
-            <span class="tooltiptext" :class="{active: productQuantity === productSingleStore.product?.stock}"> {{ $t("productSingleStore__product-stock-laungage") }} {{ productSingleStore.product?.stock }} {{ $t("product__theme-count-text-2") }}</span>
-              <PlusIcon class="product__theme-count-number-b-icon2" 
-              :class="{
-                active: productQuantity === productSingleStore.product?.stock,
-              }"/>
+              <span
+                class="tooltiptext"
+                :class="{
+                  active: productQuantity === productSingleStore.product?.stock,
+                }"
+              >
+                {{ $t("productSingleStore__product-stock-laungage") }}
+                {{ productSingleStore.product?.stock }}
+                {{ $t("product__theme-count-text-2") }}</span
+              >
+              <PlusIcon
+                class="product__theme-count-number-b-icon2"
+                :class="{
+                  active: productQuantity === productSingleStore.product?.stock,
+                }"
+              />
             </button>
           </div>
           <button

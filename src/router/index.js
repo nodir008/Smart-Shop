@@ -18,7 +18,7 @@ const router = createRouter({
       component: () => import("../pages/ProductPage.vue"),
       beforeEnter(to, from, next) {
         const productsStore = useProductsStore();
-        productsStore.getProducts(0, "", 100)
+        productsStore.getProducts(0, "", productsStore.total)
           .then(() => {
             const exists = productsStore.products?.find(item => item.id == to.params.id);
             if (!exists || exists.id < to.params.id) {

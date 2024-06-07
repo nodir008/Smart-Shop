@@ -658,6 +658,10 @@
   object-fit: cover;
 }
 
+.swiper__slide-img2.active {
+  cursor: auto;
+}
+
 .fixed {
   position: fixed;
   top: 31px;

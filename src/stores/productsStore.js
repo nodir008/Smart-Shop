@@ -8,7 +8,7 @@ export const useProductsStore = defineStore('products', {
     locale: 'UZ'
   }),
   actions: {
-    async getProducts(skip = 0, keyword = "", limit = 20) {
+    async getProducts(skip = 0, keyword = "", limit = 30) {
       const { products, total } = await this.fetchProducts(apiProducts.getProducts, skip, keyword, limit);
       this.products = products;
       this.total = total;
